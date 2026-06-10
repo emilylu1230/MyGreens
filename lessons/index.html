@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emily's Plant Lessons</title>
+  <style>
+    :root {
+      --green-dark: #2d5016;
+      --green-mid: #4a7c28;
+      --green-light: #e8f5e0;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--green-dark); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header h1 { font-size: 2rem; font-weight: normal; margin-bottom: 0.5rem; }
+    header p { opacity: 0.8; font-size: 1rem; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.2rem; color: var(--green-dark); margin: 2rem 0 0.75rem; padding-bottom: 0.3rem; border-bottom: 2px solid var(--green-light); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .card-grid { display: grid; gap: 0.75rem; }
+    .card { display: block; background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; text-decoration: none; color: var(--text); transition: border-color 0.15s; }
+    .card:hover { border-color: var(--green-mid); }
+    .card .nickname { font-size: 1.1rem; font-weight: bold; color: var(--green-dark); }
+    .card .species { font-size: 0.88rem; color: var(--muted); font-style: italic; margin-top: 0.1rem; }
+    .card .tags { margin-top: 0.5rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 12px; font-size: 0.75rem; font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .tag-bright { background: #fff3cd; color: #7a5c00; }
+    .tag-medium { background: #d1e7dd; color: #0f5132; }
+    .tag-low    { background: #e2e3e5; color: #383d41; }
+    .tag-full   { background: #ffe0b2; color: #7a3b00; }
+    .tag-humidity { background: #e3f2fd; color: #1565c0; }
+    .tag-caution { background: #fdecea; color: #c0392b; }
+    .tag-petfriendly { background: #e8f5e0; color: #2d5016; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Emily's Plant Lessons</h1>
+  <p>Adelaide, SA &nbsp;·&nbsp; 10 indoor plants &nbsp;·&nbsp; Updated June 2026</p>
+</header>
+<main>
+
+  <h2>Start here</h2>
+  <div class="card-grid">
+    <a class="card" href="0001-light-101.html">
+      <div class="nickname">Lesson 1 — Light 101: Reading Your Room</div>
+      <div class="species">Understanding light levels, your Adelaide window, and where every plant belongs</div>
+    </a>
+  </div>
+
+  <h2>Your plants — main bedroom</h2>
+  <div class="card-grid">
+    <a class="card" href="0002-ganggang-ficus-burgundy.html">
+      <div class="nickname">刚刚 Ganggang</div>
+      <div class="species">Ficus elastica 'Burgundy' &nbsp;·&nbsp; 黑金刚橡皮树</div>
+      <div class="tags">
+        <span class="tag tag-bright">Bright indirect</span>
+        <span class="tag tag-caution">Cracked branch</span>
+        <span class="tag tag-caution">Toxic to pets</span>
+      </div>
+    </a>
+    <a class="card" href="0003-beibei-monstera.html">
+      <div class="nickname">贝贝 Beibei</div>
+      <div class="species">Monstera deliciosa &nbsp;·&nbsp; 龟背竹</div>
+      <div class="tags">
+        <span class="tag tag-bright">Bright indirect</span>
+        <span class="tag tag-caution">Toxic to pets</span>
+      </div>
+    </a>
+    <a class="card" href="0009-pipi-variegated-ficus.html">
+      <div class="nickname">皮皮</div>
+      <div class="species">Ficus elastica (variegated) &nbsp;·&nbsp; 斑叶橡皮树</div>
+      <div class="tags">
+        <span class="tag tag-bright">Bright indirect — needs most light</span>
+        <span class="tag tag-caution">Toxic to pets</span>
+      </div>
+    </a>
+  </div>
+
+  <h2>Your plants — tolerates lower light</h2>
+  <div class="card-grid">
+    <a class="card" href="0004-qingqing-dieffenbachia.html">
+      <div class="nickname">青青 Qingqing</div>
+      <div class="species">Dieffenbachia 'Sterling' &nbsp;·&nbsp; 万年青</div>
+      <div class="tags">
+        <span class="tag tag-medium">Medium indirect</span>
+        <span class="tag tag-caution">Toxic sap — wash hands</span>
+      </div>
+    </a>
+    <a class="card" href="0005-lili-peace-lily.html">
+      <div class="nickname">Lili</div>
+      <div class="species">Spathiphyllum &nbsp;·&nbsp; 白掌 &nbsp;·&nbsp; Peace Lily</div>
+      <div class="tags">
+        <span class="tag tag-low">Low – medium</span>
+        <span class="tag tag-caution">Recently repotted</span>
+        <span class="tag tag-caution">Toxic to pets</span>
+      </div>
+    </a>
+    <a class="card" href="0006-spider-plant.html">
+      <div class="nickname">蜘蛛 Spider</div>
+      <div class="species">Chlorophytum comosum &nbsp;·&nbsp; 吊兰 &nbsp;·&nbsp; Spider Plant (study room)</div>
+      <div class="tags">
+        <span class="tag tag-low">Low – medium</span>
+        <span class="tag tag-petfriendly">Pet-safe</span>
+      </div>
+    </a>
+  </div>
+
+  <h2>Your plants — high humidity needed</h2>
+  <div class="card-grid">
+    <a class="card" href="0007-queque-calathea.html">
+      <div class="nickname">雀雀</div>
+      <div class="species">Calathea orbifolia &nbsp;·&nbsp; 孔雀竹芋</div>
+      <div class="tags">
+        <span class="tag tag-medium">Medium indirect</span>
+        <span class="tag tag-humidity">≥60% humidity</span>
+        <span class="tag tag-petfriendly">Pet-safe</span>
+      </div>
+    </a>
+    <a class="card" href="0010-baobao-goeppertia.html">
+      <div class="nickname">豹豹</div>
+      <div class="species">Goeppertia concinna &nbsp;·&nbsp; 豹纹竹芋 &nbsp;·&nbsp; Rattlesnake Plant</div>
+      <div class="tags">
+        <span class="tag tag-medium">Medium indirect</span>
+        <span class="tag tag-humidity">≥60% humidity</span>
+        <span class="tag tag-petfriendly">Pet-safe</span>
+      </div>
+    </a>
+  </div>
+
+  <h2>Your plants — other</h2>
+  <div class="card-grid">
+    <a class="card" href="0008-tangtan-begonia.html">
+      <div class="nickname">棠棠</div>
+      <div class="species">Begonia maculata &nbsp;·&nbsp; 鳟鱼秋海棠 &nbsp;·&nbsp; Polka Dot Begonia</div>
+      <div class="tags">
+        <span class="tag tag-bright">Bright indirect</span>
+        <span class="tag tag-caution">Mildly toxic</span>
+      </div>
+    </a>
+    <a class="card" href="0011-danhua-frangipani.html">
+      <div class="nickname">蛋花</div>
+      <div class="species">Plumeria &nbsp;·&nbsp; 鸡蛋花 &nbsp;·&nbsp; Frangipani (needs to go outside)</div>
+      <div class="tags">
+        <span class="tag tag-full">Full direct sun</span>
+        <span class="tag tag-caution">Move outside Sept</span>
+      </div>
+    </a>
+  </div>
+
+</main>
+<footer>
+  Emily's Plant Lessons &nbsp;·&nbsp; Adelaide SA &nbsp;·&nbsp; Ask your Claude Code agent with any questions
+</footer>
+</body>
+</html>

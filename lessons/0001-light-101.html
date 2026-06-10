@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 1 — Light 101: Reading Your Room</title>
+  <style>
+    :root {
+      --green-dark: #2d5016;
+      --green-mid: #4a7c28;
+      --green-light: #e8f5e0;
+      --green-accent: #6aad3d;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--warm-bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    header {
+      background: var(--green-dark);
+      color: white;
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    header .lesson-number {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.85;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--green-dark);
+      margin: 2.5rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--green-light);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: var(--green-mid);
+      margin: 1.5rem 0 0.4rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    li { margin-bottom: 0.4rem; }
+
+    a { color: var(--green-mid); }
+
+    .callout {
+      border-left: 4px solid;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .callout.tip {
+      background: var(--tip-bg);
+      border-color: var(--tip-border);
+    }
+
+    .callout.warning {
+      background: var(--warning-bg);
+      border-color: var(--warning-border);
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+
+    /* Light level cards */
+    .light-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .light-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      background: white;
+      text-align: center;
+    }
+
+    .light-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .light-card h4 {
+      font-size: 0.95rem;
+      color: var(--green-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .light-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Plant table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-size: 0.93rem;
+    }
+
+    th {
+      background: var(--green-dark);
+      color: white;
+      text-align: left;
+      padding: 0.6rem 0.9rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:nth-child(even) td { background: #f9f9f6; }
+
+    .tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .tag-bright { background: #fff3cd; color: #7a5c00; }
+    .tag-medium { background: #d1e7dd; color: #0f5132; }
+    .tag-low    { background: #e2e3e5; color: #383d41; }
+
+    /* Compass widget */
+    .compass-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .compass-box h4 {
+      font-size: 1rem;
+      color: var(--green-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .compass-directions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .dir {
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+    }
+
+    .dir-north { background: #fff3cd; }
+    .dir-south { background: #e2e3e5; }
+    .dir-east  { background: #d1e7dd; }
+    .dir-west  { background: #fce4ec; }
+
+    .dir strong { display: block; margin-bottom: 0.2rem; }
+
+    /* Quiz */
+    .quiz {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .quiz h3 {
+      margin-top: 0;
+      color: var(--green-dark);
+    }
+
+    .question {
+      margin-bottom: 1.25rem;
+    }
+
+    .question p {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .options label {
+      display: block;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+
+    .options label:hover { background: var(--green-light); }
+
+    .options input[type="radio"] { margin-right: 0.5rem; }
+
+    .quiz-btn {
+      background: var(--green-dark);
+      color: white;
+      border: none;
+      padding: 0.65rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin-top: 0.75rem;
+    }
+
+    .quiz-btn:hover { background: var(--green-mid); }
+
+    .result {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      display: none;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.93rem;
+    }
+
+    .result.correct { background: var(--tip-bg); color: var(--green-dark); }
+    .result.wrong   { background: var(--warning-bg); color: #7a5c00; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    footer a { color: var(--green-mid); }
+
+    @media print {
+      header { background: white; color: var(--text); border-bottom: 2px solid var(--green-dark); }
+      .quiz { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="lesson-number">Lesson 1 of your plant journey</div>
+  <h1>Light 101: Reading Your Room</h1>
+  <p>The single most important thing you can know about keeping your plants alive — before water, soil, or fertiliser.</p>
+</header>
+
+<main>
+
+  <h2>Why light comes first</h2>
+  <p>
+    Most indoor plants die from <strong>wrong light</strong>, not bad luck. Too much direct sun scorches leaves. Too little and the plant slowly starves — it can't photosynthesise enough energy to stay alive. Get light right and everything else becomes much easier.
+  </p>
+  <p>
+    Your master bedroom in Adelaide is actually a great setup — a large openable window, curtains you can adjust, and an outdoor space to move plants into. Once you understand what each light level means, you'll know exactly where each plant belongs.
+  </p>
+
+  <h2>The four light levels</h2>
+
+  <div class="light-grid">
+    <div class="light-card">
+      <div class="icon">☀️</div>
+      <h4>Direct sun</h4>
+      <p>Sunlight hits the leaf surface directly. Hot and intense — most indoor tropicals hate this.</p>
+    </div>
+    <div class="light-card">
+      <div class="icon">🌤</div>
+      <h4>Bright indirect</h4>
+      <p>Very well-lit room. No direct rays on leaves. Near a window but behind glass or curtain sheer.</p>
+    </div>
+    <div class="light-card">
+      <div class="icon">⛅</div>
+      <h4>Medium</h4>
+      <p>Comfortable reading light. Away from the window, or window is partly blocked.</p>
+    </div>
+    <div class="light-card">
+      <div class="icon">🌥</div>
+      <h4>Low</h4>
+      <p>You'd need a lamp to read comfortably. Deep in a room or a south-facing window.</p>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <strong>Quick test</strong>
+    Hold your hand about 30 cm above a white piece of paper at midday. Sharp, hard shadow = bright indirect or direct. Soft, blurry shadow = medium. Barely any shadow = low.
+  </div>
+
+  <h2>Your window in Adelaide — direction matters</h2>
+
+  <p>
+    Australia is in the <strong>Southern Hemisphere</strong>, so the sun arcs across the <em>northern</em> sky. This is the opposite of what most plant advice assumes (which is written for Europe or North America). Use this guide for your master bedroom window:
+  </p>
+
+  <div class="compass-box">
+    <h4>Which way does your window face?</h4>
+    <div class="compass-directions">
+      <div class="dir dir-north">
+        <strong>North-facing</strong>
+        Bright all day. Best spot in the house. Warm in winter, very hot in Adelaide summer — use your curtain sheer in Jan–Feb.
+      </div>
+      <div class="dir dir-south">
+        <strong>South-facing</strong>
+        Low light all year. No direct sun. Only peace lily and very tolerant plants will be happy here long-term.
+      </div>
+      <div class="dir dir-east">
+        <strong>East-facing</strong>
+        Gentle morning sun, shaded afternoon. Excellent for bright-indirect plants. Safer than west in Adelaide heat.
+      </div>
+      <div class="dir dir-west">
+        <strong>West-facing</strong>
+        Harsh afternoon sun — brutal in an Adelaide summer. Keep curtains closed or move heat-sensitive plants in November–March.
+      </div>
+    </div>
+  </div>
+
+  <div class="callout warning">
+    <strong>Adelaide summer alert</strong>
+    On 40°C+ days, direct sun through glass acts like a magnifying glass and can burn leaves even on plants that normally like bright light. On extreme heat days, keep curtains closed and don't open the window if the outside air is hotter than inside.
+  </div>
+
+  <h2>Your plants and their light needs</h2>
+
+  <p>All 10 of your indoor plants are tropical — they share a common origin in warm, humid forests. None of them want direct harsh sun, but their tolerances vary. Here's your full collection:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nickname</th>
+        <th>Species</th>
+        <th>Light needed</th>
+        <th>Where to put it / Adelaide tip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>刚刚 Ganggang</strong></td>
+        <td><em>Ficus elastica 'Burgundy'</em><br>黑金刚橡皮树</td>
+        <td><span class="tag tag-bright">Bright indirect</span></td>
+        <td>Near window behind sheer curtain. Dark leaves absorb light well — don't move to low light or colour fades green. <strong>Note:</strong> cracked branch — keep out of direct sun until healed (stress slows recovery).</td>
+      </tr>
+      <tr>
+        <td><strong>贝贝 Beibei</strong></td>
+        <td><em>Monstera deliciosa</em><br>龟背竹</td>
+        <td><span class="tag tag-bright">Bright indirect</span></td>
+        <td>Main bedroom near window, no direct sun. Rotate 90° weekly so all sides get even light. Can go outside under eave shade in spring/autumn — bring in above 38°C.</td>
+      </tr>
+      <tr>
+        <td><strong>青青 Qingqing</strong></td>
+        <td><em>Dieffenbachia Sterling</em><br>万年青</td>
+        <td><span class="tag tag-medium">Medium</span></td>
+        <td>Away from direct sun. Tolerates lower light than most. The variegation (pale markings) will intensify with slightly more light, but too much bleaches it.</td>
+      </tr>
+      <tr>
+        <td><strong>Lili</strong></td>
+        <td><em>Spathiphyllum</em><br>白掌 / Peace Lily</td>
+        <td><span class="tag tag-low">Low – medium</span></td>
+        <td>Happy well away from the window. Tolerates shade better than any other plant in your collection. Will droop visibly in high heat — move away from window on 40°C+ days.</td>
+      </tr>
+      <tr>
+        <td><strong>蜘蛛 Spider</strong></td>
+        <td><em>Chlorophytum comosum</em><br>吊兰 / Spider Plant</td>
+        <td><span class="tag tag-low">Low – medium</span></td>
+        <td>You've noted it's best in the darker study room — trust that. Bright indirect light is fine too, but it's one of the most shade-tolerant plants you have.</td>
+      </tr>
+      <tr>
+        <td><strong>雀雀</strong></td>
+        <td><em>Calathea orbifolia</em><br>孔雀竹芋</td>
+        <td><span class="tag tag-medium">Medium</span></td>
+        <td>No direct sun at all — leaves brown and curl. Medium indirect light only. Also needs high humidity (≥60%) — your biggest challenge in dry Adelaide winters. Keep away from air conditioning vents.</td>
+      </tr>
+      <tr>
+        <td><strong>棠棠</strong></td>
+        <td><em>Begonia maculata</em><br>鳟鱼秋海棠</td>
+        <td><span class="tag tag-bright">Bright indirect</span></td>
+        <td>Loves bright indirect light — the white spots on leaves are a feature, not damage. Avoid direct sun (scorches) and deep shade (loses spots). East-facing light is ideal.</td>
+      </tr>
+      <tr>
+        <td><strong>皮皮</strong></td>
+        <td><em>Ficus elastica</em> (variegated)<br>斑叶橡皮树</td>
+        <td><span class="tag tag-bright">Bright indirect</span></td>
+        <td>Same care as 刚刚 but needs <em>more</em> light to maintain the variegation. Pale cream patches have less chlorophyll — the plant works harder in lower light. Give it the brightest indirect spot you have.</td>
+      </tr>
+      <tr>
+        <td><strong>豹豹</strong></td>
+        <td><em>Goeppertia concinna</em><br>豹纹竹芋</td>
+        <td><span class="tag tag-medium">Medium</span></td>
+        <td>Bright indirect light at most — similar to 雀雀. No direct sun. Also needs ≥60% humidity. The purple-red leaf backs are a sign of health; they fade in poor light or low humidity.</td>
+      </tr>
+      <tr>
+        <td><strong>蛋花 Frangipani</strong></td>
+        <td><em>Plumeria</em><br>鸡蛋花 (currently indoors)</td>
+        <td><span class="tag tag-bright">Full sun / direct</span></td>
+        <td><strong>This one is different.</strong> Frangipani is a tropical sun-lover — it needs as much direct sun as possible. It should not be a long-term indoor plant. Move it outside to a sunny spot as soon as night temps stay above 15°C.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warning">
+    <strong>The humidity problem</strong>
+    雀雀 (Calathea orbifolia) and 豹豹 (Goeppertia concinna) both need ≥60% humidity. Adelaide's winter air is very dry. This is the hardest thing to manage in your collection — we'll cover it in a dedicated lesson. For now: keep them away from heating vents and avoid misting (it causes fungal spots). A pebble tray with water under the pot is a safer first step.
+  </div>
+
+  <h2>Practice: map your room</h2>
+  <p>Before the next lesson, do this one thing:</p>
+  <ol>
+    <li><strong>Find out which direction your window faces.</strong> Use the compass on your phone, or check Google Maps with your house. Write it down.</li>
+    <li><strong>Do the shadow test</strong> at midday in the spot each plant currently sits.</li>
+    <li><strong>Check the table above</strong> — is each plant getting the right level?</li>
+  </ol>
+  <p>If a plant is in the wrong spot, that's the first thing to fix. Light problems cause 90% of the symptoms people think are watering problems.</p>
+
+  <h2>Quick quiz</h2>
+
+  <div class="quiz">
+    <h3>Test yourself</h3>
+
+    <div class="question" id="q1">
+      <p>1. Your peace lily is sitting right on the windowsill of a north-facing window in January (Adelaide summer). What should you do?</p>
+      <div class="options">
+        <label><input type="radio" name="q1" value="a"> Leave it — peace lilies love sun</label>
+        <label><input type="radio" name="q1" value="b"> Move it further back into the room or behind a thick curtain</label>
+        <label><input type="radio" name="q1" value="c"> Move it outside into full sun</label>
+      </div>
+    </div>
+
+    <div class="question" id="q2">
+      <p>2. Your rubber tree is looking pale and growing very tall with long gaps between leaves. What does this probably mean?</p>
+      <div class="options">
+        <label><input type="radio" name="q2" value="a"> Too much water</label>
+        <label><input type="radio" name="q2" value="b"> Too much light</label>
+        <label><input type="radio" name="q2" value="c"> Not enough light — it's stretching toward the nearest light source</label>
+      </div>
+    </div>
+
+    <div class="question" id="q3">
+      <p>3. 蛋花 (Frangipani) is currently sitting in your bedroom. What should you do with it long-term?</p>
+      <div class="options">
+        <label><input type="radio" name="q3" value="a"> Keep it indoors — it's a tropical plant so it belongs inside</label>
+        <label><input type="radio" name="q3" value="b"> Move it outside to a full-sun spot once nights stay above 15°C — it needs direct sun to thrive</label>
+        <label><input type="radio" name="q3" value="c"> Put it next to 雀雀 and 豹豹 in medium indirect light</label>
+      </div>
+    </div>
+
+    <button class="quiz-btn" onclick="checkQuiz()">Check answers</button>
+
+    <div class="result" id="quiz-result"></div>
+  </div>
+
+  <h2>What's next</h2>
+  <p>
+    Once you know your window direction and have confirmed your plants are in the right light zones, the next lesson covers <strong>watering</strong> — the other thing that kills most houseplants. Spoiler: most people water too often, not too little.
+  </p>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Have a question about this lesson? Ask your Claude Code agent — it can answer follow-up questions, help you identify your plants, or adjust the lessons to your room setup.
+  </p>
+
+</main>
+
+<footer>
+  Lesson 1 — Light 101 &nbsp;|&nbsp;
+  <a href="../reference/">Reference docs</a> &nbsp;|&nbsp;
+  Sources: <a href="https://www.thesill.com/blogs/care-miscellany" target="_blank">The Sill</a>,
+  <a href="https://bloomscape.com/plant-care-guide/" target="_blank">Bloomscape</a>,
+  <a href="https://www.rhs.org.uk/plants/types/houseplants" target="_blank">RHS Houseplants</a>
+</footer>
+
+<script>
+  const answers = { q1: 'b', q2: 'c', q3: 'b' };
+
+  function checkQuiz() {
+    let correct = 0;
+    let total = Object.keys(answers).length;
+    const feedback = [];
+
+    for (const [q, correct_ans] of Object.entries(answers)) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (!selected) {
+        document.getElementById('quiz-result').style.display = 'block';
+        document.getElementById('quiz-result').className = 'result wrong';
+        document.getElementById('quiz-result').textContent = 'Please answer all questions first.';
+        return;
+      }
+      if (selected.value === correct_ans) {
+        correct++;
+      }
+    }
+
+    const resultEl = document.getElementById('quiz-result');
+    resultEl.style.display = 'block';
+
+    if (correct === total) {
+      resultEl.className = 'result correct';
+      resultEl.textContent = `${correct}/${total} — Excellent! You understand light levels and how Adelaide's climate affects your plants.`;
+    } else if (correct >= 2) {
+      resultEl.className = 'result correct';
+      resultEl.textContent = `${correct}/${total} — Good. Q1: move peace lily back from direct north-facing summer sun. Q2: leggy = not enough light. Q3: filtered shade outdoors, not full sun.`;
+    } else {
+      resultEl.className = 'result wrong';
+      resultEl.textContent = `${correct}/${total} — Re-read the plant table. Key rule: most of your plants are tropical and want bright indirect light — but Frangipani is the exception and needs direct full sun outside.`;
+    }
+  }
+</script>
+
+</body>
+</html>

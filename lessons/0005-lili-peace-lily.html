@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lili — Spathiphyllum (Peace Lily)</title>
+  <style>
+    :root {
+      --accent: #3d5a3d;
+      --accent-light: #e0ece0;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 5</div>
+  <h1>Lili</h1>
+  <div class="subtitle">Spathiphyllum &nbsp;·&nbsp; 白掌 &nbsp;·&nbsp; Peace Lily</div>
+</header>
+<main>
+
+  <div class="callout tip">
+    <strong>Already repotted</strong>
+    Lili was recently repotted and yellow leaves trimmed. This is a great reset — she just needs stable conditions to settle in. Don't fertilise or disturb the roots for at least 6–8 weeks after repotting.
+  </div>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">🌥</div><div class="label">Light</div><div class="value">Low – medium</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">When she droops slightly</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">40–60%</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">18–30°C ideal</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Every 1–2 years (done!)</div></div>
+    <div class="stat"><div class="icon">☠️</div><div class="label">Toxicity</div><div class="value">Toxic to pets</div></div>
+  </div>
+
+  <h2>Why Lili is beginner-friendly</h2>
+  <p>Peace lilies are one of the most forgiving indoor plants. They communicate clearly — when they need water, leaves droop noticeably. When light is too strong, leaves yellow. When they're happy, they produce elegant white flowers.</p>
+  <p>Lili is also one of the <strong>best air-purifying plants</strong> you can have indoors, according to the classic NASA Clean Air Study.</p>
+
+  <h2>Light</h2>
+  <p>Lili is the most shade-tolerant plant in your collection. She's happy well away from the window, or in a spot that only gets low ambient light. <strong>Avoid any direct sun</strong> — even through a sheer curtain, strong Adelaide sun will burn her leaves.</p>
+  <p>If she's flowering, give her slightly more light (medium indirect) to encourage blooms. If flowers aren't a priority, she's perfectly content in the darker corner of your room.</p>
+
+  <h2>Watering — let Lili tell you</h2>
+  <p>Peace lilies have a built-in watering signal: when they need water, leaves <strong>droop slightly</strong> — not collapsed, just a gentle sag. This is healthy and normal. Water her at this point and she'll perk up within hours.</p>
+  <p>Don't wait until leaves are completely limp — that's more stress than needed. But also don't water on a fixed schedule. Let her droop slightly, then water. This works better than any calendar.</p>
+
+  <div class="callout warning">
+    <strong>Overwatering is the main risk</strong>
+    Peace lilies are killed by overwatering more often than anything else. The soil should dry out partially between waterings. If soil is constantly wet, roots rot. After the recent repot, be especially conservative — water only when Lili signals she needs it.
+  </div>
+
+  <div class="callout tip">
+    <strong>Brown tips — tap water issue</strong>
+    Peace lilies are sensitive to chlorine and fluoride in tap water. If brown tips appear despite correct watering and light, switch to filtered water or collected rainwater.
+  </div>
+
+  <h2>Flowering</h2>
+  <p>Peace lilies flower when they're slightly stressed — typically in spring or after a period of lower light. The white "flower" is actually a spathe (a modified leaf) surrounding a small spike. To encourage flowering:</p>
+  <ul>
+    <li>Move to slightly brighter indirect light in September</li>
+    <li>Resume fertilising with a balanced fertiliser once per month in spring/summer</li>
+    <li>Don't overwater</li>
+  </ul>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Drooping leaves</div>
+      <div class="cause">Needs water — this is normal signalling behaviour.</div>
+      <div class="fix">Water thoroughly. Should perk up within a few hours.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Yellow leaves</div>
+      <div class="cause">Too much light, overwatering, or natural ageing of lower leaves.</div>
+      <div class="fix">Move further from window. Let soil dry more between waterings. Trim yellow leaves at the base.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Brown leaf tips</div>
+      <div class="cause">Fluoride/chlorine in tap water, or low humidity.</div>
+      <div class="fix">Use filtered water. Keep away from air conditioning.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Black or brown patches on leaves</div>
+      <div class="cause">Direct sunburn.</div>
+      <div class="fix">Move well away from direct light. Damaged leaves won't recover — trim them.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now):</strong> Reduce watering. Keep above 15°C. No fertiliser until September.</li>
+    <li><strong>Spring:</strong> Resume fertilising monthly. Can move to brighter spot to encourage flowers.</li>
+    <li><strong>Summer:</strong> Keep indoors out of direct sun. Will droop in high heat — this is heat stress, not thirst. Move away from the window on 40°C+ days.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about Lili? Ask your Claude Code agent.
+  </p>
+</main>
+<footer>
+  <a href="0004-qingqing-dieffenbachia.html">← 青青 Qingqing</a> &nbsp;|&nbsp;
+  <a href="0006-spider-plant.html">Next: 蜘蛛 Spider Plant →</a>
+</footer>
+</body>
+</html>

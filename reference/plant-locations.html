@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant Locations — Emily's Collection</title>
+  <style>
+    :root {
+      --green-dark: #2d5016;
+      --green-mid: #4a7c28;
+      --green-light: #e8f5e0;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--warm-bg); color: var(--text); line-height: 1.6; font-size: 15px; }
+
+    header { background: var(--green-dark); color: white; padding: 2rem; text-align: center; }
+    header h1 { font-size: 1.6rem; font-weight: 500; margin-bottom: 0.3rem; }
+    header p { opacity: 0.75; font-size: 0.88rem; }
+
+    main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+    .last-updated { font-size: 0.8rem; color: var(--muted); text-align: right; margin-bottom: 1.5rem; }
+
+    /* Location sections */
+    .location { margin-bottom: 2rem; }
+    .location-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--green-dark); color: white;
+      padding: 0.7rem 1rem; border-radius: 8px 8px 0 0;
+    }
+    .location-number {
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: bold; flex-shrink: 0;
+    }
+    .location-title { font-size: 1rem; font-weight: 600; }
+    .location-meta { font-size: 0.78rem; opacity: 0.75; margin-left: auto; }
+
+    .location-body { background: white; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; overflow: hidden; }
+
+    /* Plant rows */
+    .plant-row {
+      display: grid;
+      grid-template-columns: 180px 1fr auto;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      align-items: start;
+    }
+    .plant-row:last-child { border-bottom: none; }
+    .plant-row:nth-child(even) { background: #fafaf7; }
+
+    .plant-name { font-weight: 600; font-size: 0.92rem; color: var(--green-dark); }
+    .plant-species { font-size: 0.78rem; color: var(--muted); font-style: italic; margin-top: 0.1rem; }
+    .plant-notes { font-size: 0.85rem; color: var(--text); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem; }
+    .tag { display: inline-block; padding: 0.1rem 0.45rem; border-radius: 10px; font-size: 0.72rem; white-space: nowrap; }
+    .tag-light-bright { background: #fff3cd; color: #7a5c00; }
+    .tag-light-medium { background: #d1e7dd; color: #0f5132; }
+    .tag-light-low    { background: #e2e3e5; color: #383d41; }
+    .tag-light-full   { background: #ffe0b2; color: #7a3b00; }
+    .tag-warning      { background: #fdecea; color: #c0392b; }
+    .tag-ok           { background: var(--tip-bg); color: var(--green-dark); }
+    .tag-humidity     { background: #e3f2fd; color: #1565c0; }
+    .tag-propagating  { background: #f3e5f5; color: #6a1b9a; }
+
+    /* Status badge */
+    .status { font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 4px; white-space: nowrap; align-self: start; }
+    .status-ok       { background: var(--tip-bg); color: var(--green-dark); }
+    .status-watch    { background: var(--warning-bg); color: #7a5c00; }
+    .status-recover  { background: #fdecea; color: #c0392b; }
+    .status-temp     { background: #e3f2fd; color: #1565c0; }
+    .status-prop     { background: #f3e5f5; color: #6a1b9a; }
+
+    /* Callouts */
+    .callout { border-left: 4px solid var(--warning-border); background: var(--warning-bg); padding: 0.75rem 1rem; margin-bottom: 1.5rem; border-radius: 0 6px 6px 0; font-size: 0.88rem; }
+    .callout strong { display: block; margin-bottom: 0.2rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7a5c00; }
+
+    /* Propagation section */
+    .prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+    .prop-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; }
+    .prop-card h4 { font-size: 0.9rem; color: #6a1b9a; margin-bottom: 0.4rem; }
+    .prop-card p { font-size: 0.83rem; color: var(--text); margin-bottom: 0.3rem; }
+    .prop-card .prop-tip { font-size: 0.8rem; color: var(--muted); }
+
+    h2 { font-size: 1.1rem; color: var(--green-dark); margin: 2rem 0 0.75rem; padding-bottom: 0.3rem; border-bottom: 2px solid var(--green-light); }
+
+    /* Season banner */
+    .season-banner { background: #e3f2fd; border: 1px solid #90caf9; border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1.75rem; font-size: 0.88rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .season-item { display: flex; align-items: center; gap: 0.4rem; }
+    .season-item strong { color: #1565c0; }
+
+    footer { text-align: center; padding: 2rem; font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--border); }
+    footer a { color: var(--green-mid); }
+
+    @media (max-width: 600px) {
+      .plant-row { grid-template-columns: 1fr; }
+      .prop-grid { grid-template-columns: 1fr; }
+      .location-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Emily's Plant Locations</h1>
+  <p>Adelaide, SA &nbsp;·&nbsp; Master bedroom: north-facing 落地窗 &nbsp;·&nbsp; Last updated June 2026</p>
+</header>
+
+<main>
+
+  <div class="last-updated">Updated: June 2026 — Winter hold in effect</div>
+
+  <div class="season-banner">
+    <div class="season-item"><strong>Now–Aug:</strong> Winter hold. No fertilising, no repotting.</div>
+    <div class="season-item"><strong>Jul 18–Aug 2:</strong> Emily travelling — no interventions.</div>
+    <div class="season-item"><strong>Sept 1:</strong> Move suitable plants outdoors to alfresco.</div>
+  </div>
+
+  <div class="callout">
+    <strong>Winter care rule</strong>
+    No fertilising or repotting until soil temp is above 18°C (September). Water less than usual across all plants. Monitor only.
+  </div>
+
+  <!-- LOCATION 2 -->
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">2</div>
+      <div class="location-title">Master Bedroom — Next to 落地窗 (bright indirect)</div>
+      <div class="location-meta">North-facing · Trees filter light naturally</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">贝贝 Beibei</div>
+          <div class="plant-species">Monstera deliciosa · 龟背竹</div>
+          <div class="tags"><span class="tag tag-light-bright">Bright indirect</span></div>
+        </div>
+        <div class="plant-notes">Rotate 90° weekly. Moss pole in progress — keep moss moist. Can move to alfresco in September.</div>
+        <div class="status status-ok">Stable</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">刚刚 Ganggang</div>
+          <div class="plant-species">Ficus elastica 'Burgundy' · 黑金刚橡皮树</div>
+          <div class="tags"><span class="tag tag-light-bright">Bright indirect</span><span class="tag tag-warning">Don't move</span></div>
+        </div>
+        <div class="plant-notes">Topped June 2026 — now 90cm. Cut wound healing. Keep soil drier than usual. Will push 2–4 new branches below cut in spring. Do not move — Ficus drops leaves when disturbed.</div>
+        <div class="status status-recover">Healing</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">皮皮</div>
+          <div class="plant-species">Ficus elastica (variegated) · 斑叶橡皮树</div>
+          <div class="tags"><span class="tag tag-light-bright">Bright indirect — needs most</span></div>
+        </div>
+        <div class="plant-notes">~20cm, young plant. Needs the brightest indirect spot to maintain variegation. Watch for new leaves going more green = needs more light.</div>
+        <div class="status status-ok">Establishing</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">蛋花</div>
+          <div class="plant-species">Plumeria · 鸡蛋花 · Frangipani</div>
+          <div class="tags"><span class="tag tag-light-full">Needs full sun</span><span class="tag tag-warning">Move out Sept</span></div>
+        </div>
+        <div class="plant-notes">Temporarily indoors for winter dormancy. Give maximum light while inside. Water very sparingly (once every 3–4 weeks). Move to alfresco/yard full sun in September permanently.</div>
+        <div class="status status-temp">Temporary</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION 3 -->
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">3</div>
+      <div class="location-title">Master Bedroom — Next to Window with Shade (medium indirect)</div>
+      <div class="location-meta">Curtain filtered · Medium indirect</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">棠棠</div>
+          <div class="plant-species">Begonia maculata · 鳟鱼秋海棠</div>
+          <div class="tags"><span class="tag tag-light-bright">Bright indirect (filtered)</span></div>
+        </div>
+        <div class="plant-notes">White spots are natural — not damage. Good airflow helps prevent powdery mildew. Water at soil level, not on leaves. No direct sun.</div>
+        <div class="status status-ok">Stable</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">青青 pot 1 &amp; pot 2</div>
+          <div class="plant-species">Dieffenbachia 'Sterling' · 万年青</div>
+          <div class="tags"><span class="tag tag-light-medium">Medium indirect</span><span class="tag tag-warning">Toxic sap</span></div>
+        </div>
+        <div class="plant-notes">Recently divided into 2 pots (June 2026). Post-division recovery — expect some drooping/yellow leaves for 2–4 weeks. Water sparingly. No fertiliser. Gloves when handling.</div>
+        <div class="status status-recover">Recovering</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION 6 -->
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">6</div>
+      <div class="location-title">Bathroom</div>
+      <div class="location-meta">High humidity from shower · Confirm light is adequate</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">雀雀 pot 1 &amp; pot 2</div>
+          <div class="plant-species">Calathea orbifolia · 孔雀竹芋</div>
+          <div class="tags"><span class="tag tag-light-medium">Medium indirect</span><span class="tag tag-humidity">≥60% humidity</span></div>
+        </div>
+        <div class="plant-notes">Recently divided into 2 pots (June 2026). Most sensitive plant in collection. Bathroom shower humidity solves the hardest part of its care. Keep above 18°C. Filtered/rainwater only — tap water causes brown edges. Expect unhappy appearance for 3–4 weeks post-division.</div>
+        <div class="status status-recover">Recovering</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">豹豹</div>
+          <div class="plant-species">Goeppertia concinna · 豹纹竹芋</div>
+          <div class="tags"><span class="tag tag-light-medium">Medium indirect</span><span class="tag tag-humidity">≥60% humidity</span></div>
+        </div>
+        <div class="plant-notes">Keep with 雀雀 — same care needs. Purple-red leaf backs = healthy. Fading markings = low humidity or light. Filtered/rainwater only. Leaves move at night (prayer plant).</div>
+        <div class="status status-ok">Stable</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION 5 -->
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">5</div>
+      <div class="location-title">Living Room / Family Room — Next to Window</div>
+      <div class="location-meta">Ground floor · Bright-ish indirect</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">Lili</div>
+          <div class="plant-species">Spathiphyllum · 白掌 · Peace Lily</div>
+          <div class="tags"><span class="tag tag-light-low">Low – medium</span></div>
+        </div>
+        <div class="plant-notes">Recently repotted, yellow leaves trimmed. Drooping = signal to water (healthy behaviour). No direct sun. Don't fertilise until September. Use filtered water if brown tips appear.</div>
+        <div class="status status-ok">Stable</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTDOOR -->
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">↗</div>
+      <div class="location-title">Outside</div>
+      <div class="location-meta">Yard &amp; balcony</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">刺刺</div>
+          <div class="plant-species">Cactus</div>
+          <div class="tags"><span class="tag tag-light-full">Full sun</span></div>
+        </div>
+        <div class="plant-notes">Yard, under roof — rain protected. Already in correct permanent spot. No water, no fertiliser in winter. Leave completely alone.</div>
+        <div class="status status-ok">Leave it</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">蜘蛛 Spider</div>
+          <div class="plant-species">Chlorophytum comosum · 吊兰</div>
+          <div class="tags"><span class="tag tag-light-low">Low – medium</span></div>
+        </div>
+        <div class="plant-notes">Now outside. Tolerates cool temps but bring in if overnight temp drops below 5°C (July–August frost risk). Best in a sheltered shaded spot.</div>
+        <div class="status status-watch">Monitor cold</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROPAGATION -->
+  <h2>Propagation in Progress</h2>
+  <div class="prop-grid">
+    <div class="prop-card">
+      <h4>刚刚 top cutting — Ficus elastica 'Burgundy'</h4>
+      <p><strong>Method:</strong> Soil prop (potting mix + perlite), rooting powder applied</p>
+      <p><strong>Started:</strong> June 2026 (3 days in)</p>
+      <p><strong>Location:</strong> Low indirect light, warm spot (fridge top ideal)</p>
+      <p><strong>Note:</strong> Cut end was not dried before potting. Check stem base for softness. Keep soil barely moist — do not water until almost dry.</p>
+      <p class="prop-tip">New leaf growth = roots confirmed. Expect 6–10 weeks in winter.</p>
+    </div>
+    <div class="prop-card">
+      <h4>贝贝 cuttings — Monstera deliciosa</h4>
+      <p><strong>Method:</strong> Two-chamber self-watering pot</p>
+      <p><strong>Started:</strong> Before June 2026</p>
+      <p><strong>Location:</strong> Master bedroom</p>
+      <p><strong>Note:</strong> Don't top up reservoir too frequently in winter. Wait for signs of new growth before moving to brighter spot.</p>
+      <p class="prop-tip">New leaf = roots established.</p>
+    </div>
+  </div>
+
+  <!-- SEPT PLAN -->
+  <h2>September Plan (from Sept 1)</h2>
+  <div class="location">
+    <div class="location-header">
+      <div class="location-number">7</div>
+      <div class="location-title">Alfresco — Ground Floor, Fully Covered (4.0 × 6.6m)</div>
+      <div class="location-meta">Rain-protected · Open sides · From September</div>
+    </div>
+    <div class="location-body">
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">蛋花 Frangipani</div>
+          <div class="plant-species">Plumeria · 鸡蛋花</div>
+          <div class="tags"><span class="tag tag-light-full">Full sun — yard edge</span></div>
+        </div>
+        <div class="plant-notes">Move to sunniest spot — alfresco edge or open yard. Needs 6+ hours direct sun to flower. Begin watering weekly once active growth starts.</div>
+        <div class="status status-temp">From Sept</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">贝贝 Beibei (optional)</div>
+          <div class="plant-species">Monstera deliciosa</div>
+          <div class="tags"><span class="tag tag-light-bright">Dappled shade</span></div>
+        </div>
+        <div class="plant-notes">Can move to alfresco under filtered light — will grow faster outdoors. Bring in on 38°C+ days.</div>
+        <div class="status status-temp">Optional Sept</div>
+      </div>
+      <div class="plant-row">
+        <div>
+          <div class="plant-name">棠棠 (optional)</div>
+          <div class="plant-species">Begonia maculata</div>
+          <div class="tags"><span class="tag tag-light-bright">Filtered shade</span></div>
+        </div>
+        <div class="plant-notes">Benefits from alfresco airflow and filtered light in spring. Keep sheltered from wind and out of direct midday sun.</div>
+        <div class="status status-temp">Optional Sept</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Emily's Plant Locations · Adelaide SA · June 2026 &nbsp;|&nbsp;
+  <a href="../lessons/index.html">All lessons</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>豹豹 — Goeppertia concinna</title>
+  <style>
+    :root {
+      --accent: #4a3d6b;
+      --accent-light: #eceaf5;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout.urgent { background: #fdecea; border-color: #c0392b; }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .callout.urgent strong { color: #c0392b; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 10</div>
+  <h1>豹豹</h1>
+  <div class="subtitle">Goeppertia concinna &nbsp;·&nbsp; 豹纹竹芋 &nbsp;·&nbsp; Calathea lancifolia (Rattlesnake Plant)</div>
+</header>
+<main>
+
+  <div class="callout urgent">
+    <strong>High humidity required — same challenge as 雀雀</strong>
+    豹豹 and 雀雀 share the same critical need: ≥60% humidity. Keep them near each other to create a higher-humidity microclimate. See <a href="0007-queque-calathea.html">雀雀's lesson</a> for detailed humidity strategies.
+  </div>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">⛅</div><div class="label">Light</div><div class="value">Medium indirect</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Keep lightly moist</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">≥60% — critical</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">18–27°C only</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Spring only</div></div>
+    <div class="stat"><div class="icon">✅</div><div class="label">Toxicity</div><div class="value">Pet-safe</div></div>
+  </div>
+
+  <h2>About 豹豹</h2>
+  <p>Goeppertia concinna (formerly Calathea lancifolia) is the rattlesnake plant — named for the alternating dark oval markings on long, wavy lance-shaped leaves. The undersides are <strong>purple-red</strong>, one of the most distinctive features. Like 雀雀, it's a prayer plant — leaves rise at night and open in the morning.</p>
+  <p>The health of 豹豹's markings and leaf colour is a direct indicator of care quality: rich purple-red undersides and bold dark spots = healthy. Faded, pale, or dull = needs better humidity, light, or water quality.</p>
+
+  <h2>Light</h2>
+  <p><strong>Medium indirect only.</strong> No direct sun — it causes bleaching and curling. Unlike 皮皮 which needs maximum light, 豹豹 is more comfortable slightly back from the window. The long leaves evolved to catch dappled light in the undergrowth of tropical forests.</p>
+
+  <h2>Watering</h2>
+  <p>Keep soil <strong>consistently lightly moist</strong> — the same approach as 雀雀. The top centimetre can dry, but below that should remain slightly moist. Never let it fully dry out, and never let it sit in waterlogged soil.</p>
+  <p><strong>Use filtered water or rainwater</strong> — tap water causes brown edges within weeks.</p>
+
+  <div class="callout tip">
+    <strong>Reading the leaves</strong>
+    If leaves curl inward lengthwise: the plant is too dry or too cold. If leaves are yellowing: likely overwatering or cold. If the purple-red on the undersides fades: humidity is too low. These are your three main signals.
+  </div>
+
+  <h2>Group 豹豹 and 雀雀 together</h2>
+  <p>Both Goeppertia/Calathea plants have the same humidity needs. Placing them near each other creates a localised higher-humidity zone through transpiration (plants release moisture). Add a pebble tray under both, and you've built a simple humidity microclimate without a humidifier.</p>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Brown, crispy leaf edges</div>
+      <div class="cause">Low humidity — almost always this in Adelaide.</div>
+      <div class="fix">Pebble tray, group with 雀雀, consider a small humidifier.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Curling leaves</div>
+      <div class="cause">Too dry (soil or air) or too cold.</div>
+      <div class="fix">Check soil moisture. Check temperature — keep above 16°C. Raise humidity.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Fading markings / pale undersides</div>
+      <div class="cause">Extended low humidity or insufficient light.</div>
+      <div class="fix">Improve humidity. Move to slightly brighter (but still indirect) spot.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Yellow leaves</div>
+      <div class="cause">Overwatering or cold.</div>
+      <div class="fix">Let soil dry slightly more between waterings. Keep away from cold windows in winter.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Spider mites (fine webbing on leaves)</div>
+      <div class="cause">Very low humidity — spider mites thrive in dry conditions.</div>
+      <div class="fix">Wipe leaves with a damp cloth. Increase humidity. Treat with neem oil if infestation persists.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now — highest risk period):</strong> Humidity management is critical. Keep above 18°C. No fertiliser. Filtered water only. Don't repot.</li>
+    <li><strong>Spring/Summer:</strong> Growth resumes. Fertilise monthly with diluted liquid fertiliser. Can benefit from humidity of a sheltered shaded outdoor spot on mild days.</li>
+    <li><strong>Never in direct Adelaide sun or heat</strong>.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about 豹豹? Ask your Claude Code agent. See also: <a href="0007-queque-calathea.html">雀雀 Calathea</a>.
+  </p>
+</main>
+<footer>
+  <a href="0009-pipi-variegated-ficus.html">← 皮皮 Variegated Ficus</a> &nbsp;|&nbsp;
+  <a href="0011-danhua-frangipani.html">Next: 蛋花 Frangipani →</a>
+</footer>
+</body>
+</html>

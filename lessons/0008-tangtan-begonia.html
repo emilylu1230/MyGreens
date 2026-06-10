@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>棠棠 — Begonia maculata</title>
+  <style>
+    :root {
+      --accent: #7a3b5e;
+      --accent-light: #f5e8f0;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 8</div>
+  <h1>棠棠</h1>
+  <div class="subtitle">Begonia maculata &nbsp;·&nbsp; 鳟鱼秋海棠 &nbsp;·&nbsp; Polka Dot Begonia</div>
+</header>
+<main>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">🌤</div><div class="label">Light</div><div class="value">Bright indirect</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Every 7–10 days</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">50–60%</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">18–30°C</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Every 1–2 years</div></div>
+    <div class="stat"><div class="icon">⚠️</div><div class="label">Toxicity</div><div class="value">Mildly toxic to pets</div></div>
+  </div>
+
+  <h2>About 棠棠</h2>
+  <p>Begonia maculata — the polka dot begonia — is one of the most visually striking houseplants. The white spots on the olive-green leaves are a natural feature called <strong>trichomes</strong>, not damage or disease. The undersides of the leaves are deep red-purple. In good conditions it produces clusters of white or pale pink flowers.</p>
+  <p>棠棠 is moderately demanding — more so than a rubber tree, but easier than the Calatheas. The main challenges are light, watering balance, and air circulation.</p>
+
+  <h2>Light</h2>
+  <p>Begonia maculata needs <strong>bright indirect light</strong> to thrive. It does well near a window behind a sheer curtain. East-facing light (gentle morning sun) is ideal — it provides enough intensity without the harsh afternoon heat that would burn the leaves.</p>
+  <p>In low light: the plant becomes leggy, loses its compact shape, and may stop flowering. In direct hot sun: leaves scorch and spots fade.</p>
+
+  <h2>Watering</h2>
+  <p>Let the <strong>top 3 cm dry out</strong> before watering, then water thoroughly. Begonias are susceptible to root rot if kept too wet, but also drop leaves if they dry out too much. The balance matters more here than with your more forgiving plants.</p>
+  <p><strong>Water at soil level</strong> — getting water on the leaves can cause spots and fungal issues, especially in cooler weather.</p>
+
+  <div class="callout warning">
+    <strong>Don't let it sit in water</strong>
+    Empty the saucer after watering. Begonias develop root rot quickly when roots are waterlogged. This is the most common way they're killed.
+  </div>
+
+  <h2>Air circulation</h2>
+  <p>Good airflow is important for Begonia maculata — stagnant humid air encourages <strong>powdery mildew</strong>, a white dusty fungus on the leaves. Your openable window is perfect for this — occasional gentle ventilation (not cold drafts) keeps the air moving without stressing the plant.</p>
+
+  <h2>Flowering</h2>
+  <p>With enough bright indirect light and consistent care, 棠棠 produces dangling clusters of small white flowers with yellow centres. To encourage flowering:</p>
+  <ul>
+    <li>Bright indirect light — this is the main trigger</li>
+    <li>Fertilise monthly in spring/summer with a balanced or slightly phosphorus-heavy fertiliser</li>
+    <li>Don't repot unnecessarily — slightly pot-bound plants flower more readily</li>
+  </ul>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Powdery white coating on leaves</div>
+      <div class="cause">Powdery mildew — fungal, caused by poor air circulation + humidity.</div>
+      <div class="fix">Improve airflow. Remove affected leaves. Wipe remaining leaves with diluted neem oil. Don't mist.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Leggy, sparse growth</div>
+      <div class="cause">Not enough light.</div>
+      <div class="fix">Move to brighter indirect spot. Pinch growing tips to encourage bushier growth.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Leaf drop</div>
+      <div class="cause">Overwatering, cold drafts, or being moved.</div>
+      <div class="fix">Let soil dry more. Keep away from cold windows overnight. Find a stable spot and leave it there.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Brown spots on leaves</div>
+      <div class="cause">Water splashed on leaves, or sunburn.</div>
+      <div class="fix">Water at soil level. Move slightly away from direct light if near window.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now):</strong> Reduce watering. No fertiliser. Ensure good airflow but no cold drafts. Growth slows.</li>
+    <li><strong>Spring:</strong> Prune leggy stems by half to encourage bushy regrowth. Resume fertilising.</li>
+    <li><strong>Summer:</strong> Keep indoors in bright indirect light. Don't move outside — too harsh.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about 棠棠? Ask your Claude Code agent.
+  </p>
+</main>
+<footer>
+  <a href="0007-queque-calathea.html">← 雀雀 Calathea</a> &nbsp;|&nbsp;
+  <a href="0009-pipi-variegated-ficus.html">Next: 皮皮 Variegated Ficus →</a>
+</footer>
+</body>
+</html>

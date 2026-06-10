@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>蜘蛛 Spider — Chlorophytum comosum</title>
+  <style>
+    :root {
+      --accent: #4a6741;
+      --accent-light: #e2eed e;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e2eede; }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 6</div>
+  <h1>蜘蛛 Spider</h1>
+  <div class="subtitle">Chlorophytum comosum &nbsp;·&nbsp; 吊兰 &nbsp;·&nbsp; Spider Plant</div>
+</header>
+<main>
+
+  <div class="callout tip">
+    <strong>Rescued plant</strong>
+    Spider was rescued — meaning it may have come from a stressed start. The good news: spider plants are among the most resilient houseplants in existence. With consistent basic care it will bounce back quickly.
+  </div>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">🌥</div><div class="label">Light</div><div class="value">Low – medium</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Every 7–10 days</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">Tolerant of dry air</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">10–30°C (very tolerant)</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">When roots crowd pot</div></div>
+    <div class="stat"><div class="icon">✅</div><div class="label">Toxicity</div><div class="value">Safe for pets</div></div>
+  </div>
+
+  <h2>About Spider</h2>
+  <p>Spider plants are one of the easiest indoor plants in existence — they tolerate neglect, low light, irregular watering, and even being pot-bound. They're also <strong>pet-safe</strong>, which is rare among popular houseplants.</p>
+  <p>The name comes from the long trailing stems (stolons) that produce baby plants — "spiderettes" — which dangle like spiders on a web. You have it in the study room, which is a great spot.</p>
+
+  <h2>Light</h2>
+  <p>The darker study room suits Spider well. It thrives in <strong>low to medium indirect light</strong> and will tolerate quite dim conditions that would stress most other plants. It can handle bright indirect light too, but direct sun bleaches the leaves.</p>
+  <p>If leaves are very pale or yellow, it may need slightly more light — move it closer to a window or to a brighter room.</p>
+
+  <h2>Watering</h2>
+  <p>Water when the <strong>top 3–4 cm of soil is dry</strong>. Spider plants have thick, fleshy roots that store water — they handle drought well. In Adelaide winter, water every 10–14 days at most.</p>
+
+  <div class="callout warning">
+    <strong>Brown tips — it's the tap water</strong>
+    Spider plants are notably sensitive to fluoride and chlorine in Adelaide tap water. Brown, crispy leaf tips (not connected to underwatering) almost always signal this. Use filtered water, collected rainwater, or leave tap water to sit overnight before using.
+  </div>
+
+  <h2>Spiderettes — signs of a happy plant</h2>
+  <p>When a spider plant is healthy and getting enough light, it produces long arching stems with small plantlets at the tips. These are a clear sign the plant is thriving. You can:</p>
+  <ul>
+    <li><strong>Leave them on</strong> — they look great cascading from a hanging pot</li>
+    <li><strong>Propagate</strong> — pin a spiderette into moist soil while still attached; once it roots (2–3 weeks), cut the stem. You can also simply cut and place in water.</li>
+  </ul>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Brown, crispy tips</div>
+      <div class="cause">Fluoride/chlorine in tap water — very common.</div>
+      <div class="fix">Switch to filtered water or rainwater. Trim brown tips with clean scissors cut at an angle.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Pale, washed-out leaves</div>
+      <div class="cause">Too much direct light, or not enough light (variegation fades).</div>
+      <div class="fix">If in direct sun, move to indirect. If very dim, move to a brighter spot.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">No spiderettes</div>
+      <div class="cause">Not enough light, or plant is too young / recently repotted.</div>
+      <div class="fix">Move to slightly brighter indirect spot. Spiderettes come when the plant is comfortable and established.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Mushy crown or base</div>
+      <div class="cause">Overwatering or water sitting at the base of leaves.</div>
+      <div class="fix">Let dry out completely. Improve drainage. Water at soil level, not into the crown.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter:</strong> Very hardy. Reduce watering. Can tolerate cooler temps down to about 10°C.</li>
+    <li><strong>Spring/Summer:</strong> Growth picks up. A good time to propagate spiderettes.</li>
+    <li><strong>Outdoors:</strong> Can go outside in a shaded spot — avoid direct sun.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about Spider? Ask your Claude Code agent.
+  </p>
+</main>
+<footer>
+  <a href="0005-lili-peace-lily.html">← Lili Peace Lily</a> &nbsp;|&nbsp;
+  <a href="0007-queque-calathea.html">Next: 雀雀 Calathea →</a>
+</footer>
+</body>
+</html>

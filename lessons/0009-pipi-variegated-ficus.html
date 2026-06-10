@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>皮皮 — Variegated Ficus elastica</title>
+  <style>
+    :root {
+      --accent: #5a4a2d;
+      --accent-light: #f0ece0;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 9</div>
+  <h1>皮皮</h1>
+  <div class="subtitle">Ficus elastica (variegated) &nbsp;·&nbsp; 斑叶橡皮树 &nbsp;·&nbsp; Variegated Rubber Tree</div>
+</header>
+<main>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">🌤</div><div class="label">Light</div><div class="value">Bright indirect — more than Ganggang</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Every 10–14 days</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">40–60%</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">15–30°C</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Every 2 years</div></div>
+    <div class="stat"><div class="icon">☠️</div><div class="label">Toxicity</div><div class="value">Toxic to pets</div></div>
+  </div>
+
+  <h2>About 皮皮</h2>
+  <p>皮皮 is a variegated cultivar of Ficus elastica with bronze-green mixed variegation — patches of pale cream, bronze, and green on the same leaf. The care is identical to <a href="0002-ganggang-ficus-burgundy.html">刚刚 Ganggang</a>, with one important difference: variegated plants need <em>more</em> light to maintain their patterns.</p>
+
+  <h2>Why variegated plants need more light</h2>
+  <p>Variegation means portions of the leaf lack chlorophyll — those pale cream or bronze patches can't photosynthesise. The plant has to do all its light-work through the green sections only. This means a variegated plant <strong>works harder per leaf</strong> and needs a brighter environment to compensate.</p>
+  <p>In low light, two things happen: growth slows dramatically, and new leaves come in with <strong>less variegation</strong> — they revert toward solid green as the plant prioritises survival over aesthetics. This is irreversible in the affected leaves.</p>
+
+  <div class="callout tip">
+    <strong>Give 皮皮 the best spot</strong>
+    Of your three Ficus plants (Ganggang, 皮皮, and the Ficus cutting), 皮皮 should get the brightest indirect spot. Near the window, behind a sheer curtain — not further back in the room.
+  </div>
+
+  <h2>Light</h2>
+  <p>Bright indirect light, as close to the window as possible without direct sun hitting the leaves. If your window is north-facing, a spot 0.5–1 metre from the glass behind a sheer curtain is ideal. East-facing works well too.</p>
+  <p>Watch for: new leaves coming in more green than the parent — this means not enough light. Move it closer to the window.</p>
+
+  <h2>Watering</h2>
+  <p>Identical to Ganggang: let the <strong>top 3–4 cm dry out</strong> before watering. Water thoroughly, then let it drain completely. In winter, reduce to every 2–3 weeks.</p>
+  <p>The latex sap is the same — wash hands after handling, keep away from pets.</p>
+
+  <h2>Keeping leaves clean</h2>
+  <p>The large, waxy leaves accumulate dust, which reduces light absorption. Wipe leaves monthly with a damp soft cloth. This is particularly important for 皮皮 since variegated leaves already photosynthesize less efficiently.</p>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">New leaves losing variegation (more green)</div>
+      <div class="cause">Not enough light — the most important sign to watch for.</div>
+      <div class="fix">Move to a brighter indirect spot immediately.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Yellow leaves</div>
+      <div class="cause">Overwatering, especially in winter.</div>
+      <div class="fix">Reduce watering frequency. Ensure pot has drainage.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Leaf drop</div>
+      <div class="cause">Being moved, drafts, or temperature change — Ficus hates disruption.</div>
+      <div class="fix">Find a stable spot and leave it. Avoid cold drafts from open windows in winter.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Brown scorched patches</div>
+      <div class="cause">Direct sun on the pale variegated sections, which have no UV protection.</div>
+      <div class="fix">Move away from direct sun. Variegated patches burn faster than green ones.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now):</strong> Reduce watering. Maintain bright spot — variegation suffers most in winter low light. No fertiliser.</li>
+    <li><strong>Spring:</strong> Resume normal watering and fertilising. Clean leaves before growth surge.</li>
+    <li><strong>Summer:</strong> Protect pale sections from direct sun — they scorch faster than on all-green plants.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about 皮皮? Ask your Claude Code agent. Compare with <a href="0002-ganggang-ficus-burgundy.html">刚刚 Ganggang</a>.
+  </p>
+</main>
+<footer>
+  <a href="0008-tangtan-begonia.html">← 棠棠 Begonia</a> &nbsp;|&nbsp;
+  <a href="0010-baobao-goeppertia.html">Next: 豹豹 Goeppertia →</a>
+</footer>
+</body>
+</html>

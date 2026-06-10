@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>雀雀 — Calathea orbifolia</title>
+  <style>
+    :root {
+      --accent: #2d5a5a;
+      --accent-light: #e0eeee;
+      --green-dark: #2d5016;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout.urgent { background: #fdecea; border-color: #c0392b; }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .callout.urgent strong { color: #c0392b; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 7</div>
+  <h1>雀雀</h1>
+  <div class="subtitle">Calathea orbifolia &nbsp;·&nbsp; 孔雀竹芋 &nbsp;·&nbsp; Round-leaf Calathea</div>
+</header>
+<main>
+
+  <div class="callout urgent">
+    <strong>Most demanding plant in your collection</strong>
+    Calathea orbifolia is the fussiest plant you own. It needs high humidity (≥60%), filtered water, consistent warmth, and no direct sun. In Adelaide's dry winters this is a challenge — but very achievable with a few adjustments.
+  </div>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">⛅</div><div class="label">Light</div><div class="value">Medium indirect</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Keep lightly moist</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">≥60% — critical</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">18–27°C only</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Spring only</div></div>
+    <div class="stat"><div class="icon">✅</div><div class="label">Toxicity</div><div class="value">Pet-safe</div></div>
+  </div>
+
+  <h2>The prayer plant movement</h2>
+  <p>Calathea leaves move throughout the day — they rise at night (as if praying) and flatten out during the day to catch light. This is called <strong>nyctinasty</strong>. If you notice leaves moving, that's a sign your plant is healthy and active. If leaves stop moving, something is wrong — usually temperature stress or root problems.</p>
+
+  <h2>Light</h2>
+  <p>Medium indirect light only — <strong>no direct sun at all</strong>. The large, thin leaves scorch immediately in direct sun. A spot a metre or two back from your window is ideal, or near a window with a thick curtain.</p>
+  <p>In very low light, the beautiful patterning on the leaves will fade. It needs enough light to maintain the markings but not so much that it burns.</p>
+
+  <h2>Humidity — the real challenge in Adelaide</h2>
+  <p>This is the most important care factor for 雀雀. Calathea orbifolia needs <strong>at least 60% relative humidity</strong>. Adelaide winters are notoriously dry — indoor humidity can drop to 30–40% with heating running, which is far too low.</p>
+  <p><strong>What actually works:</strong></p>
+  <ul>
+    <li><strong>Pebble tray:</strong> Place a tray of pebbles with water under the pot. As the water evaporates it raises local humidity. Make sure the pot bottom isn't sitting in the water — roots rot.</li>
+    <li><strong>Group plants together:</strong> Plants naturally release moisture. Keeping 雀雀 and 豹豹 near each other raises the microclimate humidity.</li>
+    <li><strong>A small humidifier</strong> (even a cheap ultrasonic one) is the most effective option for Adelaide winters if brown edges keep appearing.</li>
+  </ul>
+
+  <div class="callout warning">
+    <strong>Don't mist the leaves</strong>
+    Misting is commonly recommended but actually causes fungal spots on Calathea. Water sits in the leaf folds and creates the perfect conditions for rot. Use a pebble tray or humidifier instead.
+  </div>
+
+  <h2>Watering</h2>
+  <p>Keep soil <strong>consistently lightly moist</strong> — not wet, not dry. This is different from your other plants, which prefer to dry out between waterings. The top centimetre can dry out but below that should stay slightly moist.</p>
+  <p><strong>Use filtered water or rainwater.</strong> Calathea is very sensitive to fluoride, chlorine, and minerals in tap water — brown crispy edges appear within a few weeks of using unfiltered Adelaide tap water.</p>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Brown, crispy leaf edges</div>
+      <div class="cause">Low humidity — the #1 problem in Adelaide.</div>
+      <div class="fix">Add a pebble tray. Consider a humidifier. Group with other plants. Keep away from heaters.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Brown edges + brown spots</div>
+      <div class="cause">Tap water minerals or fluoride.</div>
+      <div class="fix">Switch to filtered water or collected rainwater immediately.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Curling, rolling leaves</div>
+      <div class="cause">Too dry (thirsty or low humidity) or too cold.</div>
+      <div class="fix">Water if soil is dry. Check temperature — keep above 16°C. Raise humidity.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Yellow leaves</div>
+      <div class="cause">Overwatering or cold temperatures.</div>
+      <div class="fix">Let soil dry slightly more. Keep away from cold windowsills overnight in winter.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Fading pattern / pale leaves</div>
+      <div class="cause">Too little light or very low humidity over extended period.</div>
+      <div class="fix">Move to slightly brighter medium-indirect spot. Improve humidity.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now — critical):</strong> Humidity management is the priority. Keep above 18°C. No fertiliser. Reduce watering slightly but never let it fully dry out. Move away from heating vents.</li>
+    <li><strong>Spring/Summer:</strong> Growth resumes. Fertilise monthly with half-strength liquid fertiliser. Can benefit from higher outdoor humidity if moved to a sheltered shaded spot on mild days.</li>
+    <li><strong>Never outside in Adelaide summer</strong> — too hot and too dry.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about 雀雀? Ask your Claude Code agent. See also: <a href="0008-tangtang-begonia.html">棠棠 Begonia</a>, <a href="0010-baobao-goeppertia.html">豹豹 Goeppertia</a>.
+  </p>
+</main>
+<footer>
+  <a href="0006-spider-plant.html">← 蜘蛛 Spider</a> &nbsp;|&nbsp;
+  <a href="0008-tangtan-begonia.html">Next: 棠棠 Begonia →</a>
+</footer>
+</body>
+</html>

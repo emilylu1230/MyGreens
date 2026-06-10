@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>贝贝 Beibei — Monstera deliciosa</title>
+  <style>
+    :root {
+      --accent: #2d6a2d;
+      --accent-light: #e8f5e0;
+      --green-dark: #2d5016;
+      --green-light: #e8f5e0;
+      --warm-bg: #faf8f4;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #ddd;
+      --warning-bg: #fff8e1;
+      --warning-border: #f9a825;
+      --tip-bg: #e8f5e0;
+      --tip-border: #6aad3d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; background: var(--warm-bg); color: var(--text); line-height: 1.7; font-size: 17px; }
+    header { background: var(--accent); color: white; padding: 3rem 2rem 2.5rem; text-align: center; }
+    header .meta { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    header h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 0.4rem; }
+    header .subtitle { font-size: 1rem; opacity: 0.8; }
+    main { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    h2 { font-size: 1.4rem; color: var(--accent); margin: 2.5rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--accent-light); }
+    p { margin-bottom: 1rem; }
+    ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+    .stat { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; text-align: center; }
+    .stat .icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    .stat .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat .value { font-size: 0.95rem; font-weight: bold; color: var(--accent); margin-top: 0.2rem; }
+    .callout { border-left: 4px solid; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 6px 6px 0; }
+    .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+    .callout.warning { background: var(--warning-bg); border-color: var(--warning-border); }
+    .callout strong { display: block; margin-bottom: 0.3rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .callout.tip strong { color: var(--green-dark); }
+    .callout.warning strong { color: #7a5c00; }
+    .problem-grid { display: grid; gap: 0.75rem; margin: 1rem 0; }
+    .problem { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; }
+    .problem .symptom { font-weight: bold; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; color: var(--accent); margin-bottom: 0.3rem; }
+    .problem .cause { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .problem .fix { font-size: 0.9rem; }
+    footer { text-align: center; padding: 2rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); font-family: 'Helvetica Neue', Arial, sans-serif; }
+    footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="meta">Your plant — Lesson 3</div>
+  <h1>贝贝 Beibei</h1>
+  <div class="subtitle">Monstera deliciosa &nbsp;·&nbsp; 龟背竹 &nbsp;·&nbsp; Swiss Cheese Plant</div>
+</header>
+<main>
+
+  <h2>Quick facts</h2>
+  <div class="stats">
+    <div class="stat"><div class="icon">🌤</div><div class="label">Light</div><div class="value">Bright indirect</div></div>
+    <div class="stat"><div class="icon">💧</div><div class="label">Water</div><div class="value">Every 7–10 days</div></div>
+    <div class="stat"><div class="icon">💦</div><div class="label">Humidity</div><div class="value">50–60%+</div></div>
+    <div class="stat"><div class="icon">🌡</div><div class="label">Temp</div><div class="value">18–30°C ideal</div></div>
+    <div class="stat"><div class="icon">🪴</div><div class="label">Repot</div><div class="value">Every 1–2 years</div></div>
+    <div class="stat"><div class="icon">☠️</div><div class="label">Toxicity</div><div class="value">Toxic to pets</div></div>
+  </div>
+
+  <h2>About Beibei</h2>
+  <p>Monstera deliciosa is one of the most rewarding indoor plants — it grows fast, the leaves get bigger over time, and the iconic splits (fenestrations) develop as the plant matures. You have cuttings propagating in a two-chamber self-watering pot, and a moss pole in progress — both excellent signs you know what you're doing.</p>
+  <p>The name 龟背竹 means "turtle-back bamboo" — a reference to the split pattern on mature leaves resembling a turtle shell.</p>
+
+  <h2>Light</h2>
+  <p>Beibei needs <strong>bright indirect light</strong>. Place near your bedroom window but out of direct sun. The big leaves are highly efficient light collectors — this is actually one of the easier plants to keep happy in a bedroom with a large window.</p>
+  <p><strong>Rotate 90° weekly</strong> (which you're already doing — keep it up). This prevents the plant leaning heavily toward the light and ensures all sides develop evenly.</p>
+
+  <div class="callout tip">
+    <strong>No splits on new leaves?</strong>
+    Young Monstera leaves come out whole with no holes. Splits and holes (fenestrations) develop from about the 4th–5th leaf onward, and only if the plant is getting enough light. If new large leaves are still coming out whole, move it slightly closer to the window.
+  </div>
+
+  <h2>Watering</h2>
+  <p>Let the <strong>top 5 cm of soil dry out</strong> before watering. Monstera is more drought-tolerant than most people think — it's far more commonly killed by overwatering than underwatering.</p>
+  <p>In winter (now), reduce watering to every 10–14 days. The self-watering pot for the cuttings is fine as-is — just don't top up the reservoir too frequently in winter.</p>
+
+  <div class="callout tip">
+    <strong>Aerial roots</strong>
+    Monstera grows thick aerial roots from its stems. These are normal and healthy — don't cut them off. Guide them toward the moss pole or into the soil. They absorb moisture and anchor the plant as it climbs.
+  </div>
+
+  <h2>The moss pole</h2>
+  <p>Monstera naturally climbs trees in the wild — a moss pole mimics this and encourages larger, more split leaves. Keep the moss pole <strong>moist</strong> (spray with water a few times a week) so the aerial roots attach to it. Once roots grab the pole, new leaves above that point will be noticeably larger.</p>
+
+  <h2>Moving outside (Spring)</h2>
+  <p>From September, Beibei can go outside in a <strong>shaded spot</strong> — under an eave or filtered through a shade cloth. This is ideal: it will grow much faster outdoors. Avoid direct sun (leaves burn) and bring inside if the temperature goes above 38°C or if there's strong wind.</p>
+
+  <h2>Common problems</h2>
+  <div class="problem-grid">
+    <div class="problem">
+      <div class="symptom">Yellow leaves</div>
+      <div class="cause">Overwatering — the most common cause.</div>
+      <div class="fix">Let soil dry more between waterings. Check roots aren't sitting in water.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Brown, crispy leaf tips</div>
+      <div class="cause">Low humidity or tap water fluoride.</div>
+      <div class="fix">Use filtered water if possible. Increase humidity with a pebble tray.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Small new leaves with no splits</div>
+      <div class="cause">Not enough light, or the plant needs a bigger pot/more nutrients.</div>
+      <div class="fix">Move closer to window. Fertilise in spring once growth resumes.</div>
+    </div>
+    <div class="problem">
+      <div class="symptom">Drooping, wilting leaves</div>
+      <div class="cause">Underwatering, or heat stress.</div>
+      <div class="fix">Water thoroughly. On very hot Adelaide days, move away from window.</div>
+    </div>
+  </div>
+
+  <h2>Seasonal care — Adelaide</h2>
+  <ul>
+    <li><strong>Winter (now – Aug):</strong> Reduce watering. No fertiliser. Growth slows — don't panic.</li>
+    <li><strong>Spring (Sept):</strong> Move outside to shaded spot if possible. Resume fertilising. Growth surges.</li>
+    <li><strong>Summer (Nov–Mar):</strong> Outside is great — just protect from direct midday sun and extreme heat days.</li>
+  </ul>
+
+  <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--muted); font-family: 'Helvetica Neue', Arial, sans-serif;">
+    Questions about Beibei? Ask your Claude Code agent.
+  </p>
+</main>
+<footer>
+  <a href="0002-ganggang-ficus-burgundy.html">← 刚刚 Ganggang</a> &nbsp;|&nbsp;
+  <a href="0004-qingqing-dieffenbachia.html">Next: 青青 Qingqing →</a>
+</footer>
+</body>
+</html>
