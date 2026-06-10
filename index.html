@@ -426,6 +426,7 @@ const UI = {
         light: '光照', water: '浇水频率',
         intro: '📋 简介', lightNeeds: '☀️ 光照', waterNeeds: '💧 浇水',
         seasonNow: '🌧 当前季节 (Adelaide 冬季)', tips: '📝 要点',
+        septPlan: '🌱 九月计划',
         attention: '⚠️ 注意', locationLabel: '📍 位置',
         photos: '📷 成长记录', takePhoto: '📷 拍照', fromAlbum: '🖼 相册',
         noPhotos: '还没有照片——拍一张记录它的成长吧',
@@ -441,6 +442,7 @@ const UI = {
         light: 'Light', water: 'Watering',
         intro: '📋 About', lightNeeds: '☀️ Light', waterNeeds: '💧 Water',
         seasonNow: '🌧 This season (Adelaide winter)', tips: '📝 Key points',
+        septPlan: '🌱 September plan',
         attention: '⚠️ Attention', locationLabel: '📍 Location',
         photos: '📷 Growth Log', takePhoto: '📷 Camera', fromAlbum: '🖼 Library',
         noPhotos: 'No photos yet — take one to track its growth',
@@ -490,6 +492,7 @@ const plants = [
     {
         id: 1, nickname: '蛋花', latin: 'Plumeria',
         fullName: { zh: '鸡蛋花 · Frangipani', en: 'Frangipani · 鸡蛋花' },
+        sept: { zh: '9月夜温稳定高于15°C后，永久移到户外全日照（阳台边缘或庭院）。枝头出新芽后开始每周浇水，10–11月起用高钾肥促开花。', en: 'Once nights stay above 15°C, move outside permanently to full sun (alfresco edge or yard). Start weekly watering when new tip growth appears; high-potassium feed from Oct–Nov for flowers.' },
         light: 5, water: 1, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
         status: 'temp', locationNo: 2,
         short: {
@@ -525,6 +528,7 @@ const plants = [
     {
         id: 2, nickname: '皮皮', latin: 'Ficus elastica (variegated)',
         fullName: { zh: '斑叶橡皮树', en: 'Variegated Rubber Tree · 斑叶橡皮树' },
+        sept: { zh: '恢复缓释肥。保持最亮位置以维持斑叶。如根从盆底长出，春季是换盆的最佳时机。', en: 'Resume slow-release fertiliser. Keep the brightest spot to hold variegation. If roots show at the drainage holes, spring is the window to repot.' },
         light: 4, water: 2, img: 'images/pipi.jpg', bgClass: 'bg-pipi', textClass: 'text-pipi',
         status: 'ok', locationNo: 2,
         short: {
@@ -563,6 +567,7 @@ const plants = [
     {
         id: 3, nickname: '刚刚', latin: "Ficus elastica 'Burgundy'",
         fullName: { zh: '黑金刚橡皮树', en: 'Burgundy Rubber Tree · 黑金刚' },
+        sept: { zh: '检查截口已愈合（干燥褐色边缘），截口下应萌发2–4根新枝。恢复正常浇水和缓释肥。扦插枝长出新叶=已生根，正式上盆。', en: 'Confirm the topping cut has calloused (dry brown edge) — 2–4 new branches should push below it. Resume normal watering and slow-release feed. The top cutting growing a new leaf = rooted; pot it up properly.' },
         light: 4, water: 2, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang',
         status: 'recover', locationNo: 2,
         short: {
@@ -601,6 +606,7 @@ const plants = [
     {
         id: 4, nickname: '棠棠', latin: 'Begonia maculata',
         fullName: { zh: '鳟鱼秋海棠', en: 'Polka Dot Begonia · 鳟鱼秋海棠' },
+        sept: { zh: '徒长的茎剪短一半，促进分枝更茂密。恢复每月施肥。可选择移到阳台遮阴处，通风更好。', en: 'Prune leggy stems by half for bushier regrowth. Resume monthly feeding. Optional move to the covered alfresco for better airflow.' },
         light: 3, water: 3, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
         status: 'ok', locationNo: 3,
         short: {
@@ -636,6 +642,7 @@ const plants = [
     {
         id: 5, nickname: '豹豹', latin: 'Goeppertia concinna',
         fullName: { zh: '豹纹竹芋', en: 'Rattlesnake Plant · 豹纹竹芋' },
+        sept: { zh: '恢复每月半浓度液肥（容易烧根）。继续只用过滤水。天气转暖湿度压力减小，但注意早春干热天。', en: 'Resume half-strength liquid feed monthly (full strength burns it). Stay on filtered water. Humidity pressure eases, but watch early hot dry spells.' },
         light: 3, water: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
         status: 'ok', locationNo: 6,
         short: {
@@ -674,6 +681,7 @@ const plants = [
     {
         id: 6, nickname: '雀雀', latin: 'Calathea orbifolia',
         fullName: { zh: '孔雀竹芋', en: 'Calathea orbifolia · 孔雀竹芋' },
+        sept: { zh: '分株应已稳定——长出新叶即确认恢复，可把状态改回正常。恢复每月半浓度液肥，继续过滤水。', en: 'Divisions should be stable — a new leaf confirms recovery (status can flip back to normal). Resume half-strength monthly feed; stay on filtered water.' },
         light: 3, water: 4, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
         status: 'recover', locationNo: 6,
         short: {
@@ -712,6 +720,7 @@ const plants = [
     {
         id: 7, nickname: '青青', latin: "Dieffenbachia 'Sterling'",
         fullName: { zh: '花叶万年青', en: 'Dumb Cane · 万年青' },
+        sept: { zh: '分株恢复后恢复施肥（缓释肥）。如长势旺、根满盆，春季换盆。继续戴手套操作。', en: 'Once recovered from division, resume slow-release feeding. Repot in spring if rootbound. Keep using gloves.' },
         light: 3, water: 3, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
         status: 'recover', locationNo: 3,
         short: {
@@ -750,6 +759,7 @@ const plants = [
     {
         id: 8, nickname: '贝贝', latin: 'Monstera deliciosa',
         fullName: { zh: '龟背竹', en: 'Monstera · 龟背竹' },
+        sept: { zh: '可移到阳台（有顶、散射光）——户外生长快得多，38°C以上搬回。恢复施肥。插条生根后上盆。生长快，检查是否需要换大盆。', en: 'Optional move to the covered alfresco (filtered light) — much faster growth outdoors; bring in above 38°C. Resume feeding. Pot up rooted cuttings. Fast grower — check if it needs a bigger pot.' },
         light: 2, water: 2, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
         status: 'ok', locationNo: 2,
         short: {
@@ -785,6 +795,7 @@ const plants = [
     {
         id: 9, nickname: 'Lili', latin: 'Spathiphyllum',
         fullName: { zh: '白掌 · Peace Lily', en: 'Peace Lily · 白掌' },
+        sept: { zh: '移到稍亮的散射光位置促开花。恢复每月平衡液肥（6月换盆已过安全期）。', en: 'Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (safe now after the June repot).' },
         light: 1, water: 4, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
         status: 'ok', locationNo: 5,
         short: {
@@ -820,6 +831,7 @@ const plants = [
     {
         id: 10, nickname: '刺刺', latin: 'Cactus',
         fullName: { zh: '仙人掌', en: 'Cactus · 仙人掌' },
+        sept: { zh: '夜温回暖后恢复少量浇水（每2–4周，土全干再浇）。其他一切照旧，不用施肥。', en: 'Resume sparse watering once nights warm (every 2–4 weeks, only when bone dry). Nothing else needed; no fertiliser.' },
         light: 5, water: 1, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
         status: 'outside', locationNo: 8,
         short: {
@@ -855,6 +867,7 @@ const plants = [
     {
         id: 11, nickname: '蜘蛛', latin: 'Chlorophytum comosum',
         fullName: { zh: '吊兰 · Spider Plant', en: 'Spider Plant · 吊兰' },
+        sept: { zh: '霜冻期结束，可常驻室外遮阴处。如长出小苗（吊兰宝宝），剪下水培或压土繁殖。', en: 'Frost risk is over — it can live outside in shade full-time. If spiderettes appear, propagate them in water or soil.' },
         light: 2, water: 2, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
         status: 'watch', locationNo: 8,
         short: {
@@ -1222,6 +1235,9 @@ window.openModal = function(plantId) {
 
         <div class="section-title ${plant.textClass}">${ui.seasonNow}</div>
         <div class="section-content">${t(plant.seasonNote)}</div>
+
+        <div class="section-title ${plant.textClass}">${ui.septPlan}</div>
+        <div class="section-content">${t(plant.sept)}</div>
         ${alertHtml}
 
         <div class="section-title ${plant.textClass}">${ui.tips}</div>
