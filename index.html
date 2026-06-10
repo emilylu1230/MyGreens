@@ -222,6 +222,50 @@
         .warn-card .warn-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #c2410c; margin-bottom: 0.2rem; }
         .warn-card .warn-text  { font-size: 0.82rem; color: #374151; line-height: 1.5; }
 
+        /* ── PHOTOS ── */
+        .photo-actions { display: flex; gap: 0.5rem; margin: 0.5rem 0 0.75rem; }
+        .photo-btn {
+            flex: 1; padding: 0.6rem 0.75rem; border-radius: 10px;
+            border: 1.5px dashed #86efac; background: #f0fdf4; color: #15803d;
+            font-weight: 600; font-size: 0.85rem; cursor: pointer;
+            transition: all 0.15s;
+        }
+        .photo-btn:hover { background: #dcfce7; }
+        .photo-btn:active { transform: scale(0.97); }
+
+        .photo-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem;
+        }
+        .photo-thumb {
+            position: relative; aspect-ratio: 1; border-radius: 10px;
+            overflow: hidden; cursor: pointer; background: #f3f4f6;
+        }
+        .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .photo-thumb .photo-date {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            font-size: 0.6rem; padding: 0.15rem 0.3rem;
+            background: rgba(0,0,0,0.45); color: white; text-align: center;
+        }
+        .photo-empty { font-size: 0.8rem; color: #9ca3af; padding: 0.4rem 0 0.2rem; }
+
+        /* lightbox */
+        .lightbox {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.9); z-index: 200;
+            flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.85rem; padding: 1rem;
+        }
+        .lightbox.show { display: flex; animation: popupIn 0.2s ease-out; }
+        .lightbox img { max-width: 100%; max-height: 72vh; border-radius: 12px; }
+        .lb-meta { color: white; font-size: 0.85rem; opacity: 0.85; }
+        .lb-actions { display: flex; gap: 0.75rem; }
+        .lb-btn {
+            padding: 0.55rem 1.2rem; border-radius: 10px; border: none;
+            font-weight: 600; font-size: 0.88rem; cursor: pointer;
+        }
+        .lb-del { background: #fee2e2; color: #b91c1c; }
+        .lb-close { background: white; color: #374151; }
+
         /* ── PLANT COLOURS ── */
         .bg-danhual    { background: linear-gradient(135deg, #fef3c7, #fed7aa); }
         .text-danhual  { color: #b45309; }
@@ -278,6 +322,15 @@
     </div>
 </div>
 
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <img id="lbImg" alt="" onclick="event.stopPropagation()">
+    <div class="lb-meta" id="lbMeta"></div>
+    <div class="lb-actions" onclick="event.stopPropagation()">
+        <button class="lb-btn lb-del" id="lbDelBtn"></button>
+        <button class="lb-btn lb-close" id="lbCloseBtn" onclick="closeLightbox()"></button>
+    </div>
+</div>
+
 <script>
 // ─────────────────────────────────────────────
 // i18n
@@ -292,6 +345,11 @@ const UI = {
         intro: '📋 简介', lightNeeds: '☀️ 光照', waterNeeds: '💧 浇水',
         seasonNow: '🌧 当前季节 (Adelaide 冬季)', tips: '📝 要点',
         attention: '⚠️ 注意', locationLabel: '📍 位置',
+        photos: '📷 成长记录', takePhoto: '📷 拍照', fromAlbum: '🖼 相册',
+        noPhotos: '还没有照片——拍一张记录它的成长吧',
+        deletePhoto: '删除', closePhoto: '关闭',
+        confirmDelete: '删除这张照片？',
+        photoNote: '照片只保存在这台设备上',
     },
     en: {
         gridView: '🪴 Cards', locView: '📍 Rooms',
@@ -302,6 +360,11 @@ const UI = {
         intro: '📋 About', lightNeeds: '☀️ Light', waterNeeds: '💧 Water',
         seasonNow: '🌧 This season (Adelaide winter)', tips: '📝 Key points',
         attention: '⚠️ Attention', locationLabel: '📍 Location',
+        photos: '📷 Growth Log', takePhoto: '📷 Camera', fromAlbum: '🖼 Library',
+        noPhotos: 'No photos yet — take one to track its growth',
+        deletePhoto: 'Delete', closePhoto: 'Close',
+        confirmDelete: 'Delete this photo?',
+        photoNote: 'Photos are stored on this device only',
     },
 };
 
@@ -757,6 +820,163 @@ function normalizeLevel(level) {
 }
 
 // ─────────────────────────────────────────────
+// Photos (IndexedDB — stored on this device)
+// ─────────────────────────────────────────────
+let dbPromise = null;
+function openDB() {
+    if (!dbPromise) {
+        dbPromise = new Promise((resolve, reject) => {
+            const req = indexedDB.open('mygreens', 1);
+            req.onupgradeneeded = () => {
+                const store = req.result.createObjectStore('photos', { keyPath: 'id', autoIncrement: true });
+                store.createIndex('plantId', 'plantId');
+            };
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+        });
+    }
+    return dbPromise;
+}
+
+async function dbAddPhoto(plantId, blob) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction('photos', 'readwrite');
+        tx.objectStore('photos').add({ plantId, date: new Date().toISOString(), blob });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+    });
+}
+
+async function dbGetPhotos(plantId) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const req = db.transaction('photos').objectStore('photos')
+            .index('plantId').getAll(IDBKeyRange.only(plantId));
+        req.onsuccess = () => resolve(req.result.sort((a, b) => b.date.localeCompare(a.date)));
+        req.onerror = () => reject(req.error);
+    });
+}
+
+async function dbDeletePhoto(id) {
+    const db = await openDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction('photos', 'readwrite');
+        tx.objectStore('photos').delete(id);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+    });
+}
+
+async function compressImage(file) {
+    const img = await new Promise((resolve, reject) => {
+        const i = new Image();
+        i.onload = () => resolve(i);
+        i.onerror = reject;
+        i.src = URL.createObjectURL(file);
+    });
+    const MAX = 1200;
+    const scale = Math.min(1, MAX / Math.max(img.width, img.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(img.width * scale);
+    canvas.height = Math.round(img.height * scale);
+    canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+    URL.revokeObjectURL(img.src);
+    return new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.82));
+}
+
+let photoCounts = {};
+async function refreshPhotoCounts() {
+    try {
+        const db = await openDB();
+        const all = await new Promise((resolve, reject) => {
+            const req = db.transaction('photos').objectStore('photos').getAll();
+            req.onsuccess = () => resolve(req.result);
+            req.onerror = () => reject(req.error);
+        });
+        photoCounts = {};
+        all.forEach(p => { photoCounts[p.plantId] = (photoCounts[p.plantId] || 0) + 1; });
+    } catch (e) { photoCounts = {}; }
+}
+
+let thumbUrls = [];
+function revokeThumbs() {
+    thumbUrls.forEach(u => URL.revokeObjectURL(u));
+    thumbUrls = [];
+}
+
+function fmtDate(iso) {
+    return new Date(iso).toLocaleDateString(lang === 'zh' ? 'zh-CN' : 'en-AU',
+        { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+async function renderPhotoGrid(plantId) {
+    const grid = document.getElementById('photoGrid');
+    if (!grid) return;
+    revokeThumbs();
+    const photos = await dbGetPhotos(plantId);
+    if (!photos.length) {
+        grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1">${UI[lang].noPhotos}</div>`;
+        return;
+    }
+    grid.innerHTML = photos.map(p => {
+        const url = URL.createObjectURL(p.blob);
+        thumbUrls.push(url);
+        return `
+            <div class="photo-thumb" onclick="openLightbox(${p.id}, ${plantId})">
+                <img src="${url}" alt="">
+                <div class="photo-date">${fmtDate(p.date)}</div>
+            </div>`;
+    }).join('');
+}
+
+window.capturePhoto = function(plantId, useCamera) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    if (useCamera) input.setAttribute('capture', 'environment');
+    input.onchange = async () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        const blob = await compressImage(file);
+        await dbAddPhoto(plantId, blob);
+        await renderPhotoGrid(plantId);
+        await refreshPhotoCounts();
+        if (view === 'loc') renderLocations(); else renderGrid();
+    };
+    input.click();
+};
+
+let lbUrl = null;
+window.openLightbox = async function(photoId, plantId) {
+    const photos = await dbGetPhotos(plantId);
+    const photo = photos.find(p => p.id === photoId);
+    if (!photo) return;
+    if (lbUrl) URL.revokeObjectURL(lbUrl);
+    lbUrl = URL.createObjectURL(photo.blob);
+    document.getElementById('lbImg').src = lbUrl;
+    document.getElementById('lbMeta').textContent = fmtDate(photo.date);
+    document.getElementById('lbCloseBtn').textContent = UI[lang].closePhoto;
+    const delBtn = document.getElementById('lbDelBtn');
+    delBtn.textContent = UI[lang].deletePhoto;
+    delBtn.onclick = async () => {
+        if (!confirm(UI[lang].confirmDelete)) return;
+        await dbDeletePhoto(photoId);
+        closeLightbox();
+        await renderPhotoGrid(plantId);
+        await refreshPhotoCounts();
+        if (view === 'loc') renderLocations(); else renderGrid();
+    };
+    document.getElementById('lightbox').classList.add('show');
+};
+
+window.closeLightbox = function(event) {
+    if (event && event.target !== document.getElementById('lightbox')) return;
+    document.getElementById('lightbox').classList.remove('show');
+    if (lbUrl) { URL.revokeObjectURL(lbUrl); lbUrl = null; }
+};
+
+// ─────────────────────────────────────────────
 // Render: grid
 // ─────────────────────────────────────────────
 function renderGrid() {
@@ -777,7 +997,8 @@ function renderGrid() {
                 <div>
                     <div class="nickname ${plant.textClass}">${plant.nickname}</div>
                     <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
-                    <div class="location-pill">📍 ${t(loc.shortName)}</div>
+                    <div class="location-pill">📍 ${t(loc.shortName)}</div>${photoCounts[plant.id] ? `
+                    <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                     <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                 </div>
                 <div class="emoji-section">
@@ -815,7 +1036,8 @@ function renderLocations() {
                     <div>
                         <div class="nickname ${plant.textClass}">${plant.nickname}</div>
                         <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
-                        <div class="location-pill">${t(st.label)}</div>
+                        <div class="location-pill">${t(st.label)}</div>${photoCounts[plant.id] ? `
+                        <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                         <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                     </div>
                     <div class="emoji-section">
@@ -895,14 +1117,24 @@ window.openModal = function(plantId) {
 
         <div class="section-title ${plant.textClass}">${ui.tips}</div>
         <div class="section-content" style="white-space:pre-line">${t(plant.tips)}</div>
+
+        <div class="section-title ${plant.textClass}">${ui.photos}</div>
+        <div class="photo-actions">
+            <button class="photo-btn" onclick="capturePhoto(${plant.id}, true)">${ui.takePhoto}</button>
+            <button class="photo-btn" onclick="capturePhoto(${plant.id}, false)">${ui.fromAlbum}</button>
+        </div>
+        <div class="photo-grid" id="photoGrid"></div>
+        <div class="photo-empty" style="font-size:0.7rem">${ui.photoNote}</div>
     `;
 
+    renderPhotoGrid(plant.id);
     document.getElementById('modal').classList.add('show');
 };
 
 window.closeModal = function(event) {
     if (event && event.target !== document.getElementById('modal')) return;
     document.getElementById('modal').classList.remove('show');
+    revokeThumbs();
 };
 
 // ─────────────────────────────────────────────
@@ -962,6 +1194,9 @@ function syncControls() {
 // init
 syncControls();
 renderGrid();
+refreshPhotoCounts().then(() => {
+    if (view === 'loc') renderLocations(); else renderGrid();
+});
 </script>
 </body>
 </html>
