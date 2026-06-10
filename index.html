@@ -256,6 +256,7 @@
         }
 
         .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.1rem; }
+        .modal-header-actions { display: flex; align-items: center; gap: 0.3rem; flex-shrink: 0; }
         .modal-title { font-size: 1.7rem; font-weight: bold; line-height: 1.1; }
         .modal-subtitle { font-size: 0.83rem; color: #6b7280; margin-top: 0.2rem; }
 
@@ -381,7 +382,6 @@
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
     <span class="divider-v"></span>
-    <button class="btn lang" id="btnLang" onclick="toggleLang()">EN</button>
     <span class="season-tag" id="seasonTag"></span>
 </div>
 
@@ -397,7 +397,10 @@
                 <div class="modal-title" id="modalTitle"></div>
                 <div class="modal-subtitle" id="modalSubtitle"></div>
             </div>
-            <button class="close-btn" onclick="closeModal()">×</button>
+            <div class="modal-header-actions">
+                <button class="btn lang" id="modalLangBtn" onclick="toggleLang()">EN</button>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
         </div>
         <div id="modalBody"></div>
     </div>
@@ -1087,7 +1090,7 @@ function renderGrid() {
                 <div class="status-dot ${st.dot}"></div>
                 <div class="card-content">
                     <div class="nickname ${plant.textClass}">${plant.nickname}</div>
-                    <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
+                    <div class="subtitle ${plant.textClass}">${plant.fullName.en}</div>
                     <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                 </div>
                 <div class="emoji-section">
@@ -1128,7 +1131,7 @@ function renderLocations() {
                     <div class="status-dot ${st.dot}"></div>
                     <div class="card-content">
                         <div class="nickname ${plant.textClass}">${plant.nickname}</div>
-                        <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
+                        <div class="subtitle ${plant.textClass}">${plant.fullName.en}</div>
                         <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                     </div>
                     <div class="emoji-section">
@@ -1160,9 +1163,13 @@ function renderLocations() {
 // ─────────────────────────────────────────────
 // Modal
 // ─────────────────────────────────────────────
+let currentModalPlantId = null;
+
 window.openModal = function(plantId) {
     const plant = plants.find(p => p.id === plantId);
     if (!plant) return;
+    currentModalPlantId = plantId;
+    document.getElementById('modalLangBtn').textContent = UI[lang].langBtn;
 
     const ui = UI[lang];
     const st = STATUS[plant.status];
@@ -1229,6 +1236,7 @@ window.openModal = function(plantId) {
 window.closeModal = function(event) {
     if (event && event.target !== document.getElementById('modal')) return;
     document.getElementById('modal').classList.remove('show');
+    currentModalPlantId = null;
     revokeThumbs();
 };
 
@@ -1258,7 +1266,9 @@ window.toggleLang = function() {
     syncControls();
     renderGrid();
     renderLocations();
-    document.getElementById('modal').classList.remove('show');
+    if (currentModalPlantId !== null && document.getElementById('modal').classList.contains('show')) {
+        openModal(currentModalPlantId);
+    }
 };
 
 function syncControls() {
@@ -1272,7 +1282,6 @@ function syncControls() {
     bLoc.textContent = ui.locView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
-    document.getElementById('btnLang').textContent = ui.langBtn;
     document.getElementById('seasonTag').textContent = ui.season;
 
     bGrid.classList.toggle('active', view === 'grid');
