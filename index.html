@@ -177,7 +177,7 @@
             display: flex; flex-direction: column; gap: 0.15rem;
             align-items: flex-end; align-self: flex-end;
         }
-        .emoji-rating { font-size: 0.85rem; letter-spacing: 1px; white-space: nowrap; line-height: 1.2; }
+        .emoji-rating { font-size: 0.76rem; letter-spacing: 0.5px; white-space: nowrap; line-height: 1.25; }
         @media (min-width: 768px) { .emoji-rating { font-size: 1.05rem; letter-spacing: 2px; } }
 
         /* ── LOCATION VIEW ── */
@@ -1049,8 +1049,6 @@ function renderGrid() {
 
     let html = '';
     sorted.forEach((plant, index) => {
-        const lNorm = normalizeLevel(plant.light);
-        const wNorm = normalizeLevel(plant.water);
         const st = STATUS[plant.status];
         const loc = LOCATIONS[plant.locationNo];
 
@@ -1067,8 +1065,8 @@ function renderGrid() {
                     <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                 </div>
                 <div class="emoji-section">
-                    <div class="emoji-rating">${'☀️'.repeat(lNorm)}</div>
-                    <div class="emoji-rating">${'💧'.repeat(wNorm)}</div>
+                    <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
+                    <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
                 </div>
             </div>`;
     });
@@ -1092,8 +1090,6 @@ function renderLocations() {
 
         let cards = '';
         inLoc.forEach((plant, index) => {
-            const lNorm = normalizeLevel(plant.light);
-            const wNorm = normalizeLevel(plant.water);
             const st = STATUS[plant.status];
             const photoSrc = latestPhotoUrls[plant.id] || plant.img;
             cards += `
@@ -1108,8 +1104,8 @@ function renderLocations() {
                         <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                     </div>
                     <div class="emoji-section">
-                        <div class="emoji-rating">${'☀️'.repeat(lNorm)}</div>
-                        <div class="emoji-rating">${'💧'.repeat(wNorm)}</div>
+                        <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
+                        <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
                     </div>
                 </div>`;
         });
