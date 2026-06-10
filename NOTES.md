@@ -41,6 +41,40 @@
 - Winter rule: no fertilising/repotting until Sept (soil temp >18°C)
 - Sept 1: move suitable plants outdoors
 
+## September 2026 plan (spring kick-off)
+
+### Week 1 (Sept 1–7) — moves
+- **蛋花 Frangipani → outside permanently.** Full-sun spot (alfresco edge or yard), once nights stay above 15°C. Won't flower indoors. Start watering weekly as new growth appears at branch tips.
+- **贝贝 Monstera → alfresco (optional).** Covered, bright filtered light — grows much faster outdoors. Bring in on 38°C+ days. Keep rotating if it stays inside.
+- **蜘蛛 Spider** — frost risk over; fine outside full-time in a shaded spot.
+- Everything else stays in its current indoor spot.
+
+### Week 1–2 — resume feeding (soil >18°C)
+- Slow-release fertiliser for: 刚刚, 皮皮, 贝贝, 棠棠, 青青 (both pots)
+- Half-strength liquid monthly for: 雀雀 (both pots), 豹豹 — they burn easily
+- Lili: balanced monthly feed + move to a slightly brighter spot to trigger flowering (repot was June, safe to feed now)
+- 刺刺: resume sparse watering only when nights are warm; no fertiliser needed
+
+### Checks before feeding anything
+- **刚刚:** is the topping cut fully calloused (dry brown edge)? New branches should be pushing below the cut. If the old cracked branch hasn't healed, remove it cleanly.
+- **刚刚's top cutting:** new leaf = rooted. Pot up properly and move to bright indirect light. No new leaf by mid-Sept = check base for rot.
+- **雀雀 / 青青 divisions:** should look stable by now. Flip app statuses recover → ok once new growth appears (ask Claude to update + push).
+- **贝贝's cuttings:** if rooted (new leaf), pot up into 50/50 mix + perlite.
+
+### Mid-September
+- **Sept 15: Bay Laurel cuttings** (per plan). Semi-hardwood, rooting powder, 50/50 mix + perlite — same setup as the Ficus prop.
+- Water-prop Alocasia side shoots when 15–20cm (per original plan).
+- Repot anything rootbound — spring is the only good window. Check 贝贝 (fast grower) and 棠棠 first. 3D-print or buy pots as needed.
+
+### Watering shift
+- All plants: winter intervals end. Roughly halve the gaps (e.g. Ficus 10–14 days → 7 days) but keep checking soil first — spring in Adelaide can still have cool weeks.
+- 雀雀/豹豹: keep filtered water only; humidity pressure eases as weather warms but watch early hot dry spells.
+
+### App updates due in September
+- Statuses: 刚刚/雀雀/青青 recover→ok (when confirmed), 蛋花 temp→outside, 蜘蛛 watch→outside
+- Season tag: winter → spring
+- Location changes: 蛋花 and possibly 贝贝 to outdoor locations
+
 ## Supplies on hand
 Hydrogen peroxide, potassium permanganate, rooting powder (生根粉), perlite, potting mix, sphagnum moss
 
