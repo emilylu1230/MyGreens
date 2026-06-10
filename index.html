@@ -269,7 +269,8 @@
             padding: 0.5rem 0.85rem; border-radius: 8px; font-size: 0.82rem;
             font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
         }
-        .modal-status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: currentColor; opacity: 0.7; }
+        .modal-status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .modal-status-desc { font-weight: 400; font-size: 0.78rem; opacity: 0.9; margin-top: 0.1rem; line-height: 1.45; }
         .ms-ok      { background: #dcfce7; color: #15803d; }
         .ms-recover { background: #ffedd5; color: #c2410c; }
         .ms-temp    { background: #dbeafe; color: #1d4ed8; }
@@ -450,12 +451,18 @@ const UI = {
 };
 
 const STATUS = {
-    ok:      { dot: 'dot-ok',      ms: 'ms-ok',      label: { zh: '状态良好',   en: 'Stable' } },
-    recover: { dot: 'dot-recover', ms: 'ms-recover', label: { zh: '恢复中',     en: 'Recovering' } },
-    temp:    { dot: 'dot-temp',    ms: 'ms-temp',    label: { zh: '暂时室内',   en: 'Temporary indoors' } },
-    prop:    { dot: 'dot-prop',    ms: 'ms-prop',    label: { zh: '扦插繁殖中', en: 'Propagating' } },
-    watch:   { dot: 'dot-watch',   ms: 'ms-watch',   label: { zh: '注意观察',   en: 'Monitor' } },
-    outside: { dot: 'dot-outside', ms: 'ms-outside', label: { zh: '室外',       en: 'Outdoors' } },
+    ok:      { dot: 'dot-ok',      ms: 'ms-ok',      label: { zh: '状态良好',   en: 'Stable' },
+               desc: { zh: '一切正常，按常规护理即可。', en: 'All good — continue routine care.' } },
+    recover: { dot: 'dot-recover', ms: 'ms-recover', label: { zh: '恢复中',     en: 'Recovering' },
+               desc: { zh: '最近分株或修剪。恢复期：少浇水、不施肥、不要移动。', en: 'Recently divided or pruned. While recovering: water less, no fertiliser, don\'t move it.' } },
+    temp:    { dot: 'dot-temp',    ms: 'ms-temp',    label: { zh: '暂时室内',   en: 'Temporary indoors' },
+               desc: { zh: '只是室内过冬，9月移到户外。', en: 'Indoors for winter only — moves outside in September.' } },
+    prop:    { dot: 'dot-prop',    ms: 'ms-prop',    label: { zh: '扦插繁殖中', en: 'Propagating' },
+               desc: { zh: '扦插生根中：保持温暖、土壤微干、低光。', en: 'Rooting in progress: keep warm, soil barely moist, low light.' } },
+    watch:   { dot: 'dot-watch',   ms: 'ms-watch',   label: { zh: '注意观察',   en: 'Monitor' },
+               desc: { zh: '需要留意——低于5°C的夜晚搬进室内。', en: 'Keep an eye on it — bring inside on nights below 5°C.' } },
+    outside: { dot: 'dot-outside', ms: 'ms-outside', label: { zh: '室外',       en: 'Outdoors' },
+               desc: { zh: '永久室外位置，冬季基本不需要照顾。', en: 'Permanent outdoor spot — needs almost nothing in winter.' } },
 };
 
 const LOCATIONS = {
@@ -1183,8 +1190,11 @@ window.openModal = function(plantId) {
 
     document.getElementById('modalBody').innerHTML = `
         <div class="modal-status ${st.ms}">
-            <div class="modal-status-dot"></div>
-            ${t(st.label)}
+            <div class="modal-status-dot ${st.dot}"></div>
+            <div>
+                <div>${t(st.label)}</div>
+                <div class="modal-status-desc">${t(st.desc)}</div>
+            </div>
         </div>
 
         <div class="location-card">
