@@ -102,34 +102,36 @@
         }
         .card-scrim {
             position: absolute; inset: 0; z-index: 1;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.60) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.65) 100%);
         }
         .card-content, .plant-card .emoji-section { position: relative; z-index: 2; }
         .status-dot { z-index: 3; }
         .plant-card.has-photo .nickname,
         .plant-card.has-photo .subtitle,
         .plant-card.has-photo .short-desc {
-            color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,0.65);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7);
         }
-        .plant-card.has-photo .subtitle { opacity: 0.95; }
+        .plant-card.has-photo .nickname { font-weight: 800; }
+        .plant-card.has-photo .subtitle { opacity: 1; }
         .plant-card.has-photo .location-pill {
-            background: rgba(0,0,0,0.4); color: #fff;
+            background: rgba(0,0,0,0.55); color: #fff;
         }
-        /* frosted panel behind text for contrast on photos */
+        /* solid dark panel behind text for contrast on photos */
         .plant-card.has-photo .card-content {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.48), rgba(0,0,0,0.30));
-            backdrop-filter: blur(7px);
-            -webkit-backdrop-filter: blur(7px);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.66), rgba(0,0,0,0.50));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 10px;
-            padding: 0.4rem 0.5rem;
+            padding: 0.45rem 0.55rem;
             margin: -0.15rem -0.15rem 0;
         }
         .plant-card.has-photo .emoji-section {
-            background: rgba(0,0,0,0.38);
-            backdrop-filter: blur(7px);
-            -webkit-backdrop-filter: blur(7px);
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 8px;
-            padding: 0.22rem 0.45rem;
+            padding: 0.25rem 0.45rem;
         }
 
         .nickname { font-size: 1.05rem; font-weight: bold; line-height: 1.15; margin-bottom: 0.1rem; word-break: break-word; }
