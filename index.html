@@ -71,11 +71,11 @@
         }
         @media (min-width: 768px) {
             #grid {
-                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
                 grid-auto-rows: auto;
-                gap: 0.85rem;
-                padding: 1rem;
-                max-width: 1200px;
+                gap: 1.1rem;
+                padding: 1.25rem;
+                max-width: 1280px;
                 margin: 0 auto;
             }
         }
@@ -90,12 +90,9 @@
             animation: slideIn 0.5s ease-out forwards;
             min-height: 0;
         }
-        @media (min-width: 768px) {
-            .plant-card { min-height: 165px; padding: 1rem; border-radius: 14px; }
-        }
         .plant-card:hover { transform: translateY(-3px) scale(1.02); z-index: 10; box-shadow: 0 14px 32px rgba(0,0,0,0.18); }
 
-        /* card photo */
+        /* card photo (mobile: full-bleed background) */
         .card-photo {
             position: absolute; inset: 0; width: 100%; height: 100%;
             object-fit: cover; z-index: 0;
@@ -106,32 +103,56 @@
         }
         .card-content, .plant-card .emoji-section { position: relative; z-index: 2; }
         .status-dot { z-index: 3; }
-        .plant-card.has-photo .nickname,
-        .plant-card.has-photo .subtitle,
-        .plant-card.has-photo .short-desc {
-            color: #fff;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7);
+
+        /* Mobile: white text on dark frosted panels over the photo */
+        @media (max-width: 767px) {
+            .plant-card.has-photo .nickname,
+            .plant-card.has-photo .subtitle,
+            .plant-card.has-photo .short-desc {
+                color: #fff;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7);
+            }
+            .plant-card.has-photo .nickname { font-weight: 800; }
+            .plant-card.has-photo .subtitle { opacity: 1; }
+            .plant-card.has-photo .location-pill {
+                background: rgba(0,0,0,0.45); color: #fff;
+            }
+            .plant-card.has-photo .card-content {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.40), rgba(0,0,0,0.26));
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-radius: 10px;
+                padding: 0.45rem 0.55rem;
+                margin: -0.15rem -0.15rem 0;
+            }
+            .plant-card.has-photo .emoji-section {
+                background: rgba(0,0,0,0.55);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-radius: 8px;
+                padding: 0.25rem 0.45rem;
+            }
         }
-        .plant-card.has-photo .nickname { font-weight: 800; }
-        .plant-card.has-photo .subtitle { opacity: 1; }
-        .plant-card.has-photo .location-pill {
-            background: rgba(0,0,0,0.55); color: #fff;
-        }
-        /* solid dark panel behind text for contrast on photos */
-        .plant-card.has-photo .card-content {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.66), rgba(0,0,0,0.50));
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 10px;
-            padding: 0.45rem 0.55rem;
-            margin: -0.15rem -0.15rem 0;
-        }
-        .plant-card.has-photo .emoji-section {
-            background: rgba(0,0,0,0.55);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 8px;
-            padding: 0.25rem 0.45rem;
+
+        /* Desktop: big image on top, pastel info panel below */
+        @media (min-width: 768px) {
+            .plant-card {
+                padding: 0;
+                border-radius: 16px;
+                border: none;
+                box-shadow: 0 3px 14px rgba(0,0,0,0.09);
+            }
+            .plant-card.has-photo .card-photo {
+                position: relative; inset: auto;
+                width: 100%; height: 230px;
+                flex-shrink: 0;
+                transition: transform 0.45s ease;
+            }
+            .plant-card:hover .card-photo { transform: scale(1.045); }
+            .plant-card.has-photo .card-scrim { display: none; }
+            .plant-card .card-content { padding: 0.9rem 1.1rem 0.3rem; }
+            .plant-card .emoji-section { padding: 0.4rem 1.1rem 1rem; }
+            .plant-card:not(.has-photo) { padding: 1rem; min-height: 165px; }
         }
 
         .nickname { font-size: 1.05rem; font-weight: bold; line-height: 1.15; margin-bottom: 0.1rem; word-break: break-word; }
@@ -179,6 +200,11 @@
             display: flex; flex-direction: column; gap: 0.15rem;
             align-items: flex-end; align-self: flex-end;
         }
+        .card-pills {
+            display: flex; gap: 0.25rem; flex-wrap: wrap;
+            justify-content: flex-end; margin-bottom: 0.15rem;
+        }
+        .card-pills .location-pill { margin-bottom: 0; }
         .emoji-rating { font-size: 0.76rem; letter-spacing: 0.5px; white-space: nowrap; line-height: 1.25; }
         @media (min-width: 768px) { .emoji-rating { font-size: 1.05rem; letter-spacing: 2px; } }
 
@@ -210,8 +236,8 @@
         }
         @media (min-width: 768px) {
             .loc-grid {
-                grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-                gap: 0.85rem;
+                grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+                gap: 1.1rem;
             }
         }
 
@@ -1062,11 +1088,13 @@ function renderGrid() {
                 <div class="card-content">
                     <div class="nickname ${plant.textClass}">${plant.nickname}</div>
                     <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
-                    <div class="location-pill">📍 ${t(loc.shortName)}</div>${photoCounts[plant.id] ? `
-                    <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                     <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                 </div>
                 <div class="emoji-section">
+                    <div class="card-pills">
+                        <div class="location-pill">📍 ${t(loc.shortName)}</div>${photoCounts[plant.id] ? `
+                        <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
+                    </div>
                     <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
                     <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
                 </div>
@@ -1101,11 +1129,13 @@ function renderLocations() {
                     <div class="card-content">
                         <div class="nickname ${plant.textClass}">${plant.nickname}</div>
                         <div class="subtitle ${plant.textClass}">${t(plant.fullName)}</div>
-                        <div class="location-pill">${t(st.label)}</div>${photoCounts[plant.id] ? `
-                        <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                         <div class="short-desc ${plant.textClass}">${t(plant.short)}</div>
                     </div>
                     <div class="emoji-section">
+                        <div class="card-pills">
+                            <div class="location-pill">${t(st.label)}</div>${photoCounts[plant.id] ? `
+                            <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
+                        </div>
                         <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
                         <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
                     </div>
