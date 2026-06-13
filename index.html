@@ -482,9 +482,6 @@ const LOCATIONS = {
     5: { name: { zh: '客厅 · 靠近窗户', en: 'Living room · by the window' },
          shortName: { zh: '客厅', en: 'Living rm' },
          sub: { zh: '一楼 · 较亮散射光', en: 'Ground floor · bright-ish indirect' } },
-    6: { name: { zh: '浴室', en: 'Bathroom' },
-         shortName: { zh: '浴室', en: 'Bathroom' },
-         sub: { zh: '淋浴蒸汽 · 高湿度 ≥60%', en: 'Shower steam · high humidity ≥60%' } },
     8: { name: { zh: '室外', en: 'Outside' },
          shortName: { zh: '室外', en: 'Outside' },
          sub: { zh: '庭院 & 屋檐下', en: 'Yard & under roof' } },
@@ -649,30 +646,30 @@ const plants = [
         fullName: { zh: '豹纹竹芋', en: 'Rattlesnake Plant · 豹纹竹芋' },
         sept: { zh: '恢复每月半浓度液肥（容易烧根）。继续只用过滤水。天气转暖湿度压力减小，但注意早春干热天。', en: 'Resume half-strength liquid feed monthly (full strength burns it). Stay on filtered water. Humidity pressure eases, but watch early hot dry spells.' },
         light: 3, water: 4, humidity: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
-        status: 'ok', locationNo: 6,
+        status: 'ok', locationNo: 3,
         short: {
-            zh: '需要≥60%湿度。浴室蒸汽是最佳方案。只用过滤水。',
-            en: 'Needs ≥60% humidity — bathroom steam solves it. Filtered water only.',
+            zh: '需要≥60%湿度。用托盘加水+植物聚集提升湿度。只用过滤水。',
+            en: 'Needs ≥60% humidity — pebble tray + grouping plants. Filtered water only.',
         },
         locationDetail: {
-            zh: '与雀雀放在一起。淋浴蒸汽自然提供≥60%湿度——解决了最难的护理问题。确保有足够的散射光。',
-            en: 'Kept with 雀雀. Shower steam naturally provides the ≥60% humidity it demands. Make sure the bathroom gets enough indirect light.',
+            zh: '主卧窗边遮帘处，与雀雀、棠棠、青青放在一起。植物聚集+托盘加水提升局部湿度。帘子过滤的散射光很适合。',
+            en: 'Master BR curtain-filtered window, grouped with 雀雀, 棠棠 & 青青. Group humidity + pebble tray compensates for no bathroom steam. Filtered light suits it.',
         },
         description: {
             zh: '长披针形叶，豹纹斑纹，叶背紫红色。叶背紫红=健康；褪色=湿度或光照不足。有睡眠运动。',
             en: 'Long lance-shaped leaves with leopard markings and purple-red undersides. Rich purple = healthy; fading = low humidity or light. A prayer plant — leaves move at night.',
         },
         lightDetail: {
-            zh: '中等散射光。绝对不能直射阳光——叶片会褪色卷曲。浴室有窗户的自然光即可。',
-            en: 'Medium indirect light. Absolutely no direct sun — leaves bleach and curl. Natural bathroom window light is enough.',
+            zh: '中等散射光。绝对不能直射阳光——叶片会褪色卷曲。帘子过滤的窗边光线即可。',
+            en: 'Medium indirect light. Absolutely no direct sun — leaves bleach and curl. Curtain-filtered window light is ideal.',
         },
         waterDetail: {
             zh: '保持微湿，不能干透。冬季每3–5天检查一次。必须用过滤水或雨水——自来水含氟会焦边。',
             en: 'Keep lightly moist, never bone dry. Check every 3–5 days in winter. Filtered or rainwater only — Adelaide tap water fluoride causes crispy brown edges.',
         },
         seasonNote: {
-            zh: '冬季关键期：湿度管理优先。浴室蒸汽是最好的来源。保持18°C以上，远离暖气出风口。',
-            en: 'Critical winter period: humidity first. Bathroom steam is the best source. Keep above 18°C, away from heater vents.',
+            zh: '冬季关键期：湿度管理优先。托盘加水+植物聚集是关键。保持18°C以上，远离暖气出风口。',
+            en: 'Critical winter period: humidity first. Pebble tray + plant grouping is key. Keep above 18°C, away from heater vents.',
         },
         alert: {
             zh: '只用过滤水或雨水！Adelaide自来水含氟，会导致叶边焦枯。',
@@ -688,22 +685,22 @@ const plants = [
         fullName: { zh: '鱼骨祈祷植物', en: 'Fishbone Prayer Plant · 鱼骨祈祷植物' },
         sept: { zh: '恢复每月半浓度液肥。保持湿度，天气转暖后可移到阳台遮阴处。检查是否需要换盆。', en: 'Resume half-strength monthly feed. Keep humidity up; can move to shaded alfresco as weather warms. Check if it needs repotting.' },
         light: 3, water: 4, humidity: 4, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
-        status: 'ok', locationNo: 6,
+        status: 'ok', locationNo: 3,
         short: {
             zh: '鱼骨纹叶片，夜间祈祷运动。喜高湿度。',
             en: 'Fishbone-patterned leaves with nightly prayer movement. Loves high humidity.',
         },
         locationDetail: {
-            zh: '浴室窗边，淋浴蒸汽自然提供高湿度。与豹豹放在一起，互相提升局部湿度。',
-            en: 'Bathroom window — shower steam naturally provides the humidity it craves. Grouped with 豹豹 to raise local humidity.',
+            zh: '主卧窗边遮帘处，与豹豹、棠棠、青青聚在一起提升局部湿度。托盘加水保持≥60%湿度。',
+            en: 'Master BR curtain-filtered window, grouped with 豹豹, 棠棠 & 青青 for local humidity. Pebble tray to maintain ≥60%.',
         },
         description: {
             zh: '鱼骨祈祷植物，叶片有独特鱼骨状深绿斑纹，叶背紫色。夜间叶片竖起（祈祷运动），比大多数竹芋更皮实好养。',
             en: 'Fishbone prayer plant with distinctive herringbone dark-green markings and purple undersides. Leaves fold upward at night (prayer movement). Hardier than most calatheas.',
         },
         lightDetail: {
-            zh: '散射光或耐阴，避免直射阳光——叶片会褪色。浴室窗边的自然光即可。',
-            en: 'Indirect light or shade-tolerant. Avoid direct sun — leaves fade. Bathroom window light is enough.',
+            zh: '散射光或耐阴，避免直射阳光——叶片会褪色。帘子过滤的窗边光线即可。',
+            en: 'Indirect light or shade-tolerant. Avoid direct sun — leaves fade. Curtain-filtered window light is ideal.',
         },
         waterDetail: {
             zh: '保持湿润，冬季适当减少浇水。不能完全干透。最好用过滤水或雨水，避免叶尖焦枯。',
@@ -715,8 +712,8 @@ const plants = [
         },
         alert: null,
         tips: {
-            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 比大多数竹芋更皮实，适合新手\n• 高湿度环境更好——浴室理想\n• 不要向叶面喷水——容易真菌斑\n• 叶背紫色褪淡 = 光线或湿度不足',
-            en: '• Leaves folding at night (prayer movement) = healthy\n• Hardier than most calatheas — good for beginners\n• Thrives in high humidity — bathroom is ideal\n• Don\'t mist — causes fungal spots\n• Fading purple undersides = low light or humidity',
+            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 比大多数竹芋更皮实，适合新手\n• 高湿度环境更好——托盘加水+植物聚集\n• 不要向叶面喷水——容易真菌斑\n• 叶背紫色褪淡 = 光线或湿度不足',
+            en: '• Leaves folding at night (prayer movement) = healthy\n• Hardier than most calatheas — good for beginners\n• Thrives in high humidity — pebble tray + plant grouping\n• Don\'t mist — causes fungal spots\n• Fading purple undersides = low light or humidity',
         },
     },
     {
@@ -1165,10 +1162,10 @@ function renderGrid() {
 // ─────────────────────────────────────────────
 // Render: location view
 // ─────────────────────────────────────────────
-const LOC_ICONS = { 2: '🪟', 3: '🪞', 5: '🛋️', 6: '🛁', 8: '🌳' };
+const LOC_ICONS = { 2: '🪟', 3: '🪞', 5: '🛋️', 8: '🌳' };
 
 function renderLocations() {
-    const order = [2, 3, 5, 6, 8];
+    const order = [2, 3, 5, 8];
     let html = '';
 
     order.forEach(locNo => {
