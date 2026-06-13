@@ -40,6 +40,7 @@
         .btn.active { transform: scale(1.06); box-shadow: 0 4px 12px rgba(0,0,0,0.18); }
         .btn.active.light  { background: #fbbf24; color: #78350f; border-color: #fbbf24; }
         .btn.active.water  { background: #60a5fa; color: #1e3a8a; border-color: #60a5fa; }
+        .btn.active.humidity { background: #67e8f9; color: #164e63; border-color: #67e8f9; }
         .btn.active.view   { background: #86efac; color: #14532d; border-color: #86efac; }
         .btn.lang { background: #f5f3ff; color: #6d28d9; border-color: #ddd6fe; }
 
@@ -369,6 +370,9 @@
         .text-cici     { color: #92400e; }
         .bg-zhizhu     { background: linear-gradient(135deg, #e2e8f0, #f1f5f9); }
         .text-zhizhu   { color: #475569; }
+
+        .bg-bojin      { background: linear-gradient(135deg, #f0fdf4, #ecfccb); }
+        .text-bojin    { color: #3f6212; }
     </style>
 </head>
 <body>
@@ -379,6 +383,7 @@
     <span class="divider-v"></span>
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
+    <button class="btn" id="btnHumidity" onclick="setSortBy('humidity')">💦</button>
     <span class="divider-v"></span>
     <span class="season-tag" id="seasonTag"></span>
 </div>
@@ -420,10 +425,10 @@
 const UI = {
     zh: {
         gridView: '🪴 卡片', locView: '📍 位置',
-        sortLight: '☀️ 光照', sortWater: '💧 浇水',
+        sortLight: '☀️ 光照', sortWater: '💧 浇水', sortHumidity: '💦 湿度',
         langBtn: 'EN',
         season: '🌧 Adelaide 冬季 · 休眠期',
-        light: '光照', water: '浇水频率',
+        light: '光照', water: '浇水频率', humidity: '湿度',
         intro: '📋 简介', lightNeeds: '☀️ 光照', waterNeeds: '💧 浇水',
         seasonNow: '🌧 当前季节 (Adelaide 冬季)', tips: '📝 要点',
         septPlan: '🌱 九月计划',
@@ -436,10 +441,10 @@ const UI = {
     },
     en: {
         gridView: '🪴 Cards', locView: '📍 Rooms',
-        sortLight: '☀️ Light', sortWater: '💧 Water',
+        sortLight: '☀️ Light', sortWater: '💧 Water', sortHumidity: '💦 Humidity',
         langBtn: '中文',
         season: '🌧 Adelaide winter · dormancy',
-        light: 'Light', water: 'Watering',
+        light: 'Light', water: 'Watering', humidity: 'Humidity',
         intro: '📋 About', lightNeeds: '☀️ Light', waterNeeds: '💧 Water',
         seasonNow: '🌧 This season (Adelaide winter)', tips: '📝 Key points',
         septPlan: '🌱 September plan',
@@ -493,7 +498,7 @@ const plants = [
         id: 1, nickname: '蛋花', latin: 'Plumeria',
         fullName: { zh: '鸡蛋花 · Frangipani', en: 'Frangipani · 鸡蛋花' },
         sept: { zh: '9月夜温稳定高于15°C后，永久移到户外全日照（阳台边缘或庭院）。枝头出新芽后开始每周浇水，10–11月起用高钾肥促开花。', en: 'Once nights stay above 15°C, move outside permanently to full sun (alfresco edge or yard). Start weekly watering when new tip growth appears; high-potassium feed from Oct–Nov for flowers.' },
-        light: 5, water: 1, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
+        light: 5, water: 1, humidity: 1, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
         status: 'temp', locationNo: 2,
         short: {
             zh: '冬季落叶休眠中。9月移到户外全日照。',
@@ -529,7 +534,7 @@ const plants = [
         id: 2, nickname: '皮皮', latin: 'Ficus elastica (variegated)',
         fullName: { zh: '斑叶橡皮树', en: 'Variegated Rubber Tree · 斑叶橡皮树' },
         sept: { zh: '恢复缓释肥。保持最亮位置以维持斑叶。如根从盆底长出，春季是换盆的最佳时机。', en: 'Resume slow-release fertiliser. Keep the brightest spot to hold variegation. If roots show at the drainage holes, spring is the window to repot.' },
-        light: 4, water: 2, img: 'images/pipi.jpg', bgClass: 'bg-pipi', textClass: 'text-pipi',
+        light: 4, water: 2, humidity: 2, img: 'images/pipi.jpg', bgClass: 'bg-pipi', textClass: 'text-pipi',
         status: 'ok', locationNo: 2,
         short: {
             zh: '约20cm小苗。需要最亮的散射光来保持斑叶。',
@@ -568,7 +573,7 @@ const plants = [
         id: 3, nickname: '刚刚', latin: "Ficus elastica 'Burgundy'",
         fullName: { zh: '黑金刚橡皮树', en: 'Burgundy Rubber Tree · 黑金刚' },
         sept: { zh: '检查截口已愈合（干燥褐色边缘），截口下应萌发2–4根新枝。恢复正常浇水和缓释肥。扦插枝长出新叶=已生根，正式上盆。', en: 'Confirm the topping cut has calloused (dry brown edge) — 2–4 new branches should push below it. Resume normal watering and slow-release feed. The top cutting growing a new leaf = rooted; pot it up properly.' },
-        light: 4, water: 2, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang',
+        light: 4, water: 2, humidity: 2, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang',
         status: 'recover', locationNo: 2,
         short: {
             zh: '6月已截顶（现90cm）。截口愈合中，保持偏干、勿移动。',
@@ -607,7 +612,7 @@ const plants = [
         id: 4, nickname: '棠棠', latin: 'Begonia maculata',
         fullName: { zh: '鳟鱼秋海棠', en: 'Polka Dot Begonia · 鳟鱼秋海棠' },
         sept: { zh: '徒长的茎剪短一半，促进分枝更茂密。恢复每月施肥。可选择移到阳台遮阴处，通风更好。', en: 'Prune leggy stems by half for bushier regrowth. Resume monthly feeding. Optional move to the covered alfresco for better airflow.' },
-        light: 3, water: 3, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
+        light: 3, water: 3, humidity: 2, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
         status: 'ok', locationNo: 3,
         short: {
             zh: '白色斑点是天然特征。浇水浇土不浇叶，注意通风。',
@@ -640,10 +645,10 @@ const plants = [
         },
     },
     {
-        id: 5, nickname: '豹豹', latin: 'Goeppertia concinna',
+        id: 5, nickname: '豹豹', latin: 'Goeppertia lancifolia',
         fullName: { zh: '豹纹竹芋', en: 'Rattlesnake Plant · 豹纹竹芋' },
         sept: { zh: '恢复每月半浓度液肥（容易烧根）。继续只用过滤水。天气转暖湿度压力减小，但注意早春干热天。', en: 'Resume half-strength liquid feed monthly (full strength burns it). Stay on filtered water. Humidity pressure eases, but watch early hot dry spells.' },
-        light: 3, water: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
+        light: 3, water: 4, humidity: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
         status: 'ok', locationNo: 6,
         short: {
             zh: '需要≥60%湿度。浴室蒸汽是最佳方案。只用过滤水。',
@@ -679,49 +684,46 @@ const plants = [
         },
     },
     {
-        id: 6, nickname: '雀雀', latin: 'Calathea orbifolia',
-        fullName: { zh: '孔雀竹芋', en: 'Calathea orbifolia · 孔雀竹芋' },
-        sept: { zh: '分株应已稳定——长出新叶即确认恢复，可把状态改回正常。恢复每月半浓度液肥，继续过滤水。', en: 'Divisions should be stable — a new leaf confirms recovery (status can flip back to normal). Resume half-strength monthly feed; stay on filtered water.' },
-        light: 3, water: 4, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
-        status: 'recover', locationNo: 6,
+        id: 6, nickname: '雀雀', latin: 'Ctenanthe burle-marxii',
+        fullName: { zh: '鱼骨祈祷植物', en: 'Fishbone Prayer Plant · 鱼骨祈祷植物' },
+        sept: { zh: '恢复每月半浓度液肥。保持湿度，天气转暖后可移到阳台遮阴处。检查是否需要换盆。', en: 'Resume half-strength monthly feed. Keep humidity up; can move to shaded alfresco as weather warms. Check if it needs repotting.' },
+        light: 3, water: 4, humidity: 4, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
+        status: 'ok', locationNo: 6,
         short: {
-            zh: '6月分株成2盆，恢复中。最敏感的植物——湿度优先。',
-            en: 'Divided into 2 pots in June — recovering. Most sensitive plant; humidity first.',
+            zh: '鱼骨纹叶片，夜间祈祷运动。喜高湿度。',
+            en: 'Fishbone-patterned leaves with nightly prayer movement. Loves high humidity.',
         },
         locationDetail: {
-            zh: '2026年6月分株成2盆，正在恢复。浴室蒸汽湿度是最重要的恢复条件。确认浴室有足够光线。',
-            en: 'Divided into 2 pots June 2026, now recovering. Bathroom steam humidity is the most important recovery condition. Confirm the light is adequate.',
+            zh: '浴室窗边，淋浴蒸汽自然提供高湿度。与豹豹放在一起，互相提升局部湿度。',
+            en: 'Bathroom window — shower steam naturally provides the humidity it craves. Grouped with 豹豹 to raise local humidity.',
         },
         description: {
-            zh: '圆形短叶，银色条纹，优雅温婉。2026年6月分株，现有2盆。最敏感的植物之一。',
-            en: 'Round leaves with silver stripes — elegant and delicate. Divided June 2026, now 2 pots. One of the most sensitive plants in the collection.',
+            zh: '鱼骨祈祷植物，叶片有独特鱼骨状深绿斑纹，叶背紫色。夜间叶片竖起（祈祷运动），比大多数竹芋更皮实好养。',
+            en: 'Fishbone prayer plant with distinctive herringbone dark-green markings and purple undersides. Leaves fold upward at night (prayer movement). Hardier than most calatheas.',
         },
         lightDetail: {
-            zh: '中等散射光，绝对不能直射。浴室有窗的自然散射光即可。',
-            en: 'Medium indirect light, never direct. Natural diffused bathroom window light is fine.',
+            zh: '散射光或耐阴，避免直射阳光——叶片会褪色。浴室窗边的自然光即可。',
+            en: 'Indirect light or shade-tolerant. Avoid direct sun — leaves fade. Bathroom window light is enough.',
         },
         waterDetail: {
-            zh: '保持土壤微湿，不能干透。必须用过滤水或雨水。冬季每3–5天检查。',
-            en: 'Keep soil lightly moist, never dried out. Filtered or rainwater only. Check every 3–5 days in winter.',
+            zh: '保持湿润，冬季适当减少浇水。不能完全干透。最好用过滤水或雨水，避免叶尖焦枯。',
+            en: 'Keep moist, reduce in winter. Never let it dry out completely. Filtered or rainwater preferred to avoid crispy tips.',
         },
         seasonNote: {
-            zh: '冬季+分株恢复期：这是最脆弱的阶段。保持湿度、温度、别移动。3–4周后会稳定。',
-            en: 'Winter + post-division: its most fragile phase. Hold humidity and warmth steady, don\'t move it. Should stabilise in 3–4 weeks.',
+            zh: '冬季：减少浇水但保持湿度。远离暖气出风口。保持18°C以上。',
+            en: 'Winter: water less but maintain humidity. Keep away from heater vents. Stay above 18°C.',
         },
-        alert: {
-            zh: '刚分株恢复中：预计2–4周内叶片下垂、褐边增多——这是正常的分株反应，不要过度浇水。',
-            en: 'Recovering from division: expect drooping and extra brown edges for 2–4 weeks — normal shock. Do not compensate by overwatering.',
-        },
+        alert: null,
         tips: {
-            zh: '• 2盆都在恢复——看起来不好不要慌\n• 分株后最怕：移动 + 过浇 + 干燥\n• 只用过滤水或雨水\n• 不要喷水——会引发真菌\n• 叶片晚上收拢是健康信号',
-            en: '• Both pots recovering — looking sad is expected\n• Post-division enemies: moving, overwatering, dry air\n• Filtered or rainwater only\n• Don\'t mist — causes fungus\n• Leaves rising at night = healthy sign',
+            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 比大多数竹芋更皮实，适合新手\n• 高湿度环境更好——浴室理想\n• 不要向叶面喷水——容易真菌斑\n• 叶背紫色褪淡 = 光线或湿度不足',
+            en: '• Leaves folding at night (prayer movement) = healthy\n• Hardier than most calatheas — good for beginners\n• Thrives in high humidity — bathroom is ideal\n• Don\'t mist — causes fungal spots\n• Fading purple undersides = low light or humidity',
         },
     },
     {
         id: 7, nickname: '青青', latin: "Dieffenbachia 'Sterling'",
         fullName: { zh: '花叶万年青', en: 'Dumb Cane · 万年青' },
         sept: { zh: '分株恢复后恢复施肥（缓释肥）。如长势旺、根满盆，春季换盆。继续戴手套操作。', en: 'Once recovered from division, resume slow-release feeding. Repot in spring if rootbound. Keep using gloves.' },
-        light: 3, water: 3, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
+        light: 3, water: 3, humidity: 2, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
         status: 'recover', locationNo: 3,
         short: {
             zh: '6月分株成2盆，恢复中。树液刺激，戴手套。',
@@ -760,7 +762,7 @@ const plants = [
         id: 8, nickname: '贝贝', latin: 'Monstera deliciosa',
         fullName: { zh: '龟背竹', en: 'Monstera · 龟背竹' },
         sept: { zh: '可移到阳台（有顶、散射光）——户外生长快得多，38°C以上搬回。恢复施肥。插条生根后上盆。生长快，检查是否需要换大盆。', en: 'Optional move to the covered alfresco (filtered light) — much faster growth outdoors; bring in above 38°C. Resume feeding. Pot up rooted cuttings. Fast grower — check if it needs a bigger pot.' },
-        light: 2, water: 2, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
+        light: 2, water: 2, humidity: 3, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
         status: 'ok', locationNo: 2,
         short: {
             zh: '每周转90°。苔藓柱进行中，插条繁殖中。',
@@ -796,7 +798,7 @@ const plants = [
         id: 9, nickname: 'Lili', latin: 'Spathiphyllum',
         fullName: { zh: '白掌 · Peace Lily', en: 'Peace Lily · 白掌' },
         sept: { zh: '移到稍亮的散射光位置促开花。恢复每月平衡液肥（6月换盆已过安全期）。', en: 'Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (safe now after the June repot).' },
-        light: 1, water: 4, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
+        light: 1, water: 4, humidity: 3, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
         status: 'ok', locationNo: 5,
         short: {
             zh: '叶片下垂=浇水信号。已换盆，恢复良好。',
@@ -832,7 +834,7 @@ const plants = [
         id: 10, nickname: '刺刺', latin: 'Cactus',
         fullName: { zh: '仙人掌', en: 'Cactus · 仙人掌' },
         sept: { zh: '夜温回暖后恢复少量浇水（每2–4周，土全干再浇）。其他一切照旧，不用施肥。', en: 'Resume sparse watering once nights warm (every 2–4 weeks, only when bone dry). Nothing else needed; no fertiliser.' },
-        light: 5, water: 1, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
+        light: 5, water: 1, humidity: 1, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
         status: 'outside', locationNo: 8,
         short: {
             zh: '庭院屋檐下，位置完美。冬季完全不管它。',
@@ -843,8 +845,8 @@ const plants = [
             en: 'In the yard under the roof — light without rain on the soil. Already in its ideal permanent spot.',
         },
         description: {
-            zh: '仙人掌，最省心的植物。屋檐下避雨，冬季休眠。',
-            en: 'The lowest-maintenance plant in the collection. Rain-sheltered under the roof, dormant through winter.',
+            zh: '蓝柱仙人掌，最省心的植物。屋檐下避雨，冬季休眠。',
+            en: 'Blue columnar cactus — the lowest-maintenance plant in the collection. Rain-sheltered under the roof, dormant through winter.',
         },
         lightDetail: {
             zh: '全日照最佳。屋檐下的明亮位置已经足够。',
@@ -865,42 +867,75 @@ const plants = [
         },
     },
     {
-        id: 11, nickname: '蜘蛛', latin: 'Chlorophytum comosum',
-        fullName: { zh: '吊兰 · Spider Plant', en: 'Spider Plant · 吊兰' },
-        sept: { zh: '霜冻期结束，可常驻室外遮阴处。如长出小苗（吊兰宝宝），剪下水培或压土繁殖。', en: 'Frost risk is over — it can live outside in shade full-time. If spiderettes appear, propagate them in water or soil.' },
-        light: 2, water: 2, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
-        status: 'watch', locationNo: 8,
+        id: 11, nickname: '蜘蛛', latin: 'Agapanthus',
+        fullName: { zh: '非洲百合', en: 'Agapanthus · 非洲百合' },
+        sept: { zh: '春季恢复正常浇水，开始每月施肥（高钾肥促花）。花期通常在11月–1月。', en: 'Resume normal watering in spring and start monthly feeding (high-potassium for flowers). Blooms typically Nov–Jan.' },
+        light: 5, water: 2, humidity: 1, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
+        status: 'outside', locationNo: 8,
         short: {
-            zh: '现在室外。低于5°C的夜晚要搬进来。',
-            en: 'Now outside. Bring in on nights below 5°C.',
+            zh: '耐旱强健，全日照或半阴。干透再浇。',
+            en: 'Tough and drought-tolerant. Full sun or part shade. Water when dry.',
         },
         locationDetail: {
-            zh: '现在放在室外。耐寒性较好，但低于5°C的夜晚（7–8月霜冻风险）要搬进室内。最好放遮阴避风处。',
-            en: 'Currently outside. Handles cool weather better than the tropicals, but bring it in on nights below 5°C (July–Aug frost risk). Sheltered shade is best.',
+            zh: '室外永久位置。全日照最佳，半阴也可以。Adelaide气候非常适合。',
+            en: 'Permanent outdoor spot. Full sun is best, part shade is fine too. Thrives in Adelaide\'s climate.',
         },
         description: {
-            zh: '吊兰，救回来的植物，生命力极强。健康时会长出垂吊的小苗（吊兰宝宝）。',
-            en: 'A rescued plant — one of the toughest houseplants in existence. When happy it produces dangling baby plantlets (spiderettes). Pet-safe.',
+            zh: '非洲百合，南非原产多年生植物。花期开出蓝紫色球形花序，非常壮观。极其耐旱，Adelaide气候理想。',
+            en: 'South African perennial known for its stunning spherical blue-purple flower clusters. Extremely drought-tolerant — thrives in Adelaide\'s climate.',
         },
         lightDetail: {
-            zh: '中低光照都可以。避免直射阳光——叶片会褪色。',
-            en: 'Fine in low to medium light. Avoid direct sun — leaves bleach.',
+            zh: '全日照最好，开花更多更旺。半阴也可以生存但花量减少。',
+            en: 'Full sun for best flowering. Tolerates part shade but produces fewer blooms.',
         },
         waterDetail: {
-            zh: '土表3–4cm干了再浇。冬季每10–14天。肉质根储水，很耐旱。',
-            en: 'Water when top 3–4cm is dry. Every 10–14 days in winter. Fleshy roots store water — very drought-tolerant.',
+            zh: '耐旱，干透再浇。冬季几乎不需要浇水。过多水分会导致根腐。',
+            en: 'Drought-tolerant — water only when fully dry. Almost no watering needed in winter. Overwatering causes root rot.',
         },
         seasonNote: {
-            zh: '冬季室外：注意霜冻！低于5°C的夜晚搬进室内。其他时候很省心。',
-            en: 'Outside in winter: watch for frost! Bring indoors on nights below 5°C. Otherwise very low-maintenance.',
+            zh: '冬季：几乎不需要照顾。减少浇水，不施肥。叶片可能部分枯黄，正常现象。',
+            en: 'Winter: almost zero care needed. Reduce water, no fertiliser. Some leaf yellowing is normal.',
         },
-        alert: {
-            zh: '7–8月霜冻风险：夜温低于5°C时搬进室内。',
-            en: 'July–August frost risk: bring inside when nights drop below 5°C.',
-        },
+        alert: null,
         tips: {
-            zh: '• 唯一对宠物无毒的悬挂植物\n• 褐色焦尖=自来水含氟，换过滤水\n• 长出小苗=植株健康的信号\n• 小苗可剪下水培或压土繁殖',
-            en: '• Pet-safe — rare among popular houseplants\n• Brown tips = tap water fluoride, use filtered\n• Spiderettes appearing = a happy plant\n• Babies root easily in water or soil',
+            zh: '• 极其耐旱——宁干勿湿\n• 全日照开花最多\n• Adelaide气候非常适合，不怕热\n• 冬季叶片部分枯黄是正常的\n• 根系强壮，可在原位生长多年',
+            en: '• Very drought-tolerant — better dry than wet\n• Full sun = most flowers\n• Loves Adelaide climate, heat-tolerant\n• Some winter leaf yellowing is normal\n• Strong root system, happy in same spot for years',
+        },
+    },
+    {
+        id: 12, nickname: '铂金', latin: 'Philodendron Birkin',
+        fullName: { zh: '比尔金喜林芋', en: 'Philodendron Birkin · 比尔金喜林芋' },
+        sept: { zh: '恢复每月缓释肥。检查光照——条纹消失说明光不够，靠近窗口。生长旺盛可考虑换盆。', en: 'Resume monthly slow-release feed. Check light — fading stripes mean not enough light, move closer to window. Repot if fast-growing.' },
+        light: 4, water: 2, humidity: 3, img: 'images/bojin.jpg', bgClass: 'bg-bojin', textClass: 'text-bojin',
+        status: 'ok', locationNo: 2,
+        short: {
+            zh: '白色条纹叶片。光线不足条纹会消失。',
+            en: 'White-striped leaves. Stripes fade without enough light.',
+        },
+        locationDetail: {
+            zh: '主卧落地窗边，明亮散射光。需要充足光照维持标志性白色条纹。',
+            en: 'Master bedroom by the window, bright indirect light. Needs good light to maintain its signature white pinstripes.',
+        },
+        description: {
+            zh: '比尔金喜林芋，深绿色叶片上有精致的白色条纹。自清洁变异品种，光照不足时条纹会退化为纯绿色。',
+            en: 'A self-heading philodendron with striking white pinstripes on dark green leaves. A sport mutation — stripes revert to plain green without enough light.',
+        },
+        lightDetail: {
+            zh: '明亮散射光。光线不足时新叶条纹会消失，变成纯绿色。避免直射阳光灼伤。',
+            en: 'Bright indirect light. New leaves lose their pinstripes in low light, reverting to solid green. Avoid direct sun — scorches.',
+        },
+        waterDetail: {
+            zh: '表层2–3cm干后浇透，确保排水良好，避免积水。冬季每10–14天。',
+            en: 'Water thoroughly when top 2–3cm is dry. Ensure good drainage — never let it sit in water. Every 10–14 days in winter.',
+        },
+        seasonNote: {
+            zh: '冬季：减少浇水，不施肥。保持在明亮散射光位置。',
+            en: 'Winter: reduce watering, no fertiliser. Keep in bright indirect light.',
+        },
+        alert: null,
+        tips: {
+            zh: '• 白条纹消失 = 光线不够，靠近窗口\n• 避免积水，排水很重要\n• 偶尔出现全白叶片是正常变异\n• 全白叶片没有叶绿素，可能会枯萎\n• 生长速度中等，不需要频繁换盆',
+            en: '• Stripes fading = not enough light, move closer to window\n• Good drainage is critical — no waterlogging\n• Occasional all-white leaves are normal mutations\n• All-white leaves lack chlorophyll and may die off\n• Moderate grower, doesn\'t need frequent repotting',
         },
     },
 ];
@@ -1092,7 +1127,9 @@ window.closeLightbox = function(event) {
 // ─────────────────────────────────────────────
 function renderGrid() {
     const sorted = [...plants].sort((a, b) =>
-        sortBy === 'light' ? b.light - a.light : b.water - a.water
+        sortBy === 'light' ? b.light - a.light
+            : sortBy === 'water' ? b.water - a.water
+            : b.humidity - a.humidity
     );
 
     let html = '';
@@ -1117,6 +1154,7 @@ function renderGrid() {
                     </div>
                     <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
                     <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
+                    <div class="emoji-rating">${'💦'.repeat(plant.humidity)}</div>
                 </div>
             </div>`;
     });
@@ -1158,6 +1196,7 @@ function renderLocations() {
                         </div>
                         <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
                         <div class="emoji-rating">${'💧'.repeat(plant.water)}</div>
+                        <div class="emoji-rating">${'💦'.repeat(plant.humidity)}</div>
                     </div>
                 </div>`;
         });
@@ -1222,6 +1261,10 @@ window.openModal = function(plantId) {
         <div class="info-row">
             <div class="info-label">${ui.water}</div>
             <div class="info-value">${'💧'.repeat(plant.water)} (${plant.water}/5)</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">${ui.humidity}</div>
+            <div class="info-value">${'💦'.repeat(plant.humidity)} (${plant.humidity}/4)</div>
         </div>
 
         <div class="section-title ${plant.textClass}">${ui.intro}</div>
@@ -1300,11 +1343,13 @@ function syncControls() {
     const bLoc = document.getElementById('btnLoc');
     const bLight = document.getElementById('btnLight');
     const bWater = document.getElementById('btnWater');
+    const bHumidity = document.getElementById('btnHumidity');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
+    bHumidity.textContent = ui.sortHumidity;
     document.getElementById('seasonTag').textContent = ui.season;
 
     bGrid.classList.toggle('active', view === 'grid');
@@ -1316,6 +1361,8 @@ function syncControls() {
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
     bWater.classList.toggle('active', sortBy === 'water' && view === 'grid');
     bWater.classList.toggle('water', sortBy === 'water' && view === 'grid');
+    bHumidity.classList.toggle('active', sortBy === 'humidity' && view === 'grid');
+    bHumidity.classList.toggle('humidity', sortBy === 'humidity' && view === 'grid');
 }
 
 // init

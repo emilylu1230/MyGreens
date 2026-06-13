@@ -1,15 +1,16 @@
 # Image credits
 
-Default card images sourced from Wikipedia/Wikimedia Commons:
+Default card images sourced from Unsplash (free to use):
 
-- images/danhua.jpg: lead image from Wikipedia 'Plumeria' (https://en.wikipedia.org/wiki/Plumeria) — Wikimedia Commons
-- images/ganggang.jpg: lead image from Wikipedia 'Ficus elastica' (https://en.wikipedia.org/wiki/Ficus_elastica) — Wikimedia Commons
-- images/queque.jpg: lead image from Wikipedia 'Calathea orbifolia' (https://en.wikipedia.org/wiki/Goeppertia_orbifolia) — Wikimedia Commons
-- images/beibei.jpg: lead image from Wikipedia 'Monstera deliciosa' (https://en.wikipedia.org/wiki/Monstera_deliciosa) — Wikimedia Commons
-- images/lili.jpg: lead image from Wikipedia 'Spathiphyllum' (https://en.wikipedia.org/wiki/Spathiphyllum) — Wikimedia Commons
-- images/cici.jpg: lead image from Wikipedia 'Cactus' (https://en.wikipedia.org/wiki/Cactus) — Wikimedia Commons
-- images/zhizhu.jpg: lead image from Wikipedia 'Chlorophytum comosum' (https://en.wikipedia.org/wiki/Chlorophytum_comosum) — Wikimedia Commons
-- images/tangtan.jpg: lead image from Wikipedia 'Begonia maculata' — Wikimedia Commons
-- images/baobao.jpg: lead image from Wikipedia 'Goeppertia concinna' — Wikimedia Commons
-- images/qingqing.jpg: lead image from Wikipedia 'Dieffenbachia' — Wikimedia Commons
-- images/pipi.jpg: 'File:Ficus elastica 'Variegata' kz01.jpg' — Wikimedia Commons
+- images/danhua.jpg: Plumeria — https://unsplash.com/photos/yNzMPHH9XE4
+- images/pipi.jpg: Ficus elastica variegata — https://unsplash.com/photos/gx1uzNtOlhY
+- images/ganggang.jpg: Ficus elastica Burgundy — https://unsplash.com/photos/rubber-plant-5mIcH3q7tIk
+- images/tangtan.jpg: Begonia maculata — https://unsplash.com/photos/green-and-maroon-leaf-plant-9ai1TxXeJyQ
+- images/baobao.jpg: Goeppertia lancifolia — https://unsplash.com/photos/8nONCr6eTeg
+- images/queque.jpg: Ctenanthe burle-marxii — https://unsplash.com/photos/a-close-up-of-a-leaf-with-drops-of-water-on-it-lokhqBhHp3g
+- images/qingqing.jpg: Dieffenbachia — https://unsplash.com/photos/dumb-cane-plant-vbZEpX2A0oA
+- images/beibei.jpg: Monstera deliciosa — https://unsplash.com/photos/a-potted-monstera-deliciosa-plant-with-unique-leaves-zoQ2Ax9a_5w
+- images/lili.jpg: Spathiphyllum — https://unsplash.com/photos/peace-lily-flower-T8QAKeKDPXY
+- images/cici.jpg: Blue columnar cactus — https://unsplash.com/photos/a-tall-cactus-reaches-toward-a-clear-blue-sky-S9J3GL9tp8A
+- images/zhizhu.jpg: Agapanthus — https://unsplash.com/photos/a-close-up-of-a-purple-agapanthus-flower-bud-cluster-6AiBz5rObNs
+- images/bojin.jpg: Philodendron Birkin — https://unsplash.com/photos/a-close-up-of-a-green-and-white-leaf-ptv_6wxxt5I
