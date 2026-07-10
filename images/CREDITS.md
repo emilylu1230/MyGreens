@@ -14,3 +14,10 @@ Default card images sourced from Unsplash (free to use):
 - images/cici.jpg: Blue columnar cactus — https://unsplash.com/photos/a-tall-cactus-reaches-toward-a-clear-blue-sky-S9J3GL9tp8A
 - images/zhizhu.jpg: Agapanthus — https://unsplash.com/photos/a-close-up-of-a-purple-agapanthus-flower-bud-cluster-6AiBz5rObNs
 - images/bojin.jpg: Philodendron Birkin — https://unsplash.com/photos/a-close-up-of-a-green-and-white-leaf-ptv_6wxxt5I
+
+Additional card images from Wikimedia Commons (attribution required):
+
+- images/qinqin.jpg: Ficus lyrata (leaf) — seeks2dream, CC BY-SA 2.0 — https://commons.wikimedia.org/wiki/File:Ficus_lyrata_leaf.jpg
+- images/xingxing.jpg: Monstera deliciosa 'Thai Constellation' — cultivar413, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:201016_117_San_Diego_Botanic_Garden_-_Dickinson_Family_Conseratory,_Monstera_deliciosa_%27Thai_Constellation%27.jpg
+- images/niaoniao.jpg: Strelitzia (Bird of Paradise) — Scott Bauer, USDA, Public domain — https://commons.wikimedia.org/wiki/File:Strelitzia_larger.jpg
+- images/banban.jpg: Haworthiopsis attenuata — stephen boisvert, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Winterbourne_-_Haworthia_attenuata_(6120983526).jpg
