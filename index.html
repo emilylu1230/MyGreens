@@ -574,6 +574,9 @@ const STATUS = {
 };
 
 const LOCATIONS = {
+    1: { name: { zh: '主卧阳台', en: 'Master BR balcony' },
+         shortName: { zh: '主卧阳台', en: 'BR balcony' },
+         sub: { zh: '主卧外 · 露天无遮 · 春夏温暖日照', en: 'Off master bedroom · open-air · warm spring/summer sun' } },
     2: { name: { zh: '主卧 · 靠近落地窗', en: 'Master BR · by the window' },
          shortName: { zh: '主卧窗边', en: 'BR window' },
          sub: { zh: '朝北 · 明亮散射光 · 窗外树木自然过滤', en: 'North-facing · bright indirect · trees filter light' } },
@@ -1113,7 +1116,7 @@ const plants = [
         fullName: { zh: '大鹤望兰 · 天堂鸟', en: 'Giant Bird of Paradise · 大鹤望兰' },
         sept: { zh: '春季恢复正常浇水与施肥（生长旺盛，喜肥）。全日照促生长。长得快、根系强，可换大盆。', en: 'Resume normal watering and feeding in spring (a hungry, vigorous grower). Full sun drives growth. Fast-growing with strong roots — pot up if needed.' },
         light: 5, water: 3, humidity: 2, waterDays: null, img: 'images/niaoniao.jpg', bgClass: 'bg-niaoniao', textClass: 'text-niaoniao',
-        status: 'stable', locationNo: 8,
+        status: 'stable', locationNo: 1,
         short: {
             zh: '阳台全日照/半阴，耐雨。生长季保持湿润，可长到8m。',
             en: 'Balcony full sun / part shade, rain-hardy. Keep moist in growing season; can reach 8m.',
@@ -1579,10 +1582,10 @@ function renderGrid() {
 // ─────────────────────────────────────────────
 // Render: location view
 // ─────────────────────────────────────────────
-const LOC_ICONS = { 2: '🪟', 3: '🪞', 5: '🛋️', 8: '🌳' };
+const LOC_ICONS = { 1: '🌤️', 2: '🪟', 3: '🪞', 5: '🛋️', 8: '🌳' };
 
 function renderLocations() {
-    const order = [2, 3, 5, 8];
+    const order = [1, 2, 3, 5, 8];
     let html = '';
 
     order.forEach(locNo => {
