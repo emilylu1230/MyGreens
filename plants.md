@@ -18,7 +18,7 @@
 |雀雀         |Calathea orbifolia       |孔雀竹芋        |Round short leaves. High humidity needed.                                                                     |
 |棠棠         |Begonia maculata         |鳟鱼秋海棠       |White spots on leaves.                                                                                        |
 |皮皮         |Variegated Ficus elastica|斑叶橡皮树       |Bronze-green mixed variegation.                                                                               |
-|豹豹         |Goeppertia concinna      |豹纹竹芋        |Long lanceolate leaves, leopard markings, purple-red backs. Bright indirect light, ≥60% humidity.             |
+|小羽         |Goeppertia insignis      |箭羽竹芋        |Long lanceolate leaves, leopard markings, purple-red backs. Bright indirect light, ≥60% humidity.             |
 
 ## Outdoor Plants (2)
 

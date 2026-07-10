@@ -22,7 +22,7 @@
 | 雀雀 | Calathea orbifolia (孔雀竹芋) | Recently divided into 2 pots (June 2026). Post-division recovery — very sensitive. |
 | 棠棠 | Begonia maculata (鳟鱼秋海棠) | White spots on leaves. |
 | 皮皮 | Variegated Ficus elastica (斑叶橡皮树) | Bronze-green mixed variegation. ~20cm, new/young plant. |
-| 豹豹 | Goeppertia concinna (豹纹竹芋) | Long lanceolate leaves, leopard markings, purple-red backs. ≥60% humidity. |
+| 小羽 | Goeppertia insignis (箭羽竹芋) | Long lanceolate leaves, leopard markings, purple-red backs. ≥60% humidity. |
 
 ### Outdoor (2)
 - 刺刺 — Cactus (yard, under roof — protected from rain, already in correct permanent spot)
@@ -51,7 +51,7 @@
 
 ### Week 1–2 — resume feeding (soil >18°C)
 - Slow-release fertiliser for: 刚刚, 皮皮, 贝贝, 棠棠, 青青 (both pots)
-- Half-strength liquid monthly for: 雀雀 (both pots), 豹豹 — they burn easily
+- Half-strength liquid monthly for: 雀雀 (both pots), 小羽 — they burn easily
 - Lili: balanced monthly feed + move to a slightly brighter spot to trigger flowering (repot was June, safe to feed now)
 - 刺刺: resume sparse watering only when nights are warm; no fertiliser needed
 
@@ -68,7 +68,7 @@
 
 ### Watering shift
 - All plants: winter intervals end. Roughly halve the gaps (e.g. Ficus 10–14 days → 7 days) but keep checking soil first — spring in Adelaide can still have cool weeks.
-- 雀雀/豹豹: keep filtered water only; humidity pressure eases as weather warms but watch early hot dry spells.
+- 雀雀/小羽: keep filtered water only; humidity pressure eases as weather warms but watch early hot dry spells.
 
 ### App updates due in September
 - Statuses: 刚刚/雀雀/青青 recover→ok (when confirmed), 蛋花 temp→outside, 蜘蛛 watch→outside
