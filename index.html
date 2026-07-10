@@ -347,6 +347,62 @@
         .lb-del { background: #fee2e2; color: #b91c1c; }
         .lb-close { background: white; color: #374151; }
 
+        /* ── DASHBOARD (Today) ── */
+        #dashboard { display: none; max-width: 720px; margin: 0 auto; padding: 0.75rem; }
+        #dashboard.show { display: block; }
+
+        .dash-stats { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+        .dash-stat {
+            flex: 1; background: white; border-radius: 12px; padding: 0.7rem 0.4rem;
+            text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .dash-stat .num { font-size: 1.55rem; font-weight: 800; line-height: 1; color: #14532d; }
+        .dash-stat .lbl { font-size: 0.66rem; color: #6b7280; margin-top: 0.28rem; }
+        .dash-stat.due .num { color: #d97706; }
+        .dash-stat.overdue .num { color: #dc2626; }
+
+        .dash-group { margin-bottom: 1.1rem; }
+        .dash-group-title {
+            font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em; color: #6b7280; margin: 0 0.2rem 0.45rem;
+        }
+        .dash-empty { text-align: center; color: #6b7280; font-size: 0.9rem; padding: 1.5rem 0 0.5rem; }
+
+        .water-row {
+            display: flex; align-items: center; gap: 0.6rem;
+            background: white; border-radius: 12px; padding: 0.6rem 0.75rem;
+            margin-bottom: 0.4rem; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #e5e7eb;
+        }
+        .water-row.s-overdue { border-left-color: #dc2626; }
+        .water-row.s-due     { border-left-color: #f59e0b; }
+        .water-row.s-never   { border-left-color: #a855f7; }
+        .water-row.s-soon    { border-left-color: #60a5fa; }
+        .water-row.s-ok      { border-left-color: #22c55e; }
+        .water-row.s-hold    { border-left-color: #cbd5e1; }
+        .wr-main { flex: 1; min-width: 0; cursor: pointer; }
+        .wr-name { font-weight: 700; font-size: 0.95rem; color: #1f2937; }
+        .wr-name .wr-latin { font-weight: 400; font-size: 0.76rem; color: #9ca3af; }
+        .wr-meta { font-size: 0.73rem; color: #6b7280; margin-top: 0.12rem; }
+        .wr-meta .od { color: #dc2626; font-weight: 600; }
+        .wr-btn {
+            flex-shrink: 0; padding: 0.5rem 0.75rem; border-radius: 10px;
+            border: 1px solid #86efac; background: #f0fdf4; color: #15803d;
+            font-weight: 600; font-size: 0.8rem; cursor: pointer; white-space: nowrap;
+            transition: transform 0.12s;
+        }
+        .wr-btn:active { transform: scale(0.95); }
+        .wr-btn.done { background: #dcfce7; border-color: #dcfce7; cursor: default; }
+
+        /* card water pill (works over photos too) */
+        .card-wpill {
+            font-size: 0.6rem; font-weight: 700; padding: 0.08rem 0.4rem;
+            border-radius: 8px; display: inline-block; color: #fff;
+        }
+        .card-wpill.od  { background: #dc2626; }
+        .card-wpill.due { background: #f59e0b; }
+        @media (min-width: 768px) { .card-wpill { font-size: 0.7rem; } }
+
         /* ── PLANT COLOURS ── */
         .bg-danhual    { background: linear-gradient(135deg, #fef3c7, #fed7aa); }
         .text-danhual  { color: #b45309; }
@@ -380,6 +436,7 @@
 <div class="controls">
     <button class="btn active view" id="btnGrid" onclick="setView('grid')">🪴</button>
     <button class="btn" id="btnLoc" onclick="setView('loc')">📍</button>
+    <button class="btn" id="btnToday" onclick="setView('today')">📋</button>
     <span class="divider-v"></span>
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
@@ -391,6 +448,7 @@
 <main>
     <div id="grid"></div>
     <div id="locationView"></div>
+    <div id="dashboard"></div>
 </main>
 
 <div id="modal" class="modal" onclick="closeModal(event)">
@@ -438,6 +496,18 @@ const UI = {
         deletePhoto: '删除', closePhoto: '关闭',
         confirmDelete: '删除这张照片？',
         photoNote: '照片只保存在这台设备上',
+        todayView: '📋 今日',
+        wateringTitle: '💧 浇水记录',
+        recommended: '建议频率', recEvery: n => `每 ${n} 天`,
+        lastWatered: '上次浇水', nextDue: '下次浇水',
+        never: '还没记录', logFirst: '先记一次浇水',
+        wateredBtn: '💧 今天浇了', wateredDone: '✓ 今天已浇', undoLast: '↩ 撤销',
+        recentLog: '最近', winterHold: '冬季暂停浇水',
+        today: '今天', dayAgo: n => `${n} 天前`, inDays: n => `${n} 天后`,
+        overdueBy: n => `逾期 ${n} 天`, dueToday: '今天该浇',
+        statPlants: '植物', statDue: '今天该浇', statOverdue: '逾期',
+        gOverdue: '逾期', gDue: '今天该浇', gNever: '未记录', gSoon: '快到了', gOk: '还好', gHold: '冬季暂停',
+        nothingDue: '今天都不用浇 🎉',
     },
     en: {
         gridView: '🪴 Cards', locView: '📍 Rooms',
@@ -454,6 +524,18 @@ const UI = {
         deletePhoto: 'Delete', closePhoto: 'Close',
         confirmDelete: 'Delete this photo?',
         photoNote: 'Photos are stored on this device only',
+        todayView: '📋 Today',
+        wateringTitle: '💧 Watering',
+        recommended: 'Recommended', recEvery: n => `every ${n} days`,
+        lastWatered: 'Last watered', nextDue: 'Next due',
+        never: 'Never logged', logFirst: 'log a watering first',
+        wateredBtn: '💧 Watered today', wateredDone: '✓ Watered today', undoLast: '↩ Undo',
+        recentLog: 'Recent', winterHold: 'No watering in winter',
+        today: 'today', dayAgo: n => `${n}d ago`, inDays: n => `in ${n}d`,
+        overdueBy: n => `${n}d overdue`, dueToday: 'due today',
+        statPlants: 'plants', statDue: 'due today', statOverdue: 'overdue',
+        gOverdue: 'Overdue', gDue: 'Due today', gNever: 'Not logged', gSoon: 'Coming up', gOk: 'All good', gHold: 'Winter hold',
+        nothingDue: 'Nothing to water today 🎉',
     },
 };
 
@@ -495,7 +577,7 @@ const plants = [
         id: 1, nickname: '蛋花', latin: 'Plumeria',
         fullName: { zh: '鸡蛋花 · Frangipani', en: 'Frangipani · 鸡蛋花' },
         sept: { zh: '9月夜温稳定高于15°C后，永久移到户外全日照（阳台边缘或庭院）。枝头出新芽后开始每周浇水，10–11月起用高钾肥促开花。', en: 'Once nights stay above 15°C, move outside permanently to full sun (alfresco edge or yard). Start weekly watering when new tip growth appears; high-potassium feed from Oct–Nov for flowers.' },
-        light: 5, water: 1, humidity: 1, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
+        light: 5, water: 1, humidity: 1, waterDays: 24, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
         status: 'temp', locationNo: 2,
         short: {
             zh: '冬季落叶休眠中。9月移到户外全日照。',
@@ -531,7 +613,7 @@ const plants = [
         id: 2, nickname: '皮皮', latin: 'Ficus elastica (variegated)',
         fullName: { zh: '斑叶橡皮树', en: 'Variegated Rubber Tree · 斑叶橡皮树' },
         sept: { zh: '恢复缓释肥。保持最亮位置以维持斑叶。如根从盆底长出，春季是换盆的最佳时机。', en: 'Resume slow-release fertiliser. Keep the brightest spot to hold variegation. If roots show at the drainage holes, spring is the window to repot.' },
-        light: 4, water: 2, humidity: 2, img: 'images/pipi.jpg', bgClass: 'bg-pipi', textClass: 'text-pipi',
+        light: 4, water: 2, humidity: 2, waterDays: 12, img: 'images/pipi.jpg', bgClass: 'bg-pipi', textClass: 'text-pipi',
         status: 'ok', locationNo: 2,
         short: {
             zh: '约20cm小苗。需要最亮的散射光来保持斑叶。',
@@ -570,7 +652,7 @@ const plants = [
         id: 3, nickname: '刚刚', latin: "Ficus elastica 'Burgundy'",
         fullName: { zh: '黑金刚橡皮树', en: 'Burgundy Rubber Tree · 黑金刚' },
         sept: { zh: '检查截口已愈合（干燥褐色边缘），截口下应萌发2–4根新枝。恢复正常浇水和缓释肥。扦插枝长出新叶=已生根，正式上盆。', en: 'Confirm the topping cut has calloused (dry brown edge) — 2–4 new branches should push below it. Resume normal watering and slow-release feed. The top cutting growing a new leaf = rooted; pot it up properly.' },
-        light: 4, water: 2, humidity: 2, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang',
+        light: 4, water: 2, humidity: 2, waterDays: 12, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang',
         status: 'recover', locationNo: 2,
         short: {
             zh: '6月已截顶（现90cm）。截口愈合中，保持偏干、勿移动。',
@@ -609,7 +691,7 @@ const plants = [
         id: 4, nickname: '棠棠', latin: 'Begonia maculata',
         fullName: { zh: '鳟鱼秋海棠', en: 'Polka Dot Begonia · 鳟鱼秋海棠' },
         sept: { zh: '徒长的茎剪短一半，促进分枝更茂密。恢复每月施肥。可选择移到阳台遮阴处，通风更好。', en: 'Prune leggy stems by half for bushier regrowth. Resume monthly feeding. Optional move to the covered alfresco for better airflow.' },
-        light: 3, water: 3, humidity: 2, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
+        light: 3, water: 3, humidity: 2, waterDays: 8, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
         status: 'ok', locationNo: 3,
         short: {
             zh: '白色斑点是天然特征。浇水浇土不浇叶，注意通风。',
@@ -642,10 +724,10 @@ const plants = [
         },
     },
     {
-        id: 5, nickname: '豹豹', latin: 'Goeppertia lancifolia',
-        fullName: { zh: '豹纹竹芋', en: 'Rattlesnake Plant · 豹纹竹芋' },
+        id: 5, nickname: '小羽', latin: 'Goeppertia insignis',
+        fullName: { zh: '箭羽竹芋', en: 'Rattlesnake Plant · 箭羽竹芋' },
         sept: { zh: '恢复每月半浓度液肥（容易烧根）。继续只用过滤水。天气转暖湿度压力减小，但注意早春干热天。', en: 'Resume half-strength liquid feed monthly (full strength burns it). Stay on filtered water. Humidity pressure eases, but watch early hot dry spells.' },
-        light: 3, water: 4, humidity: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
+        light: 3, water: 4, humidity: 4, waterDays: 4, img: 'images/baobao.jpg', bgClass: 'bg-baobao', textClass: 'text-baobao',
         status: 'ok', locationNo: 3,
         short: {
             zh: '需要≥60%湿度。用托盘加水+植物聚集提升湿度。只用过滤水。',
@@ -681,21 +763,21 @@ const plants = [
         },
     },
     {
-        id: 6, nickname: '雀雀', latin: 'Ctenanthe burle-marxii',
-        fullName: { zh: '鱼骨祈祷植物', en: 'Fishbone Prayer Plant · 鱼骨祈祷植物' },
+        id: 6, nickname: 'Prayer', latin: 'Ctenanthe burle-marxii',
+        fullName: { zh: '银羽竹芋', en: 'Fishbone Prayer Plant / Never Never Plant · 银羽竹芋' },
         sept: { zh: '恢复每月半浓度液肥。保持湿度，天气转暖后可移到阳台遮阴处。检查是否需要换盆。', en: 'Resume half-strength monthly feed. Keep humidity up; can move to shaded alfresco as weather warms. Check if it needs repotting.' },
-        light: 3, water: 4, humidity: 4, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
+        light: 3, water: 4, humidity: 4, waterDays: 5, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
         status: 'ok', locationNo: 3,
         short: {
             zh: '鱼骨纹叶片，夜间祈祷运动。喜高湿度。',
             en: 'Fishbone-patterned leaves with nightly prayer movement. Loves high humidity.',
         },
         locationDetail: {
-            zh: '主卧窗边遮帘处，与豹豹、棠棠、青青聚在一起提升局部湿度。托盘加水保持≥60%湿度。',
-            en: 'Master BR curtain-filtered window, grouped with 豹豹, 棠棠 & 青青 for local humidity. Pebble tray to maintain ≥60%.',
+            zh: '主卧窗边遮帘处，与小羽、棠棠、青青聚在一起提升局部湿度。托盘加水保持≥60%湿度。',
+            en: 'Master BR curtain-filtered window, grouped with 小羽, 棠棠 & 青青 for local humidity. Pebble tray to maintain ≥60%.',
         },
         description: {
-            zh: '鱼骨祈祷植物，叶片有独特鱼骨状深绿斑纹，叶背紫色。夜间叶片竖起（祈祷运动），比大多数竹芋更皮实好养。',
+            zh: '银羽竹芋，叶片有独特鱼骨状深绿斑纹，叶背紫色。夜间叶片竖起（祈祷运动），比大多数竹芋更皮实好养。',
             en: 'Fishbone prayer plant with distinctive herringbone dark-green markings and purple undersides. Leaves fold upward at night (prayer movement). Hardier than most calatheas.',
         },
         lightDetail: {
@@ -720,7 +802,7 @@ const plants = [
         id: 7, nickname: '青青', latin: "Dieffenbachia 'Sterling'",
         fullName: { zh: '花叶万年青', en: 'Dumb Cane · 万年青' },
         sept: { zh: '分株恢复后恢复施肥（缓释肥）。如长势旺、根满盆，春季换盆。继续戴手套操作。', en: 'Once recovered from division, resume slow-release feeding. Repot in spring if rootbound. Keep using gloves.' },
-        light: 3, water: 3, humidity: 2, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
+        light: 3, water: 3, humidity: 2, waterDays: 10, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
         status: 'recover', locationNo: 3,
         short: {
             zh: '6月分株成2盆，恢复中。树液刺激，戴手套。',
@@ -759,7 +841,7 @@ const plants = [
         id: 8, nickname: '贝贝', latin: 'Monstera deliciosa',
         fullName: { zh: '龟背竹', en: 'Monstera · 龟背竹' },
         sept: { zh: '可移到阳台（有顶、散射光）——户外生长快得多，38°C以上搬回。恢复施肥。插条生根后上盆。生长快，检查是否需要换大盆。', en: 'Optional move to the covered alfresco (filtered light) — much faster growth outdoors; bring in above 38°C. Resume feeding. Pot up rooted cuttings. Fast grower — check if it needs a bigger pot.' },
-        light: 2, water: 2, humidity: 3, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
+        light: 2, water: 2, humidity: 3, waterDays: 12, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
         status: 'ok', locationNo: 2,
         short: {
             zh: '每周转90°。苔藓柱进行中，插条繁殖中。',
@@ -795,7 +877,7 @@ const plants = [
         id: 9, nickname: 'Lili', latin: 'Spathiphyllum',
         fullName: { zh: '白掌 · Peace Lily', en: 'Peace Lily · 白掌' },
         sept: { zh: '移到稍亮的散射光位置促开花。恢复每月平衡液肥（6月换盆已过安全期）。', en: 'Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (safe now after the June repot).' },
-        light: 1, water: 4, humidity: 3, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
+        light: 1, water: 4, humidity: 3, waterDays: 8, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
         status: 'ok', locationNo: 5,
         short: {
             zh: '叶片下垂=浇水信号。已换盆，恢复良好。',
@@ -831,7 +913,7 @@ const plants = [
         id: 10, nickname: '刺刺', latin: 'Cactus',
         fullName: { zh: '仙人掌', en: 'Cactus · 仙人掌' },
         sept: { zh: '夜温回暖后恢复少量浇水（每2–4周，土全干再浇）。其他一切照旧，不用施肥。', en: 'Resume sparse watering once nights warm (every 2–4 weeks, only when bone dry). Nothing else needed; no fertiliser.' },
-        light: 5, water: 1, humidity: 1, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
+        light: 5, water: 1, humidity: 1, waterDays: null, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
         status: 'outside', locationNo: 8,
         short: {
             zh: '庭院屋檐下，位置完美。冬季完全不管它。',
@@ -867,7 +949,7 @@ const plants = [
         id: 11, nickname: '蜘蛛', latin: 'Agapanthus',
         fullName: { zh: '非洲百合', en: 'Agapanthus · 非洲百合' },
         sept: { zh: '春季恢复正常浇水，开始每月施肥（高钾肥促花）。花期通常在11月–1月。', en: 'Resume normal watering in spring and start monthly feeding (high-potassium for flowers). Blooms typically Nov–Jan.' },
-        light: 5, water: 2, humidity: 1, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
+        light: 5, water: 2, humidity: 1, waterDays: null, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
         status: 'outside', locationNo: 8,
         short: {
             zh: '耐旱强健，全日照或半阴。干透再浇。',
@@ -903,7 +985,7 @@ const plants = [
         id: 12, nickname: '铂金', latin: 'Philodendron Birkin',
         fullName: { zh: '比尔金喜林芋', en: 'Philodendron Birkin · 比尔金喜林芋' },
         sept: { zh: '恢复每月缓释肥。检查光照——条纹消失说明光不够，靠近窗口。生长旺盛可考虑换盆。', en: 'Resume monthly slow-release feed. Check light — fading stripes mean not enough light, move closer to window. Repot if fast-growing.' },
-        light: 4, water: 2, humidity: 3, img: 'images/bojin.jpg', bgClass: 'bg-bojin', textClass: 'text-bojin',
+        light: 4, water: 2, humidity: 3, waterDays: 12, img: 'images/bojin.jpg', bgClass: 'bg-bojin', textClass: 'text-bojin',
         status: 'ok', locationNo: 2,
         short: {
             zh: '白色条纹叶片。光线不足条纹会消失。',
@@ -950,6 +1032,69 @@ function normalizeLevel(level) {
     if (level >= 5) return 3;
     if (level >= 3) return 2;
     return 1;
+}
+
+// ─────────────────────────────────────────────
+// Watering log (localStorage — dates only, on this device)
+// ─────────────────────────────────────────────
+const WATER_KEY = 'mygreens_water_v1';
+
+function loadWaterLog() {
+    try { return JSON.parse(localStorage.getItem(WATER_KEY)) || {}; }
+    catch (e) { return {}; }
+}
+function saveWaterLog(log) { localStorage.setItem(WATER_KEY, JSON.stringify(log)); }
+
+function todayStr() {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+function daysBetween(a, b) {
+    return Math.round((Date.parse(b + 'T00:00:00') - Date.parse(a + 'T00:00:00')) / 86400000);
+}
+
+function getLog(id) { return (loadWaterLog()[id] || []).slice().sort(); }
+function loggedTodayFor(id) { const a = getLog(id); return a.length > 0 && a[a.length - 1] === todayStr(); }
+
+function logWater(id) {
+    const log = loadWaterLog();
+    const arr = log[id] || [];
+    const t = todayStr();
+    if (!arr.includes(t)) { arr.push(t); arr.sort(); log[id] = arr; saveWaterLog(log); }
+}
+function undoLastWater(id) {
+    const log = loadWaterLog();
+    const arr = (log[id] || []).slice().sort();
+    arr.pop();
+    if (arr.length) log[id] = arr; else delete log[id];
+    saveWaterLog(log);
+}
+
+// state ∈ hold | never | overdue | due | soon | ok
+function waterStatus(plant) {
+    if (plant.waterDays == null) return { state: 'hold' };
+    const arr = getLog(plant.id);
+    if (!arr.length) return { state: 'never' };
+    const last = arr[arr.length - 1];
+    const daysSince = daysBetween(last, todayStr());
+    const overdueDays = daysSince - plant.waterDays;
+    let state;
+    if (overdueDays > 0) state = 'overdue';
+    else if (overdueDays === 0) state = 'due';
+    else if (-overdueDays <= 2) state = 'soon';
+    else state = 'ok';
+    return { state, last, daysSince, overdueDays };
+}
+
+function fmtAgo(daysSince) {
+    const ui = UI[lang];
+    return daysSince <= 0 ? ui.today : ui.dayAgo(daysSince);
+}
+function fmtDue(ws) {
+    const ui = UI[lang];
+    if (ws.state === 'overdue') return `<span class="od">${ui.overdueBy(ws.overdueDays)}</span>`;
+    if (ws.state === 'due') return ui.dueToday;
+    return ui.inDays(-ws.overdueDays);
 }
 
 // ─────────────────────────────────────────────
@@ -1120,6 +1265,113 @@ window.closeLightbox = function(event) {
 };
 
 // ─────────────────────────────────────────────
+// Watering: card pill, dashboard, actions
+// ─────────────────────────────────────────────
+function cardWaterPill(plant) {
+    const ws = waterStatus(plant);
+    if (ws.state === 'overdue') return `<div class="card-wpill od">💧${ws.overdueDays}d</div>`;
+    if (ws.state === 'due') return `<div class="card-wpill due">💧!</div>`;
+    return '';
+}
+
+function waterBlockHtml(plant) {
+    const ui = UI[lang];
+    const ws = waterStatus(plant);
+    const recRow = plant.waterDays == null ? '' : `
+        <div class="info-row">
+            <div class="info-label">${ui.recommended}</div>
+            <div class="info-value">${ui.recEvery(plant.waterDays)}</div>
+        </div>`;
+    if (ws.state === 'hold') {
+        return recRow + `<div class="section-content" style="margin-top:0.4rem">${ui.winterHold}</div>`;
+    }
+    const arr = getLog(plant.id);
+    const lastVal = ws.state === 'never' ? ui.never : `${fmtDate(ws.last + 'T00:00:00')} · ${fmtAgo(ws.daysSince)}`;
+    const dueVal = ws.state === 'never' ? ui.logFirst : fmtDue(ws);
+    const loggedToday = loggedTodayFor(plant.id);
+    const hist = arr.slice(-5).reverse().map(d => fmtDate(d + 'T00:00:00')).join(' · ');
+    return `
+        ${recRow}
+        <div class="info-row">
+            <div class="info-label">${ui.lastWatered}</div>
+            <div class="info-value">${lastVal}</div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">${ui.nextDue}</div>
+            <div class="info-value">${dueVal}</div>
+        </div>
+        <div class="photo-actions">
+            <button class="photo-btn" onclick="waterAction(${plant.id})" ${loggedToday ? 'disabled style="opacity:0.6;cursor:default"' : ''}>${loggedToday ? ui.wateredDone : ui.wateredBtn}</button>
+            ${arr.length ? `<button class="photo-btn" style="flex:0 0 auto" onclick="undoWaterAction(${plant.id})">${ui.undoLast}</button>` : ''}
+        </div>
+        ${hist ? `<div class="photo-empty" style="font-size:0.72rem">${ui.recentLog}: ${hist}</div>` : ''}
+    `;
+}
+
+function waterRowHtml(plant, ws) {
+    const ui = UI[lang];
+    let meta;
+    if (ws.state === 'hold') meta = ui.winterHold;
+    else if (ws.state === 'never') meta = `${ui.never} · ${ui.logFirst}`;
+    else meta = `${ui.lastWatered}: ${fmtAgo(ws.daysSince)} · ${fmtDue(ws)}`;
+    const loggedToday = loggedTodayFor(plant.id);
+    const btn = ws.state === 'hold' ? '' :
+        `<button class="wr-btn ${loggedToday ? 'done' : ''}" onclick="event.stopPropagation();waterAction(${plant.id})" ${loggedToday ? 'disabled' : ''}>${loggedToday ? ui.wateredDone : ui.wateredBtn}</button>`;
+    const latin = plant.fullName.en.split(' · ')[0];
+    return `
+        <div class="water-row s-${ws.state}">
+            <div class="wr-main" onclick="openModal(${plant.id})">
+                <div class="wr-name">${plant.nickname} <span class="wr-latin">${latin}</span></div>
+                <div class="wr-meta">${meta}</div>
+            </div>
+            ${btn}
+        </div>`;
+}
+
+function renderDashboard() {
+    const ui = UI[lang];
+    const groups = { overdue: [], due: [], never: [], soon: [], ok: [], hold: [] };
+    plants.forEach(p => { const ws = waterStatus(p); groups[ws.state].push({ p, ws }); });
+    groups.overdue.sort((a, b) => b.ws.overdueDays - a.ws.overdueDays);
+    groups.soon.sort((a, b) => b.ws.overdueDays - a.ws.overdueDays);
+
+    const dueCount = groups.overdue.length + groups.due.length;
+    const overdueCount = groups.overdue.length;
+
+    const stats = `
+        <div class="dash-stats">
+            <div class="dash-stat"><div class="num">${plants.length}</div><div class="lbl">${ui.statPlants}</div></div>
+            <div class="dash-stat due"><div class="num">${dueCount}</div><div class="lbl">${ui.statDue}</div></div>
+            <div class="dash-stat overdue"><div class="num">${overdueCount}</div><div class="lbl">${ui.statOverdue}</div></div>
+        </div>`;
+
+    const titles = { overdue: ui.gOverdue, due: ui.gDue, never: ui.gNever, soon: ui.gSoon, ok: ui.gOk, hold: ui.gHold };
+    let body = '';
+    ['overdue', 'due', 'never', 'soon', 'ok', 'hold'].forEach(key => {
+        const items = groups[key];
+        if (!items.length) return;
+        body += `<div class="dash-group"><div class="dash-group-title">${titles[key]} · ${items.length}</div>`;
+        items.forEach(({ p, ws }) => { body += waterRowHtml(p, ws); });
+        body += `</div>`;
+    });
+    if (dueCount === 0) body = `<div class="dash-empty">${ui.nothingDue}</div>` + body;
+
+    document.getElementById('dashboard').innerHTML = stats + body;
+}
+
+function afterWaterChange(id) {
+    const wb = document.getElementById('waterBlock');
+    if (wb && currentModalPlantId === id) {
+        wb.innerHTML = waterBlockHtml(plants.find(p => p.id === id));
+    }
+    if (view === 'today') renderDashboard();
+    else if (view === 'loc') renderLocations();
+    else renderGrid();
+}
+window.waterAction = function(id) { logWater(id); afterWaterChange(id); };
+window.undoWaterAction = function(id) { undoLastWater(id); afterWaterChange(id); };
+
+// ─────────────────────────────────────────────
 // Render: grid
 // ─────────────────────────────────────────────
 function renderGrid() {
@@ -1146,7 +1398,7 @@ function renderGrid() {
                 </div>
                 <div class="emoji-section">
                     <div class="card-pills">
-                        <div class="location-pill">📍 ${t(loc.shortName)}</div>${photoCounts[plant.id] ? `
+                        <div class="location-pill">📍 ${t(loc.shortName)}</div>${cardWaterPill(plant)}${photoCounts[plant.id] ? `
                         <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                     </div>
                     <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
@@ -1188,7 +1440,7 @@ function renderLocations() {
                     </div>
                     <div class="emoji-section">
                         <div class="card-pills">
-                            <div class="location-pill">${t(st.label)}</div>${photoCounts[plant.id] ? `
+                            <div class="location-pill">${t(st.label)}</div>${cardWaterPill(plant)}${photoCounts[plant.id] ? `
                             <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                         </div>
                         <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
@@ -1273,6 +1525,9 @@ window.openModal = function(plantId) {
         <div class="section-title ${plant.textClass}">${ui.waterNeeds}</div>
         <div class="section-content">${t(plant.waterDetail)}</div>
 
+        <div class="section-title ${plant.textClass}">${ui.wateringTitle}</div>
+        <div id="waterBlock">${waterBlockHtml(plant)}</div>
+
         <div class="section-title ${plant.textClass}">${ui.seasonNow}</div>
         <div class="section-content">${t(plant.seasonNote)}</div>
 
@@ -1317,8 +1572,10 @@ window.setView = function(v) {
     view = v;
     document.getElementById('grid').classList.toggle('hide', v !== 'grid');
     document.getElementById('locationView').classList.toggle('show', v === 'loc');
+    document.getElementById('dashboard').classList.toggle('show', v === 'today');
     syncControls();
     if (v === 'loc') renderLocations();
+    else if (v === 'today') renderDashboard();
     else renderGrid();
 };
 
@@ -1329,6 +1586,7 @@ window.toggleLang = function() {
     syncControls();
     renderGrid();
     renderLocations();
+    renderDashboard();
     if (currentModalPlantId !== null && document.getElementById('modal').classList.contains('show')) {
         openModal(currentModalPlantId);
     }
@@ -1338,12 +1596,14 @@ function syncControls() {
     const ui = UI[lang];
     const bGrid = document.getElementById('btnGrid');
     const bLoc = document.getElementById('btnLoc');
+    const bToday = document.getElementById('btnToday');
     const bLight = document.getElementById('btnLight');
     const bWater = document.getElementById('btnWater');
     const bHumidity = document.getElementById('btnHumidity');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
+    bToday.textContent = ui.todayView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
     bHumidity.textContent = ui.sortHumidity;
@@ -1353,6 +1613,8 @@ function syncControls() {
     bGrid.classList.toggle('view', view === 'grid');
     bLoc.classList.toggle('active', view === 'loc');
     bLoc.classList.toggle('view', view === 'loc');
+    bToday.classList.toggle('active', view === 'today');
+    bToday.classList.toggle('view', view === 'today');
 
     bLight.classList.toggle('active', sortBy === 'light' && view === 'grid');
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
