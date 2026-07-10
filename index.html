@@ -391,13 +391,18 @@
         .wr-btn.done { background: #dcfce7; border-color: #dcfce7; cursor: default; }
 
         /* card water pill (works over photos too) */
-        .card-wpill {
-            font-size: 0.6rem; font-weight: 700; padding: 0.08rem 0.4rem;
-            border-radius: 8px; display: inline-block; color: #fff;
+        .card-wbtn {
+            font-size: 0.6rem; font-weight: 700; padding: 0.1rem 0.44rem;
+            border-radius: 8px; border: none; color: #fff; cursor: pointer;
+            line-height: 1.35; font-family: inherit; white-space: nowrap;
+            transition: transform 0.12s;
         }
-        .card-wpill.od  { background: #dc2626; }
-        .card-wpill.due { background: #f59e0b; }
-        @media (min-width: 768px) { .card-wpill { font-size: 0.7rem; } }
+        .card-wbtn.ok   { background: #16a34a; }
+        .card-wbtn.due  { background: #f59e0b; }
+        .card-wbtn.od   { background: #dc2626; }
+        .card-wbtn.done { background: rgba(255,255,255,0.9); color: #15803d; }
+        .card-wbtn:active { transform: scale(0.9); }
+        @media (min-width: 768px) { .card-wbtn { font-size: 0.7rem; } }
 
         /* toxicity flag */
         .card-tox {
@@ -454,6 +459,9 @@
     <button class="btn active view" id="btnGrid" onclick="setView('grid')">🪴</button>
     <button class="btn" id="btnLoc" onclick="setView('loc')">📍</button>
     <button class="btn" id="btnToday" onclick="setView('today')">📋</button>
+    <span class="divider-v"></span>
+    <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
+    <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
     <span class="divider-v"></span>
     <span class="season-tag" id="seasonTag"></span>
 </div>
@@ -1181,6 +1189,7 @@ const plants = [
 // State
 // ─────────────────────────────────────────────
 let lang = localStorage.getItem('plantLang') || 'zh';
+let sortBy = 'light';
 let view = 'grid';
 
 function t(obj) { return typeof obj === 'string' ? obj : obj[lang]; }
@@ -1426,9 +1435,11 @@ window.closeLightbox = function(event) {
 // ─────────────────────────────────────────────
 function cardWaterPill(plant) {
     const ws = waterStatus(plant);
-    if (ws.state === 'overdue') return `<div class="card-wpill od">💧${ws.overdueDays}d</div>`;
-    if (ws.state === 'due') return `<div class="card-wpill due">💧!</div>`;
-    return '';
+    if (ws.state === 'hold') return '';
+    const done = loggedTodayFor(plant.id);
+    const cls = done ? 'done' : ws.state === 'overdue' ? 'od' : ws.state === 'due' ? 'due' : 'ok';
+    const label = done ? '✓' : ws.state === 'overdue' ? `💧${ws.overdueDays}d` : '💧';
+    return `<button class="card-wbtn ${cls}" aria-label="log watering" onclick="event.stopPropagation();waterAction(${plant.id})"${done ? ' disabled' : ''}>${label}</button>`;
 }
 
 function waterBlockHtml(plant) {
@@ -1532,7 +1543,9 @@ window.undoWaterAction = function(id) { undoLastWater(id); afterWaterChange(id);
 // Render: grid
 // ─────────────────────────────────────────────
 function renderGrid() {
-    const sorted = plants;
+    const sorted = [...plants].sort((a, b) =>
+        sortBy === 'water' ? b.water - a.water : b.light - a.light
+    );
 
     let html = '';
     sorted.forEach((plant, index) => {
@@ -1713,6 +1726,13 @@ window.closeModal = function(event) {
 // ─────────────────────────────────────────────
 // Controls
 // ─────────────────────────────────────────────
+window.setSortBy = function(type) {
+    sortBy = type;
+    if (view !== 'grid') setView('grid');
+    syncControls();
+    renderGrid();
+};
+
 window.setView = function(v) {
     view = v;
     document.getElementById('grid').classList.toggle('hide', v !== 'grid');
@@ -1742,10 +1762,14 @@ function syncControls() {
     const bGrid = document.getElementById('btnGrid');
     const bLoc = document.getElementById('btnLoc');
     const bToday = document.getElementById('btnToday');
+    const bLight = document.getElementById('btnLight');
+    const bWater = document.getElementById('btnWater');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
     bToday.textContent = ui.todayView;
+    bLight.textContent = ui.sortLight;
+    bWater.textContent = ui.sortWater;
     document.getElementById('seasonTag').textContent = ui.season;
 
     bGrid.classList.toggle('active', view === 'grid');
@@ -1754,6 +1778,11 @@ function syncControls() {
     bLoc.classList.toggle('view', view === 'loc');
     bToday.classList.toggle('active', view === 'today');
     bToday.classList.toggle('view', view === 'today');
+
+    bLight.classList.toggle('active', sortBy === 'light' && view === 'grid');
+    bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
+    bWater.classList.toggle('active', sortBy === 'water' && view === 'grid');
+    bWater.classList.toggle('water', sortBy === 'water' && view === 'grid');
 }
 
 // init
