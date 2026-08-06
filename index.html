@@ -506,7 +506,7 @@ const UI = {
         gridView: '🪴 卡片', locView: '📍 位置',
         sortLight: '☀️ 光照', sortWater: '💧 浇水', sortHumidity: '💦 湿度',
         langBtn: 'EN',
-        season: '🌧 Adelaide 冬季 · 休眠期',
+        season: '🌧 Adelaide 冬季 · 全面停水恢复中',
         light: '光照', water: '浇水频率', humidity: '湿度',
         intro: '📋 简介', lightNeeds: '☀️ 光照', waterNeeds: '💧 浇水',
         seasonNow: '🌧 当前季节 (Adelaide 冬季)', tips: '📝 要点',
@@ -535,7 +535,7 @@ const UI = {
         gridView: '🪴 Cards', locView: '📍 Rooms',
         sortLight: '☀️ Light', sortWater: '💧 Water', sortHumidity: '💦 Humidity',
         langBtn: '中文',
-        season: '🌧 Adelaide winter · dormancy',
+        season: '🌧 Adelaide winter · watering paused, recovering',
         light: 'Light', water: 'Watering', humidity: 'Humidity',
         intro: '📋 About', lightNeeds: '☀️ Light', waterNeeds: '💧 Water',
         seasonNow: '🌧 This season (Adelaide winter)', tips: '📝 Key points',
@@ -599,11 +599,15 @@ const plants = [
         id: 1, nickname: '蛋花', latin: 'Plumeria',
         fullName: { zh: '鸡蛋花 · Frangipani', en: 'Frangipani · 鸡蛋花' },
         sept: { zh: '9月夜温稳定高于15°C后，永久移到户外全日照（阳台边缘或庭院）。枝头出新芽后开始每周浇水，10–11月起用高钾肥促开花。', en: 'Once nights stay above 15°C, move outside permanently to full sun (alfresco edge or yard). Start weekly watering when new tip growth appears; high-potassium feed from Oct–Nov for flowers.' },
-        light: 5, water: 1, humidity: 1, waterDays: 24, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
-        status: 'monitor', locationNo: 2,
+        light: 5, water: 1, humidity: 1, waterDays: 24, hold: true, img: 'images/danhua.jpg', bgClass: 'bg-danhual', textClass: 'text-danhual',
+        status: 'warning', locationNo: 2,
         short: {
-            zh: '冬季落叶休眠中。9月移到户外全日照。',
-            en: 'Winter dormant — leaf drop is normal. Moves outside to full sun in Sept.',
+            zh: '休眠中，土已干、根活力好，土里有新芽。停止浇水。',
+            en: 'Dormant — soil dry, roots healthy, new shoots pushing up. Watering paused.',
+        },
+        holdNote: {
+            zh: '8月6日起停止浇水。土已干、根系活力好，新芽在土里冒出——休眠期不浇水，等9月春季再恢复。',
+            en: 'Watering paused from 6 Aug. Soil is dry, roots are healthy and new shoots are emerging — no water during dormancy; resume in September.',
         },
         locationDetail: {
             zh: '暂时放在光线最强处过冬。9月移到户外全日照（阳台边缘或庭院）。',
@@ -622,10 +626,13 @@ const plants = [
             en: 'Barely water in dormancy — once every 3–4 weeks, only when soil is bone dry. Waterlogged roots rot fast.',
         },
         seasonNote: {
-            zh: '冬季：极少水，不施肥。9月移室外全日照后恢复正常浇水。',
-            en: 'Winter: minimal water, no fertiliser. Resume normal watering after moving outside in September.',
+            zh: '冬季：完全停水，不施肥。保持通风环境。9月移室外全日照后恢复正常浇水。',
+            en: 'Winter: watering fully paused, no fertiliser. Keep air moving. Resume normal watering after moving outside in September.',
         },
-        alert: null,
+        alert: {
+            zh: '8月6日检查：土已干、根活力好、土里有新芽——状态正常。继续通风、不浇水，下次检查9月。',
+            en: '6 Aug check: soil dry, roots healthy, new shoots in the soil — all normal. Keep ventilated, no water. Next check September.',
+        },
         tips: {
             zh: '• 冬天落叶很正常，不要慌\n• 积水会烂根，宁干勿湿\n• 9月移到庭院全日照，才会开花\n• 枝条软塌=烂根信号，检查根部',
             en: '• Winter leaf drop is normal — don\'t panic\n• Waterlogging rots roots; when in doubt, don\'t water\n• Needs outdoor full sun from Sept to flower\n• Soft mushy stems = rot signal, check the roots',
@@ -675,10 +682,10 @@ const plants = [
         fullName: { zh: '黑金刚橡皮树', en: 'Burgundy Rubber Tree · 黑金刚' },
         sept: { zh: '检查截口已愈合（干燥褐色边缘），截口下应萌发2–4根新枝。恢复正常浇水和缓释肥。扦插枝长出新叶=已生根，正式上盆。', en: 'Confirm the topping cut has calloused (dry brown edge) — 2–4 new branches should push below it. Resume normal watering and slow-release feed. The top cutting growing a new leaf = rooted; pot it up properly.' },
         light: 4, water: 2, humidity: 2, waterDays: 12, img: 'images/ganggang.jpg', bgClass: 'bg-heijingang', textClass: 'text-heijingang', toxic: true,
-        status: 'warning', locationNo: 2,
+        status: 'stable', locationNo: 2,
         short: {
-            zh: '6月已截顶（现90cm）。截口愈合中，保持偏干、勿移动。',
-            en: 'Topped in June (now 90cm). Wound healing — keep dry-ish, don\'t move.',
+            zh: '6月已截顶（现90cm）。度假后状态正常，保持偏干、勿移动。',
+            en: 'Topped in June (now 90cm). Came through the trip fine — keep dry-ish, don\'t move.',
         },
         locationDetail: {
             zh: '已定位，请勿移动。橡皮树移位会大量落叶。现在90cm，截顶后会从截口下萌发2–4根新枝。',
@@ -713,15 +720,19 @@ const plants = [
         id: 4, nickname: '棠棠', latin: 'Begonia maculata',
         fullName: { zh: '鳟鱼秋海棠', en: 'Polka Dot Begonia · 鳟鱼秋海棠' },
         sept: { zh: '徒长的茎剪短一半，促进分枝更茂密。恢复每月施肥。可选择移到阳台遮阴处，通风更好。', en: 'Prune leggy stems by half for bushier regrowth. Resume monthly feeding. Optional move to the covered alfresco for better airflow.' },
-        light: 3, water: 3, humidity: 2, waterDays: 8, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
-        status: 'stable', locationNo: 3,
+        light: 3, water: 3, humidity: 2, waterDays: 8, hold: true, img: 'images/tangtan.jpg', bgClass: 'bg-tangtan', textClass: 'text-tangtan',
+        status: 'warning', locationNo: 3,
         short: {
-            zh: '白色斑点是天然特征。浇水浇土不浇叶，注意通风。',
-            en: 'White spots are natural. Water the soil, not the leaves; likes airflow.',
+            zh: '×2盆。坏叶已全剪，多个新芽冒出，根活力强。停水+通风中。',
+            en: '×2 pots. Damaged leaves all trimmed, multiple new shoots, roots vigorous. Watering paused, airflow on.',
+        },
+        holdNote: {
+            zh: '8月6日起停止浇水。冬季积水后恢复中，坏叶已全剪、新芽冒出——保持电扇通风，土完全干透且天气回暖后再恢复浇水。',
+            en: 'Watering paused from 6 Aug. Recovering from winter waterlogging — damaged leaves trimmed, new shoots emerging. Keep the fan running; resume watering only once the soil is bone dry and the weather warms.',
         },
         locationDetail: {
-            zh: '靠近落地窗但有帘子过滤。需要明亮散射光但不能直射。开窗通风有助预防白粉病。',
-            en: 'Near the window behind a sheer curtain. Bright indirect, never direct. Opening the window helps prevent powdery mildew.',
+            zh: '靠近落地窗但有帘子过滤，2盆。需要明亮散射光但不能直射。电扇持续通风——通风是目前恢复的关键。',
+            en: 'Near the window behind a sheer curtain, 2 pots. Bright indirect, never direct. Fan running continuously — airflow is the key to its recovery right now.',
         },
         description: {
             zh: '叶片布满白色斑点（天然特征，非病害）。深绿叶面配红紫色叶背，能开粉白色花。',
@@ -736,10 +747,13 @@ const plants = [
             en: 'Water when top 3cm is dry, then drain fully. Winter: roughly every 7–10 days. Never leave water in the saucer — root rot is its #1 killer.',
         },
         seasonNote: {
-            zh: '冬季：减少浇水，注意通风防白粉病。9月春季可考虑移到阳台遮阴处，生长更旺盛。',
-            en: 'Winter: less water, keep air moving to prevent mildew. From September it can optionally move to the shaded alfresco.',
+            zh: '冬季：完全停水，电扇持续通风。9月春季可考虑移到阳台遮阴处，生长更旺盛。',
+            en: 'Winter: watering fully paused, fan running for airflow. From September it can optionally move to the shaded alfresco.',
         },
-        alert: null,
+        alert: {
+            zh: '8月6日检查：坏叶已全部剪除，多个新芽冒出，根系活力强——恢复中。停止浇水、持续通风。下次检查8月8日（周四）。',
+            en: '6 Aug check: all damaged leaves removed, multiple new shoots, roots vigorous — recovering. Watering stopped, airflow maintained. Next check Thu 8 Aug.',
+        },
         tips: {
             zh: '• 白点是天然特征，不是病\n• 浇水浇土，不要洒到叶片\n• 开窗通风防白粉病（白色粉末）\n• 不要让盆底积水',
             en: '• White spots are natural, not a disease\n• Water at soil level, keep leaves dry\n• Ventilate to prevent powdery mildew (white dust)\n• Never let the pot sit in water',
@@ -825,10 +839,10 @@ const plants = [
         fullName: { zh: '花叶万年青', en: 'Dumb Cane · 万年青' },
         sept: { zh: '分株恢复后恢复施肥（缓释肥）。如长势旺、根满盆，春季换盆。继续戴手套操作。', en: 'Once recovered from division, resume slow-release feeding. Repot in spring if rootbound. Keep using gloves.' },
         light: 3, water: 3, humidity: 2, waterDays: 10, img: 'images/qingqing.jpg', bgClass: 'bg-qingqing', textClass: 'text-qingqing',
-        status: 'warning', locationNo: 3,
+        status: 'stable', locationNo: 3,
         short: {
-            zh: '6月分株成2盆，恢复中。树液刺激，戴手套。',
-            en: 'Divided into 2 pots in June — recovering. Irritant sap, wear gloves.',
+            zh: '6月分株成2盆，已恢复。树液刺激，戴手套。',
+            en: 'Divided into 2 pots in June — recovered. Irritant sap, wear gloves.',
         },
         locationDetail: {
             zh: '2026年6月分株成2盆。放在落地窗边的遮帘位置，中等散射光。保持稳定，不要移动。',
@@ -863,11 +877,15 @@ const plants = [
         id: 8, nickname: '贝贝', latin: 'Monstera deliciosa',
         fullName: { zh: '龟背竹', en: 'Monstera · 龟背竹' },
         sept: { zh: '可移到阳台（有顶、散射光）——户外生长快得多，38°C以上搬回。恢复施肥。插条生根后上盆。生长快，检查是否需要换大盆。', en: 'Optional move to the covered alfresco (filtered light) — much faster growth outdoors; bring in above 38°C. Resume feeding. Pot up rooted cuttings. Fast grower — check if it needs a bigger pot.' },
-        light: 2, water: 2, humidity: 3, waterDays: 12, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
-        status: 'stable', locationNo: 2,
+        light: 2, water: 2, humidity: 3, waterDays: 12, hold: true, img: 'images/beibei.jpg', bgClass: 'bg-beibei', textClass: 'text-beibei',
+        status: 'warning', locationNo: 2,
         short: {
-            zh: '每周转90°。苔藓柱进行中，插条繁殖中。',
-            en: 'Rotate 90° weekly. Moss pole in progress; cuttings propagating.',
+            zh: '仅剩2片叶+新叶冒头，有叶斑病。停水+加强通风。',
+            en: 'Down to 2 leaves + a new one emerging; leaf spot present. Watering paused, airflow increased.',
+        },
+        holdNote: {
+            zh: '8月6日起停止浇水。冬季积水+受冷导致叶斑病，剩2片叶但新叶已冒头。电扇持续通风，土完全干透且叶斑不再扩散后再考虑浇水。',
+            en: 'Watering paused from 6 Aug. Cold + waterlogging brought on leaf spot; 2 leaves left but a new one is pushing. Keep the fan on; only consider watering once the soil is bone dry and the spotting has stopped spreading.',
         },
         locationDetail: {
             zh: '落地窗边，窗外树木自然过滤光线。每周转90°保持均匀生长。苔藓柱进行中。9月可移阳台遮阴处。',
@@ -886,10 +904,13 @@ const plants = [
             en: 'Water when top 5cm is dry. Every 10–14 days in winter. Don\'t top up the cuttings\' reservoir too often in winter.',
         },
         seasonNote: {
-            zh: '冬季：减少浇水，不施肥。9月可移到阳台遮阴处——户外会长得更快。',
-            en: 'Winter: less water, no fertiliser. From September it can move to the shaded alfresco — it grows much faster outdoors.',
+            zh: '冬季：完全停水，不施肥，电扇通风控叶斑病。9月可移到阳台遮阴处——户外会长得更快。',
+            en: 'Winter: watering fully paused, no fertiliser, fan running to control leaf spot. From September it can move to the shaded alfresco — it grows much faster outdoors.',
         },
-        alert: null,
+        alert: {
+            zh: '8月6日检查：仅剩两片叶+新叶冒头，有叶斑病。停止浇水、改善通风，不要喷水到叶面。下次检查8月8日（周四）。',
+            en: '6 Aug check: only two leaves left plus a new one emerging, with leaf spot. Stop watering, improve airflow, keep water off the leaves. Next check Thu 8 Aug.',
+        },
         tips: {
             zh: '• 每周转90°，保证各面均匀受光\n• 气生根不要剪——引导到苔藓柱或土里\n• 苔藓柱保持湿润，气根会主动抓附\n• 新叶展开后孔洞会更多更大',
             en: '• Rotate 90° weekly for even light\n• Never cut aerial roots — guide them to the moss pole or soil\n• Keep the moss pole moist so roots attach\n• Leaves get bigger and more split over time',
@@ -899,19 +920,23 @@ const plants = [
         id: 9, nickname: 'Lili', latin: 'Spathiphyllum',
         fullName: { zh: '白掌 · Peace Lily', en: 'Peace Lily · 白掌' },
         sept: { zh: '移到稍亮的散射光位置促开花。恢复每月平衡液肥（6月换盆已过安全期）。', en: 'Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (safe now after the June repot).' },
-        light: 1, water: 4, humidity: 3, waterDays: 8, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
-        status: 'stable', locationNo: 5,
+        light: 1, water: 4, humidity: 3, waterDays: 8, hold: true, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
+        status: 'danger', locationNo: 5,
         short: {
-            zh: '叶片下垂=浇水信号。已换盆，恢复良好。',
-            en: 'Drooping = watering signal. Recently repotted, settling well.',
+            zh: '🚨 根茎有白色霉菌。今天必须换土消毒。新叶仍翠绿挺立。',
+            en: '🚨 White mould at the root crown. Repot + disinfect today. New leaves still green and upright.',
+        },
+        holdNote: {
+            zh: '换土当天浇一次透水，之后停止浇水直到土完全干透。换土日期记为一次浇水。',
+            en: 'Water through once on repotting day, then no more water until the soil is fully dry. Log the repot day as a watering.',
         },
         locationDetail: {
-            zh: '一楼客厅窗边。已换盆，黄叶修剪完。叶片下垂=需要浇水（正常信号，等它垂了再浇）。',
-            en: 'Ground-floor living room window. Repotted, yellow leaves trimmed. Drooping leaves = water me (a healthy signal — wait for the droop, then water).',
+            zh: '一楼客厅窗边。根茎发现白色霉菌（冬季积水+低温所致），正在换土处理。换土后放通风、避风口、避直射的位置。',
+            en: 'Ground-floor living room window. White mould found at the root crown (winter waterlogging + cold). Being repotted now. Afterwards keep it somewhere ventilated, out of drafts and direct sun.',
         },
         description: {
-            zh: '白掌，最耐阴的植物。叶片下垂是完美的缺水信号。最近已换盆，黄叶已修剪。',
-            en: 'The most shade-tolerant plant in the collection. Drooping is its built-in watering signal. Recently repotted with yellow leaves trimmed.',
+            zh: '白掌，最耐阴的植物。叶片下垂是完美的缺水信号。2026年8月因根茎白霉再次换土消毒。',
+            en: 'The most shade-tolerant plant in the collection. Drooping is its built-in watering signal. Repotted and disinfected again in August 2026 after white mould at the crown.',
         },
         lightDetail: {
             zh: '散射光即可，可耐阴。不需要很多光也能生存。避免任何直射阳光——会晒伤。',
@@ -922,13 +947,16 @@ const plants = [
             en: 'Wait for a slight droop, then water thoroughly. Winter: roughly every 7–10 days. It perks back up within hours of watering.',
         },
         seasonNote: {
-            zh: '冬季：减少浇水，不施肥。换盆后6–8周内不施肥。叶片下垂是正常浇水信号。',
-            en: 'Winter: less water, no fertiliser. No feeding for 6–8 weeks after repotting. The droop signal still works in winter.',
+            zh: '冬季：换土后完全停水，不施肥。保持通风、远离暖气直吹。叶片下垂信号在恢复期不适用——先看土干不干。',
+            en: 'Winter: no watering after the repot, no fertiliser. Keep ventilated and away from direct heater airflow. Ignore the droop signal while it recovers — check the soil instead.',
         },
-        alert: null,
+        alert: {
+            zh: '🚨 8月6日紧急处理：根茎有白色霉菌，新叶仍翠绿挺立。今天下班后换土——\n1. 倒出植株\n2. 清理旧土（冲洗根系）\n3. 修剪烂根\n4. 精甲（甲霜灵）溶液浸泡消毒5分钟\n5. 换 Bunnings Potting Mix 排水土\n6. 浇透一次，之后停水\n下次检查8月8日（周四）。',
+            en: '🚨 6 Aug urgent: white mould at the root crown; new leaves still green and upright. Repot this evening —\n1. Tip the plant out\n2. Clear the old mix (rinse the roots)\n3. Cut away rotted roots\n4. Soak 5 min in metalaxyl (精甲) solution to disinfect\n5. Repot into free-draining Bunnings Potting Mix\n6. Water through once, then stop\nNext check Thu 8 Aug.',
+        },
         tips: {
-            zh: '• 叶片下垂=缺水信号，非常准确\n• 浇水后几小时内恢复直立\n• 换盆后暂时不施肥（6–8周）\n• 自来水有褐色焦尖=换过滤水\n• 9月增加光照可促进开花',
-            en: '• Drooping = thirsty, a very reliable signal\n• Recovers within hours of watering\n• No fertiliser for 6–8 weeks post-repot\n• Brown tips from tap water = switch to filtered\n• More light from Sept encourages flowers',
+            zh: '• 换土后不要施肥（6–8周）\n• 换土后暂时不看下垂信号——先摸土\n• 白霉=积水+低温，排水土+通风是关键\n• 修根后剪口晾5–10分钟再上盆\n• 自来水有褐色焦尖=换过滤水',
+            en: '• No fertiliser for 6–8 weeks after repotting\n• Ignore the droop signal for now — check the soil instead\n• White mould = waterlogging + cold; free-draining mix and airflow are the fix\n• Let cut roots air-dry 5–10 min before potting up\n• Brown tips from tap water = switch to filtered',
         },
     },
     {
@@ -1079,11 +1107,15 @@ const plants = [
         id: 14, nickname: '星星', latin: "Monstera deliciosa 'Thai Constellation'",
         fullName: { zh: '泰国星空龟背竹', en: 'Thai Constellation · 泰国星斑龟背竹' },
         sept: { zh: '恢复缓释肥。生长快可换盆。引导气根上苔藓柱。保持稳定散射光，避免斑叶灼伤。', en: 'Resume slow-release feeding. Repot if fast-growing. Guide aerial roots onto the moss pole. Keep stable indirect light to avoid scorching the variegation.' },
-        light: 3, water: 2, humidity: 3, waterDays: 12, img: 'images/xingxing.jpg', bgClass: 'bg-xingxing', textClass: 'text-xingxing',
-        status: 'stable', locationNo: 3,
+        light: 3, water: 2, humidity: 3, waterDays: 12, hold: true, img: 'images/xingxing.jpg', bgClass: 'bg-xingxing', textClass: 'text-xingxing',
+        status: 'warning', locationNo: 3,
         short: {
-            zh: '奶白斑叶，怕直射灼伤。土干2–3cm再浇，已立苔藓柱。',
-            en: 'Cream variegation burns in direct sun. Water when 2–3cm dry; moss pole installed.',
+            zh: '叶斑病已部分修剪、保留好叶，新叶展开中。停水、停喷雾、加强通风。',
+            en: 'Leaf spot partly trimmed, healthy leaves kept; a new leaf is unfurling. No water, no misting, more airflow.',
+        },
+        holdNote: {
+            zh: '8月6日起停止浇水。叶斑病恢复中——电扇通风、绝对不要喷水到叶面。土完全干透且不再出新斑后再恢复浇水。',
+            en: 'Watering paused from 6 Aug. Recovering from leaf spot — keep the fan on and never mist the leaves. Resume watering only once the soil is bone dry and no new spots appear.',
         },
         locationDetail: {
             zh: '主卧窗边遮帘处，稳定明亮散射光。奶白斑叶没有叶绿素，直射会灼伤发褐——必须遮帘过滤。',
@@ -1102,28 +1134,31 @@ const plants = [
             en: 'Water when top 2–3cm is dry — every 10–14 days in winter. Variegated types rot more easily, so drainage is critical.',
         },
         seasonNote: {
-            zh: '冬季：减少浇水，不施肥。保持稳定光照和温度，保护斑叶。',
-            en: 'Winter: less water, no fertiliser. Keep light and temperature stable to protect the variegation.',
+            zh: '冬季：完全停水，不施肥，不喷雾。电扇持续通风控叶斑病。保持稳定光照和温度，保护斑叶。',
+            en: 'Winter: watering fully paused, no fertiliser, no misting. Fan running to control leaf spot. Keep light and temperature stable to protect the variegation.',
         },
-        alert: null,
+        alert: {
+            zh: '8月6日检查：叶斑病已部分修剪、保留健康叶片，新叶正在展开。改善通风、停止喷水、停止浇水。下次检查8月8日（周四）。',
+            en: '6 Aug check: leaf spot partly trimmed with healthy leaves kept; a new leaf is unfurling. Improve airflow, stop misting, stop watering. Next check Thu 8 Aug.',
+        },
         tips: {
-            zh: '• 白斑会灼伤——绝不能直射阳光\n• 新叶返绿=光线不足，靠近窗\n• 排水要好，斑叶品种更易烂根\n• 气根引导上苔藓柱\n• 生长慢，耐心等新叶',
-            en: '• White patches scorch — never direct sun\n• New leaves reverting to green = too little light\n• Great drainage — variegated types rot easier\n• Guide aerial roots onto the moss pole\n• Slow grower — be patient with new leaves',
+            zh: '• 叶斑病期间绝对不要喷水到叶面\n• 剪除病叶后剪刀要消毒再剪下一片\n• 白斑会灼伤——绝不能直射阳光\n• 新叶返绿=光线不足，靠近窗\n• 排水要好，斑叶品种更易烂根',
+            en: '• Never mist the leaves while leaf spot is active\n• Sterilise the scissors between each leaf you cut\n• White patches scorch — never direct sun\n• New leaves reverting to green = too little light\n• Great drainage — variegated types rot easier',
         },
     },
     {
         id: 15, nickname: '鸟鸟', latin: 'Strelitzia nicolai',
         fullName: { zh: '大鹤望兰 · 天堂鸟', en: 'Giant Bird of Paradise · 大鹤望兰' },
-        sept: { zh: '春季恢复正常浇水与施肥（生长旺盛，喜肥）。全日照促生长。长得快、根系强，可换大盆。', en: 'Resume normal watering and feeding in spring (a hungry, vigorous grower). Full sun drives growth. Fast-growing with strong roots — pot up if needed.' },
+        sept: { zh: '夜温稳定回暖后搬回主卧阳台全日照。恢复正常浇水与施肥（生长旺盛，喜肥）。长得快、根系强，可换大盆。', en: 'Move back out to the master BR balcony in full sun once nights stay warm. Resume normal watering and feeding (a hungry, vigorous grower). Fast-growing with strong roots — pot up if needed.' },
         light: 5, water: 3, humidity: 2, waterDays: null, img: 'images/niaoniao.jpg', bgClass: 'bg-niaoniao', textClass: 'text-niaoniao',
-        status: 'stable', locationNo: 1,
+        status: 'stable', locationNo: 2,
         short: {
-            zh: '阳台全日照/半阴，耐雨。生长季保持湿润，可长到8m。',
-            en: 'Balcony full sun / part shade, rain-hardy. Keep moist in growing season; can reach 8m.',
+            zh: '已从阳台救回室内温暖处，状态稳定。9月天暖再搬回阳台。',
+            en: 'Brought in from the balcony to a warm spot — stable. Goes back outside in September.',
         },
         locationDetail: {
-            zh: '室外阳台，全日照或半阴。耐雨耐风，Adelaide气候适合。冬季靠雨水即可，基本不用额外浇水。',
-            en: 'Outdoor balcony, full sun or part shade. Rain- and wind-hardy, suits Adelaide. In winter rain covers it — little to no extra watering.',
+            zh: '8月6日从阳台移到主卧落地窗边——阳台低温（14–15°C）伤到它了。室内最亮位置+电暖器15–16°C+电扇通风。9月夜温回暖后搬回阳台。',
+            en: 'Moved in from the balcony to the master BR floor window on 6 Aug — the 14–15°C balcony cold was damaging it. Brightest indoor spot, heater at 15–16°C, fan for airflow. Back to the balcony once September nights warm up.',
         },
         description: {
             zh: '大鹤望兰，巨型芭蕉状叶片，成株开白蓝色鸟形花。生长迅速、强健，可长到8m。',
@@ -1138,10 +1173,13 @@ const plants = [
             en: 'Keep moist in the growing season (spring/summer), watering deeply. Cut back in winter — Adelaide rain usually suffices. Drought-tolerant but not waterlogging.',
         },
         seasonNote: {
-            zh: '冬季：靠雨水，几乎不用额外浇水，不施肥。大风天注意固定大叶片。',
-            en: 'Winter: rain-fed, almost no extra water, no fertiliser. Secure the big leaves in strong wind.',
+            zh: '冬季：已移入室内温暖处，不浇水、不施肥。保持通风，远离暖气直吹。',
+            en: 'Winter: now indoors in the warm — no watering, no fertiliser. Keep air moving, away from direct heater airflow.',
         },
-        alert: null,
+        alert: {
+            zh: '8月6日：已从阳台救回室内温暖环境，状态稳定。维持温暖通风，暂不浇水。下次检查8月8日（周四）。',
+            en: '6 Aug: rescued from the cold balcony into the warm indoors — stable. Keep warm and ventilated, no watering for now. Next check Thu 8 Aug.',
+        },
         tips: {
             zh: '• 叶片撕裂正常——是抗风适应，不是病\n• 全日照才会长快、开花\n• 生长快，注意及时换大盆\n• 冬季雨水基本够，别浇多',
             en: '• Split leaves are normal — wind adaptation, not disease\n• Full sun for fast growth and flowers\n• Fast grower — pot up in time\n• Winter rain is usually enough, don\'t overwater',
@@ -1241,7 +1279,7 @@ function undoLastWater(id) {
 
 // state ∈ hold | never | overdue | due | soon | ok
 function waterStatus(plant) {
-    if (plant.waterDays == null) return { state: 'hold' };
+    if (plant.hold || plant.waterDays == null) return { state: 'hold' };
     const arr = getLog(plant.id);
     if (!arr.length) return { state: 'never' };
     const last = arr[arr.length - 1];
@@ -1454,7 +1492,7 @@ function waterBlockHtml(plant) {
             <div class="info-value">${ui.recEvery(plant.waterDays)}</div>
         </div>`;
     if (ws.state === 'hold') {
-        return recRow + `<div class="section-content" style="margin-top:0.4rem">${ui.winterHold}</div>`;
+        return recRow + `<div class="section-content" style="margin-top:0.4rem">${plant.holdNote ? t(plant.holdNote) : ui.winterHold}</div>`;
     }
     const arr = getLog(plant.id);
     const lastVal = ws.state === 'never' ? ui.never : `${fmtDate(ws.last + 'T00:00:00')} · ${fmtAgo(ws.daysSince)}`;
@@ -1482,7 +1520,7 @@ function waterBlockHtml(plant) {
 function waterRowHtml(plant, ws) {
     const ui = UI[lang];
     let meta;
-    if (ws.state === 'hold') meta = ui.winterHold;
+    if (ws.state === 'hold') meta = plant.holdNote ? t(plant.holdNote) : ui.winterHold;
     else if (ws.state === 'never') meta = `${ui.never} · ${ui.logFirst}`;
     else meta = `${ui.lastWatered}: ${fmtAgo(ws.daysSince)} · ${fmtDue(ws)}`;
     const loggedToday = loggedTodayFor(plant.id);

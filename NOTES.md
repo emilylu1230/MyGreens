@@ -9,24 +9,29 @@
 ## Preferences
 - (none recorded yet)
 
-## Plants owned (from plants.md)
+## Plants owned (from plants.md — 6 Aug 2026)
 
-### Indoor (9)
-| Nickname | Species | Notes |
-|---|---|---|
-| 刚刚 Ganggang | Ficus elastica 'Burgundy' | Topped June 2026 (was >1m, now 90cm). Top cutting placed in soil to propagate. Main plant will branch below cut. |
-| 贝贝 Beibei | Monstera deliciosa | Main bedroom. Rotate 90° weekly. Moss pole in progress. Cuttings propagating. |
-| 青青 Qingqing | Dieffenbachia Sterling (万年青) | Recently divided into 2 pots (June 2026). Post-division recovery. |
-| Lili | Spathiphyllum (Peace lily / 白掌) | Already repotted; yellow leaves trimmed. Now in living room next to window. |
-| 蜘蛛 Spider | Spider Plant (吊兰) | Rescued. Best in darker study room. |
-| 雀雀 | Calathea orbifolia (孔雀竹芋) | Recently divided into 2 pots (June 2026). Post-division recovery — very sensitive. |
-| 棠棠 | Begonia maculata (鳟鱼秋海棠) | White spots on leaves. |
-| 皮皮 | Variegated Ficus elastica (斑叶橡皮树) | Bronze-green mixed variegation. ~20cm, new/young plant. |
-| 小羽 | Goeppertia insignis (箭羽竹芋) | Long lanceolate leaves, leopard markings, purple-red backs. ≥60% humidity. |
+### Indoor (13)
+| Nickname | Species | Status | Notes |
+|---|---|---|---|
+| Lili | Spathiphyllum (Peace lily / 白掌) | 🔴 At risk | White mould at root crown after the trip. Emergency repot + metalaxyl disinfect 6 Aug. Living room window. |
+| 棠棠 | Begonia maculata (鳟鱼秋海棠) | 🟠 Needs care | ×2 pots. All damaged leaves trimmed, new shoots, roots vigorous. Watering stopped, fan on. |
+| 贝贝 Beibei | Monstera deliciosa | 🟠 Needs care | Down to 2 leaves + 1 emerging, leaf spot. Watering stopped. Moss pole + cuttings still going. |
+| 星星 | Monstera 'Thai Constellation' | 🟠 Needs care | Leaf spot partly trimmed, new leaf unfurling. No water, no misting. |
+| 斑斑 | Haworthiopsis attenuata (条纹十二卷) | 🟠 Needs care | Sun-stressed purple, greening back in indirect light. |
+| 蛋花 | Plumeria (鸡蛋花) | 🟠 Needs care | Dormant indoors. Soil dry, roots healthy, new shoots in the soil. Outdoors permanently in Sept. |
+| 刚刚 Ganggang | Ficus elastica 'Burgundy' | 🟢 Stable | Topped June 2026 (>1m → 90cm). Came through the trip fine. Top cutting propagating in soil. |
+| 皮皮 | Variegated Ficus elastica (斑叶橡皮树) | 🟢 Stable | Bronze-green variegation. ~20cm, young plant. |
+| 琴琴 | Ficus lyrata (琴叶榕) | 🟢 Stable | Fixed position — moving it drops leaves. |
+| 铂金 | Philodendron Birkin | 🟢 Stable | Stripes revert to green in low light. |
+| 小羽 | Goeppertia insignis (箭羽竹芋) | 🟢 Stable | ≥60% humidity, filtered water only. |
+| 雀雀 / Prayer | Ctenanthe burle-marxii (银羽竹芋) | 🟢 Stable | Fishbone markings, prayer movement. Hardier than most calatheas. |
+| 青青 Qingqing | Dieffenbachia Sterling (万年青) | 🟢 Stable | June 2026 division into 2 pots now recovered. Irritant sap — gloves. |
+| 鸟鸟 | Strelitzia nicolai (天堂鸟) | 🟢 Stable | Moved in from the balcony 6 Aug — 14–15°C was damaging it. Back outside in Sept. |
 
 ### Outdoor (2)
 - 刺刺 — Cactus (yard, under roof — protected from rain, already in correct permanent spot)
-- 蛋花 — Frangipani (currently in main bedroom, from Bunnings)
+- 蜘蛛 — Agapanthus / 非洲百合 (yard, drought-tolerant, blooms Nov–Jan)
 
 ### Other
 - Bay Laurel tree (~2m in yard)
@@ -36,18 +41,19 @@
 - Monstera cuttings — two-chamber self-watering pot
 
 ## Seasonal context
-- Currently winter hold (Now–July): monitor only, no fertilising/repotting
-- Emily travelling July 18 – Aug 2
-- Winter rule: no fertilising/repotting until Sept (soil temp >18°C)
-- Sept 1: move suitable plants outdoors
+- **Post-trip recovery (from 6 Aug):** heavy watering before departure + two weeks at 14–15°C indoors + winter waterlogging damaged several plants. **All watering stopped.** Heater 15–16°C continuous, fan continuous, windows open on fine days.
+- Next recheck of the recovering plants: **Thu 8 Aug**
+- Winter rule still holds: no fertilising/repotting until Sept (soil temp >18°C) — Lili's emergency repot is the exception
+- Sept 1: move suitable plants outdoors (蛋花 permanently, 鸟鸟 back to the balcony)
 
 ## September 2026 plan (spring kick-off)
 
 ### Week 1 (Sept 1–7) — moves
 - **蛋花 Frangipani → outside permanently.** Full-sun spot (alfresco edge or yard), once nights stay above 15°C. Won't flower indoors. Start watering weekly as new growth appears at branch tips.
 - **贝贝 Monstera → alfresco (optional).** Covered, bright filtered light — grows much faster outdoors. Bring in on 38°C+ days. Keep rotating if it stays inside.
-- **蜘蛛 Spider** — frost risk over; fine outside full-time in a shaded spot.
+- **鸟鸟 Strelitzia → back to the master BR balcony** once nights stay warm. It came inside 6 Aug because the balcony was 14–15°C.
 - Everything else stays in its current indoor spot.
+- Move all plants into breathable pots; repot 贝贝 / 星星 / Lili if still needed; 斑斑 into a shallow pot + succulent mix; tip-prune 刺刺 for branching.
 
 ### Week 1–2 — resume feeding (soil >18°C)
 - Slow-release fertiliser for: 刚刚, 皮皮, 贝贝, 棠棠, 青青 (both pots)
@@ -58,7 +64,7 @@
 ### Checks before feeding anything
 - **刚刚:** is the topping cut fully calloused (dry brown edge)? New branches should be pushing below the cut. If the old cracked branch hasn't healed, remove it cleanly.
 - **刚刚's top cutting:** new leaf = rooted. Pot up properly and move to bright indirect light. No new leaf by mid-Sept = check base for rot.
-- **雀雀 / 青青 divisions:** should look stable by now. Flip app statuses recover → ok once new growth appears (ask Claude to update + push).
+- **Post-trip recovery group (Lili, 棠棠, 贝贝, 星星):** watering has been off since 6 Aug. Only resume once soil is bone dry, no new leaf spots appear, and nights are warm. Flip app statuses back to stable when confirmed.
 - **贝贝's cuttings:** if rooted (new leaf), pot up into 50/50 mix + perlite.
 
 ### Mid-September

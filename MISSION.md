@@ -1,7 +1,7 @@
 # Mission: Indoor Plant Care
 
 ## Why
-Emily wants to keep her 11 indoor/outdoor plants alive and thriving as a relaxing spare-time hobby. She lives in Adelaide, South Australia (Mediterranean climate — hot dry summers, mild winters) and has a master bedroom with a large openable window, curtains for light control, and easy access to an outdoor space. She already tracks her plants with nicknames and a seasonal plan, and has propagation in progress.
+Emily wants to keep her 16 indoor/outdoor plants alive and thriving as a relaxing spare-time hobby. She lives in Adelaide, South Australia (Mediterranean climate — hot dry summers, mild winters) and has a master bedroom with a large openable window, curtains for light control, and easy access to an outdoor space. She already tracks her plants with nicknames and a seasonal plan, and has propagation in progress.
 
 ## Success looks like
 - Knows the name, light needs, and watering schedule for each plant she owns
