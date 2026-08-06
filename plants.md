@@ -95,7 +95,9 @@ Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
 
 ## Supplies on Hand
 
-Hydrogen peroxide, potassium permanganate, metalaxyl (精甲), rooting powder (生根粉), perlite, potting mix, sphagnum moss
+Hydrogen peroxide, potassium permanganate, rooting powder (生根粉), perlite, potting mix, sphagnum moss
+
+Pesticides and fertilisers (12 products, all pet-safe, brought from China) are catalogued in the app's 🧪 药肥 / Products tab — what each one targets, dilution, which plants, and the September rotation schedule. Winter rule: **none of them are used until September**, except 精甲·噻霉灵 for root disinfection at repotting.
 
 ## Key Retailers
 

@@ -416,6 +416,69 @@
             font-size: 0.82rem; color: #991b1b; font-weight: 600;
         }
 
+        /* ── CHEMICALS (Products) ── */
+        #chemView { display: none; max-width: 720px; margin: 0 auto; padding: 0.75rem; }
+        #chemView.show { display: block; }
+
+        .chem-banner {
+            background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 0 12px 12px 0;
+            padding: 0.75rem 0.9rem; margin-bottom: 1.1rem;
+        }
+        .chem-banner .cb-title { font-size: 0.86rem; font-weight: 700; color: #92400e; margin-bottom: 0.3rem; }
+        .chem-banner .cb-text  { font-size: 0.78rem; color: #78350f; line-height: 1.55; }
+
+        .chem-card {
+            background: white; border-radius: 12px; padding: 0.7rem 0.8rem;
+            margin-bottom: 0.5rem; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #e5e7eb;
+        }
+        .chem-card.st-now    { border-left-color: #16a34a; }
+        .chem-card.st-ready  { border-left-color: #60a5fa; }
+        .chem-card.st-spring { border-left-color: #cbd5e1; }
+
+        .chem-head { display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
+        .chem-name { font-weight: 700; font-size: 0.93rem; color: #1f2937; }
+        .chem-brand { font-size: 0.72rem; color: #9ca3af; }
+        .chem-active { font-size: 0.72rem; color: #6b7280; margin-top: 0.1rem; }
+
+        .chem-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.45rem; }
+        .chem-tag {
+            font-size: 0.66rem; font-weight: 600; padding: 0.12rem 0.45rem;
+            border-radius: 8px; background: #f3f4f6; color: #4b5563; white-space: nowrap;
+        }
+        .chem-tag.pet-safe    { background: #dcfce7; color: #15803d; }
+        .chem-tag.pet-caution { background: #fef3c7; color: #92400e; }
+        .chem-tag.win-yes     { background: #dbeafe; color: #1d4ed8; }
+        .chem-tag.win-no      { background: #f3f4f6; color: #6b7280; }
+        .chem-tag.st-now      { background: #16a34a; color: #fff; }
+        .chem-tag.st-ready    { background: #dbeafe; color: #1d4ed8; }
+        .chem-tag.st-spring   { background: #f3f4f6; color: #6b7280; }
+
+        .chem-rows { margin-top: 0.5rem; }
+        .chem-row { display: flex; gap: 0.5rem; font-size: 0.75rem; line-height: 1.5; padding: 0.12rem 0; }
+        .chem-row .k { flex: 0 0 4.6rem; color: #9ca3af; }
+        .chem-row .v { flex: 1; color: #374151; }
+
+        .chem-table {
+            width: 100%; border-collapse: collapse; background: white;
+            border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            font-size: 0.75rem;
+        }
+        .chem-table th {
+            text-align: left; padding: 0.5rem 0.6rem; background: #f9fafb;
+            color: #6b7280; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .chem-table td { padding: 0.5rem 0.6rem; border-top: 1px solid #f3f4f6; color: #374151; vertical-align: top; }
+        .chem-table td:first-child { font-weight: 600; color: #1f2937; }
+        .chem-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        .chem-notes { margin-top: 0.4rem; }
+        .chem-note {
+            background: white; border-radius: 12px; padding: 0.6rem 0.8rem; margin-bottom: 0.4rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05); font-size: 0.78rem; color: #374151; line-height: 1.55;
+        }
+        .chem-note b { color: #1f2937; }
+
         /* ── PLANT COLOURS ── */
         .bg-danhual    { background: linear-gradient(135deg, #fef3c7, #fed7aa); }
         .text-danhual  { color: #b45309; }
@@ -459,6 +522,7 @@
     <button class="btn active view" id="btnGrid" onclick="setView('grid')">🪴</button>
     <button class="btn" id="btnLoc" onclick="setView('loc')">📍</button>
     <button class="btn" id="btnToday" onclick="setView('today')">📋</button>
+    <button class="btn" id="btnChem" onclick="setView('chem')">🧪</button>
     <span class="divider-v"></span>
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
@@ -470,6 +534,7 @@
     <div id="grid"></div>
     <div id="locationView"></div>
     <div id="dashboard"></div>
+    <div id="chemView"></div>
 </main>
 
 <div id="modal" class="modal" onclick="closeModal(event)">
@@ -530,6 +595,16 @@ const UI = {
         gOverdue: '逾期', gDue: '今天该浇', gNever: '未记录', gSoon: '快到了', gOk: '还好', gHold: '冬季暂停',
         nothingDue: '今天都不用浇 🎉',
         toxicWarn: '⚠️ 对猫狗有毒 — 放在宠物碰不到的地方',
+        chemView: '🧪 药肥',
+        chemBannerTitle: '❌ 冬季（6–8月）不用任何农药',
+        chemBannerText: '14°C下真菌代谢慢，农药效果差反而伤植物。唯一例外：精甲·噻霉灵，用于Lili换土时根系消毒。9月气温稳定18°C以上再开始正常用药。',
+        cInsecticide: '🐛 杀虫剂', cFungicide: '🦠 杀菌剂', cFertiliser: '🌱 肥料 · 增强剂',
+        cSchedule: '📅 9月轮换时间表（18°C+）', cSafety: '🚨 安全注意',
+        cActive: '成分', cTarget: '针对', cUsage: '用法', cPlants: '适用', cStock: '库存', cNote: '备注',
+        cPetSafe: '🐾 宠物安全', cPetCaution: '🐾 需谨慎',
+        cWinterYes: '❄️ 冬季可用', cWinterNo: '❄️ 冬季不用',
+        cStNow: '🟢 现在使用', cStReady: '🔵 备用待命', cStSpring: '🟡 放至9月',
+        cColUse: '用途', cColProduct: '产品', cColFreq: '频率', cColRotate: '轮换',
     },
     en: {
         gridView: '🪴 Cards', locView: '📍 Rooms',
@@ -559,6 +634,16 @@ const UI = {
         gOverdue: 'Overdue', gDue: 'Due today', gNever: 'Not logged', gSoon: 'Coming up', gOk: 'All good', gHold: 'Winter hold',
         nothingDue: 'Nothing to water today 🎉',
         toxicWarn: "⚠️ Toxic to cats & dogs — keep out of pets' reach",
+        chemView: '🧪 Products',
+        chemBannerTitle: '❌ No pesticides in winter (Jun–Aug)',
+        chemBannerText: 'At 14°C fungal metabolism is slow, so sprays work poorly and stress the plant instead. One exception: metalaxyl·hymexazol, for disinfecting Lili\'s roots at repotting. Normal spraying resumes in September once temps hold above 18°C.',
+        cInsecticide: '🐛 Insecticides', cFungicide: '🦠 Fungicides', cFertiliser: '🌱 Fertilisers & boosters',
+        cSchedule: '📅 September rotation (18°C+)', cSafety: '🚨 Safety',
+        cActive: 'Active', cTarget: 'Targets', cUsage: 'How', cPlants: 'For', cStock: 'Stock', cNote: 'Note',
+        cPetSafe: '🐾 Pet safe', cPetCaution: '🐾 Use care',
+        cWinterYes: '❄️ OK in winter', cWinterNo: '❄️ Not in winter',
+        cStNow: '🟢 In use now', cStReady: '🔵 On standby', cStSpring: '🟡 Hold till Sept',
+        cColUse: 'Purpose', cColProduct: 'Product', cColFreq: 'Frequency', cColRotate: 'Rotation',
     },
 };
 
@@ -596,6 +681,167 @@ const LOCATIONS = {
          shortName: { zh: '室外', en: 'Outside' },
          sub: { zh: '庭院 & 屋檐下', en: 'Yard & under roof' } },
 };
+
+// ─────────────────────────────────────────────
+// Pesticides & fertilisers (pet-safe stock on hand)
+// state ∈ now | ready | spring
+// ─────────────────────────────────────────────
+const CHEMICALS = [
+    {
+        kind: 'insecticide', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '多杀霉素', en: 'Spinosad' }, brand: { zh: '迹无踪', en: '迹无踪' },
+        active: { zh: 'Spinosad（生物农药）', en: 'Spinosad (biological)' },
+        target: { zh: '蓟马（特效）', en: 'Thrips (most effective)' },
+        usage: { zh: '稀释后喷雾，每5–7天一次，共3–4轮', en: 'Dilute and spray every 5–7 days, 3–4 rounds' },
+        plants: { zh: '棠棠、小羽', en: '棠棠, 小羽' },
+        stock: { zh: '1瓶（国内携带）', en: '1 bottle (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'insecticide', state: 'spring', pet: 'caution', winter: false,
+        name: { zh: '高氯 · 吡丙醚', en: 'Cypermethrin · pyriproxyfen' }, brand: { zh: '丰收匠', en: '丰收匠' },
+        active: { zh: '拟除虫菊酯类', en: 'Pyrethroid class' },
+        target: { zh: '蓟马（备用轮换）', en: 'Thrips (rotation backup)' },
+        usage: { zh: '稀释后喷雾，蓟马卵期使用（10–15天一次）', en: 'Dilute and spray at the egg stage (every 10–15 days)' },
+        plants: { zh: '棠棠、小羽（卵期轮换）', en: '棠棠, 小羽 (egg-stage rotation)' },
+        stock: { zh: '2包（国内携带）', en: '2 sachets (brought from China)' },
+        note: { zh: '不推荐冬季使用，春夏与多杀霉素轮换。', en: 'Not for winter; rotate with spinosad in spring/summer.' },
+    },
+    {
+        kind: 'insecticide', state: 'ready', pet: 'safe', winter: false,
+        name: { zh: '联苯 · 乙螨唑', en: 'Bifenazate · etoxazole' }, brand: { zh: '奥植丰', en: '奥植丰' },
+        active: { zh: '联苯肼酯 · 乙螨唑', en: 'Bifenazate · etoxazole' },
+        target: { zh: '红蜘蛛（特效）', en: 'Spider mites (most effective)' },
+        usage: { zh: '稀释后喷雾，7–10天一次', en: 'Dilute and spray every 7–10 days' },
+        plants: { zh: '出现红蜘蛛时再用', en: 'Only if spider mites appear' },
+        stock: { zh: '1瓶（国内携带）', en: '1 bottle (brought from China)' },
+        note: { zh: '备用——等虫害出现或等春季，不预防性使用。', en: 'Standby only — wait for an actual outbreak or for spring. Not a preventative.' },
+    },
+    {
+        kind: 'fungicide', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '唑醚 · 代森联', en: 'Pyraclostrobin · metiram' }, brand: { zh: '奥植丰', en: '奥植丰' },
+        active: { zh: '唑醚 + 代森联', en: 'Pyraclostrobin + metiram' },
+        target: { zh: '叶斑病（预防）', en: 'Leaf spot (preventative)' },
+        usage: { zh: '稀释后喷雾，10天一次', en: 'Dilute and spray every 10 days' },
+        plants: { zh: '星星、贝贝（叶斑病）', en: '星星, 贝贝 (leaf spot)' },
+        stock: { zh: '1瓶（国内携带）', en: '1 bottle (brought from China)' },
+        note: { zh: '冷天效果差，等9月。', en: 'Poor efficacy in the cold — wait for September.' },
+    },
+    {
+        kind: 'fungicide', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '多菌灵', en: 'Carbendazim' }, brand: { zh: '国光', en: '国光' },
+        active: { zh: '多菌灵', en: 'Carbendazim' },
+        target: { zh: '通用杀菌', en: 'General fungicide' },
+        usage: { zh: '稀释后喷雾或浇根', en: 'Dilute, then spray or drench the roots' },
+        plants: null,
+        stock: { zh: '1瓶（国内携带）', en: '1 bottle (brought from China)' },
+        note: { zh: '与唑醚·代森联轮换，避免抗药性。', en: 'Rotate with pyraclostrobin·metiram to avoid resistance.' },
+    },
+    {
+        kind: 'fungicide', state: 'now', pet: 'safe', winter: true,
+        name: { zh: '精甲 · 噻霉灵', en: 'Metalaxyl-M · hymexazol' }, brand: { zh: '练苗 Hansen', en: '练苗 Hansen' },
+        active: { zh: '精甲霜灵 · 恶霉灵', en: 'Metalaxyl-M · hymexazol' },
+        target: { zh: '根腐（预防 / 治疗）', en: 'Root rot (prevention & treatment)' },
+        usage: { zh: '换土时浸泡根系5分钟', en: 'Soak the roots for 5 minutes while repotting' },
+        plants: { zh: 'Lili（8月6日换土）', en: 'Lili (repotted 6 Aug)' },
+        stock: { zh: '1瓶（国内携带）', en: '1 bottle (brought from China)' },
+        note: { zh: '冬季唯一可用的药——只在换土消毒时使用，不作叶面喷施。', en: 'The only product cleared for winter use — root-dip disinfection at repotting only, never a foliar spray.' },
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '花多多10号', en: 'Peters 10 (foliage formula)' }, brand: { zh: '观叶配方', en: 'Foliage formula' },
+        active: { zh: 'NPK 30-10-10 + TE', en: 'NPK 30-10-10 + TE' },
+        target: { zh: '观叶植物营养', en: 'Foliage plant nutrition' },
+        usage: { zh: '稀释后浇根或喷叶', en: 'Dilute, then drench or foliar-feed' },
+        plants: { zh: '雀雀、小羽、皮皮等', en: '雀雀, 小羽, 皮皮 and similar' },
+        stock: { zh: '1罐（国内携带）', en: '1 tub (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '花多多02号', en: 'Peters 02 (bloom formula)' }, brand: { zh: '促花配方', en: 'Bloom formula' },
+        active: { zh: 'NPK 10-30-20 + 2MgO', en: 'NPK 10-30-20 + 2MgO' },
+        target: { zh: '促进开花', en: 'Encourages flowering' },
+        usage: { zh: '稀释后浇根', en: 'Dilute and drench' },
+        plants: { zh: '蛋花、鸟鸟（开花期）', en: '蛋花, 鸟鸟 (flowering period)' },
+        stock: { zh: '1罐（国内携带）', en: '1 tub (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '磷酸二氢钾', en: 'Monopotassium phosphate' }, brand: { zh: '国光甲', en: '国光甲' },
+        active: { zh: 'KH₂PO₄ (≥98%)', en: 'KH₂PO₄ (≥98%)' },
+        target: { zh: '磷钾增强剂，增强抗性', en: 'P-K booster, improves stress resistance' },
+        usage: { zh: '500–1000倍稀释，喷叶或浇根', en: 'Dilute 500–1000×, spray or drench' },
+        plants: null,
+        stock: { zh: '1袋（国内携带）', en: '1 bag (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: 'BUD POWER', en: 'BUD POWER' }, brand: { zh: '有机肥', en: 'Organic' },
+        active: { zh: '有机营养', en: 'Organic nutrients' },
+        target: { zh: '全面营养补充', en: 'All-round nutrition' },
+        usage: { zh: '按说明书使用', en: 'Per label directions' },
+        plants: null,
+        stock: { zh: '1盒（国内携带）', en: '1 box (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '含氨基酸水溶肥料', en: 'Amino-acid soluble feed' }, brand: { zh: '谷淼绿', en: '谷淼绿' },
+        active: { zh: '氨基酸', en: 'Amino acids' },
+        target: { zh: '营养吸收增强', en: 'Improves nutrient uptake' },
+        usage: { zh: '稀释后浇根', en: 'Dilute and drench' },
+        plants: null,
+        stock: { zh: '1盒（国内携带）', en: '1 box (brought from China)' },
+        note: null,
+    },
+    {
+        kind: 'fertiliser', state: 'spring', pet: 'safe', winter: false,
+        name: { zh: '植物缓释营养棒', en: 'Slow-release nutrient spikes' }, brand: { zh: '', en: '' },
+        active: { zh: '缓释营养', en: 'Slow-release nutrients' },
+        target: { zh: '缓慢释放营养', en: 'Feeds gradually over time' },
+        usage: { zh: '插入土壤，按说明书使用', en: 'Push into the soil, per label directions' },
+        plants: null,
+        stock: { zh: '若干（国内携带）', en: 'Several (brought from China)' },
+        note: null,
+    },
+];
+
+const CHEM_SCHEDULE = [
+    { use:     { zh: '蓟马防治', en: 'Thrips control' },
+      product: { zh: '多杀霉素 + 高氯·吡丙醚', en: 'Spinosad + cypermethrin·pyriproxyfen' },
+      freq:    { zh: '5–10天', en: 'Every 5–10 days' },
+      rotate:  { zh: '交替使用', en: 'Alternate the two' } },
+    { use:     { zh: '叶斑病预防', en: 'Leaf spot prevention' },
+      product: { zh: '唑醚·代森联', en: 'Pyraclostrobin·metiram' },
+      freq:    { zh: '7–10天', en: 'Every 7–10 days' },
+      rotate:  { zh: '配合多菌灵轮换', en: 'Rotate with carbendazim' } },
+    { use:     { zh: '红蜘蛛', en: 'Spider mites' },
+      product: { zh: '联苯·乙螨唑', en: 'Bifenazate·etoxazole' },
+      freq:    { zh: '如需要', en: 'As needed' },
+      rotate:  { zh: '只在出现时使用', en: 'Only on an actual outbreak' } },
+    { use:     { zh: '营养补充', en: 'Feeding' },
+      product: { zh: '花多多10号 + 磷酸二氢钾', en: 'Peters 10 + monopotassium phosphate' },
+      freq:    { zh: '10–14天', en: 'Every 10–14 days' },
+      rotate:  { zh: '交替使用', en: 'Alternate the two' } },
+    { use:     { zh: '促花', en: 'Flowering' },
+      product: { zh: '花多多02号', en: 'Peters 02' },
+      freq:    { zh: '开花前后', en: 'Around flowering' },
+      rotate:  { zh: '蛋花、鸟鸟用', en: 'For 蛋花 and 鸟鸟' } },
+];
+
+const CHEM_SAFETY = [
+    { zh: '<b>宠物隔离</b> — 这些产品都不含新烟碱类，对猫狗相对安全，但喷施期间和之后2小时内让宠物远离处理区，不要让它们接触到喷液。',
+      en: '<b>Keep pets away</b> — none of these contain neonicotinoids, so they are relatively safe around cats and dogs, but keep pets out of the treated area during spraying and for 2 hours after, and never let them contact the wet spray.' },
+    { zh: '<b>处理后通风</b> — 所有喷施结束后打开窗户通风。',
+      en: '<b>Ventilate afterwards</b> — open the windows once you have finished spraying.' },
+    { zh: '<b>器材消毒</b> — 喷雾瓶用完立即清洗；修剪工具每剪一株用酒精消毒，防止交叉污染。',
+      en: '<b>Sterilise your gear</b> — rinse the sprayer straight after use; wipe pruning tools with alcohol between plants to stop cross-contamination.' },
+    { zh: '<b>储存</b> — 阴凉干燥处，儿童与宠物接触不到的地方，注意说明书上的保存期限。',
+      en: '<b>Storage</b> — cool and dry, out of reach of children and pets, and mind the shelf life on the label.' },
+];
 
 // ─────────────────────────────────────────────
 // Plant data (bilingual)
@@ -1677,6 +1923,83 @@ function renderLocations() {
 }
 
 // ─────────────────────────────────────────────
+// Render: chemicals view
+// ─────────────────────────────────────────────
+function chemCardHtml(c) {
+    const ui = UI[lang];
+    const stLabel = { now: ui.cStNow, ready: ui.cStReady, spring: ui.cStSpring }[c.state];
+    const row = (label, val) => val ? `<div class="chem-row"><div class="k">${label}</div><div class="v">${t(val)}</div></div>` : '';
+    return `
+        <div class="chem-card st-${c.state}">
+            <div class="chem-head">
+                <span class="chem-name">${t(c.name)}</span>
+                ${t(c.brand) ? `<span class="chem-brand">${t(c.brand)}</span>` : ''}
+            </div>
+            <div class="chem-active">${t(c.active)}</div>
+            <div class="chem-tags">
+                <span class="chem-tag st-${c.state}">${stLabel}</span>
+                <span class="chem-tag ${c.pet === 'safe' ? 'pet-safe' : 'pet-caution'}">${c.pet === 'safe' ? ui.cPetSafe : ui.cPetCaution}</span>
+                <span class="chem-tag ${c.winter ? 'win-yes' : 'win-no'}">${c.winter ? ui.cWinterYes : ui.cWinterNo}</span>
+            </div>
+            <div class="chem-rows">
+                ${row(ui.cTarget, c.target)}
+                ${row(ui.cUsage, c.usage)}
+                ${row(ui.cPlants, c.plants)}
+                ${row(ui.cStock, c.stock)}
+                ${row(ui.cNote, c.note)}
+            </div>
+        </div>`;
+}
+
+function renderChem() {
+    const ui = UI[lang];
+    const groups = [
+        { key: 'insecticide', title: ui.cInsecticide },
+        { key: 'fungicide',   title: ui.cFungicide },
+        { key: 'fertiliser',  title: ui.cFertiliser },
+    ];
+
+    let html = `
+        <div class="chem-banner">
+            <div class="cb-title">${ui.chemBannerTitle}</div>
+            <div class="cb-text">${ui.chemBannerText}</div>
+        </div>`;
+
+    groups.forEach(g => {
+        const items = CHEMICALS.filter(c => c.kind === g.key);
+        if (!items.length) return;
+        html += `<div class="dash-group"><div class="dash-group-title">${g.title} · ${items.length}</div>`;
+        items.forEach(c => { html += chemCardHtml(c); });
+        html += `</div>`;
+    });
+
+    html += `
+        <div class="dash-group">
+            <div class="dash-group-title">${ui.cSchedule}</div>
+            <div class="chem-scroll">
+                <table class="chem-table">
+                    <thead><tr>
+                        <th>${ui.cColUse}</th><th>${ui.cColProduct}</th><th>${ui.cColFreq}</th><th>${ui.cColRotate}</th>
+                    </tr></thead>
+                    <tbody>
+                        ${CHEM_SCHEDULE.map(r => `<tr>
+                            <td>${t(r.use)}</td><td>${t(r.product)}</td><td>${t(r.freq)}</td><td>${t(r.rotate)}</td>
+                        </tr>`).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="dash-group">
+            <div class="dash-group-title">${ui.cSafety}</div>
+            <div class="chem-notes">
+                ${CHEM_SAFETY.map(n => `<div class="chem-note">${t(n)}</div>`).join('')}
+            </div>
+        </div>`;
+
+    document.getElementById('chemView').innerHTML = html;
+}
+
+// ─────────────────────────────────────────────
 // Modal
 // ─────────────────────────────────────────────
 let currentModalPlantId = null;
@@ -1786,9 +2109,11 @@ window.setView = function(v) {
     document.getElementById('grid').classList.toggle('hide', v !== 'grid');
     document.getElementById('locationView').classList.toggle('show', v === 'loc');
     document.getElementById('dashboard').classList.toggle('show', v === 'today');
+    document.getElementById('chemView').classList.toggle('show', v === 'chem');
     syncControls();
     if (v === 'loc') renderLocations();
     else if (v === 'today') renderDashboard();
+    else if (v === 'chem') renderChem();
     else renderGrid();
 };
 
@@ -1797,9 +2122,11 @@ window.toggleLang = function() {
     localStorage.setItem('plantLang', lang);
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
     syncControls();
+    syncControlsHeight();
     renderGrid();
     renderLocations();
     renderDashboard();
+    renderChem();
     if (currentModalPlantId !== null && document.getElementById('modal').classList.contains('show')) {
         openModal(currentModalPlantId);
     }
@@ -1810,12 +2137,14 @@ function syncControls() {
     const bGrid = document.getElementById('btnGrid');
     const bLoc = document.getElementById('btnLoc');
     const bToday = document.getElementById('btnToday');
+    const bChem = document.getElementById('btnChem');
     const bLight = document.getElementById('btnLight');
     const bWater = document.getElementById('btnWater');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
     bToday.textContent = ui.todayView;
+    bChem.textContent = ui.chemView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
     document.getElementById('seasonTag').textContent = ui.season;
@@ -1826,12 +2155,29 @@ function syncControls() {
     bLoc.classList.toggle('view', view === 'loc');
     bToday.classList.toggle('active', view === 'today');
     bToday.classList.toggle('view', view === 'today');
+    bChem.classList.toggle('active', view === 'chem');
+    bChem.classList.toggle('view', view === 'chem');
 
     bLight.classList.toggle('active', sortBy === 'light' && view === 'grid');
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
     bWater.classList.toggle('active', sortBy === 'water' && view === 'grid');
     bWater.classList.toggle('water', sortBy === 'water' && view === 'grid');
 }
+
+// Controls bar is fixed and can wrap to two rows on narrow screens —
+// keep main's top padding matched to its real height.
+function syncControlsHeight() {
+    const bar = document.querySelector('.controls');
+    const main = document.querySelector('main');
+    if (!bar || !main) return;
+    main.style.paddingTop = `${bar.offsetHeight + 10}px`;
+}
+
+if (typeof ResizeObserver === 'function') {
+    new ResizeObserver(syncControlsHeight).observe(document.querySelector('.controls'));
+}
+window.addEventListener('resize', syncControlsHeight);
+syncControlsHeight();
 
 // init
 syncControls();
