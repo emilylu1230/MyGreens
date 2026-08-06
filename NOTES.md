@@ -84,6 +84,8 @@
 ## Supplies on hand
 Hydrogen peroxide, potassium permanganate, rooting powder (生根粉), perlite, potting mix, sphagnum moss
 
+12 pesticides and fertilisers (all pet-safe, brought from China) — full catalogue in plants.md and the app's 🧪 药肥 tab. Teaching-relevant points: **no pesticides at all in winter** (14°C = slow fungal metabolism, sprays underperform and stress the plant), the one exception being 精甲·噻霉灵 as a root dip at repotting; and always **rotate** products of the same purpose to avoid resistance.
+
 ## Key retailers
 - Bunnings (primary)
 - Cost Less Plants — 11 Seaview Road, Yatala Vale SA 5126

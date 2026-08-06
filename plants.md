@@ -97,7 +97,63 @@ Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
 
 Hydrogen peroxide, potassium permanganate, rooting powder (生根粉), perlite, potting mix, sphagnum moss
 
-Pesticides and fertilisers (12 products, all pet-safe, brought from China) are catalogued in the app's 🧪 药肥 / Products tab — what each one targets, dilution, which plants, and the September rotation schedule. Winter rule: **none of them are used until September**, except 精甲·噻霉灵 for root disinfection at repotting.
+-----
+
+## 🧪 Pesticides & Fertilisers
+
+Also in the app's 🧪 药肥 / Products tab. All 12 products brought from China; none contain neonicotinoids, so all are relatively pet-safe around cats and dogs.
+
+> **Winter rule (Jun–Aug): no pesticides at all.** At 14°C fungal metabolism is slow — sprays work poorly and stress the plant instead. Only exception: 精甲·噻霉灵 as a root dip at repotting. Normal spraying resumes in September once temps hold above 18°C.
+
+### 🐛 Insecticides
+
+| Product | Active | Targets | How | For | Stock | Status |
+|---|---|---|---|---|---|---|
+| 多杀霉素 (迹无踪) | Spinosad (biological) | Thrips — most effective | Dilute, spray every 5–7 days, 3–4 rounds | 棠棠, 小羽 | 1 bottle | 🟡 Hold till Sept |
+| 高氯·吡丙醚 (丰收匠) | Pyrethroid class | Thrips — rotation backup | Dilute, spray at egg stage (10–15 days) | 棠棠, 小羽 | 2 sachets | 🟡 Hold till Sept · ⚠️ pets: use care |
+| 联苯·乙螨唑 (奥植丰) | Bifenazate · etoxazole | Spider mites — most effective | Dilute, spray every 7–10 days | Only on an outbreak | 1 bottle | 🔵 Standby |
+
+### 🦠 Fungicides
+
+| Product | Active | Targets | How | For | Stock | Status |
+|---|---|---|---|---|---|---|
+| 唑醚·代森联 (奥植丰) | Pyraclostrobin + metiram | Leaf spot (preventative) | Dilute, spray every 10 days | 星星, 贝贝 | 1 bottle | 🟡 Hold till Sept |
+| 多菌灵 (国光) | Carbendazim | General fungicide | Dilute, spray or root drench | — | 1 bottle | 🟡 Hold till Sept |
+| **精甲·噻霉灵 (练苗 Hansen)** | Metalaxyl-M · hymexazol | Root rot | **Soak roots 5 min while repotting** | Lili (6 Aug) | 1 bottle | 🟢 **In use now** |
+
+Rotate 唑醚·代森联 with 多菌灵 to avoid resistance. 精甲·噻霉灵 is a root dip only — never a foliar spray.
+
+### 🌱 Fertilisers & Boosters
+
+| Product | Active | Use | How | For | Stock |
+|---|---|---|---|---|---|
+| 花多多10号 | NPK 30-10-10 + TE | Foliage nutrition | Drench or foliar-feed | 雀雀, 小羽, 皮皮 etc | 1 tub |
+| 花多多02号 | NPK 10-30-20 + 2MgO | Encourages flowering | Drench | 蛋花, 鸟鸟 | 1 tub |
+| 磷酸二氢钾 (国光甲) | KH₂PO₄ ≥98% | P-K booster, stress resistance | Dilute 500–1000×, spray or drench | — | 1 bag |
+| BUD POWER | Organic nutrients | All-round nutrition | Per label | — | 1 box |
+| 含氨基酸水溶肥料 (谷淼绿) | Amino acids | Improves nutrient uptake | Drench | — | 1 box |
+| 植物缓释营养棒 | Slow-release | Feeds gradually | Push into soil, per label | — | Several |
+
+All fertilisers are on hold until September — the plants are dormant.
+
+### September rotation (18°C+)
+
+| Purpose | Product | Frequency | Rotation |
+|---|---|---|---|
+| Thrips control | 多杀霉素 + 高氯·吡丙醚 | Every 5–10 days | Alternate the two |
+| Leaf spot prevention | 唑醚·代森联 | Every 7–10 days | Rotate with 多菌灵 |
+| Spider mites | 联苯·乙螨唑 | As needed | Only on an actual outbreak |
+| Feeding | 花多多10号 + 磷酸二氢钾 | Every 10–14 days | Alternate the two |
+| Flowering | 花多多02号 | Around flowering | For 蛋花 and 鸟鸟 |
+
+### Safety
+
+- **Keep pets away** — no neonicotinoids, but keep cats and dogs out of the treated area during spraying and for 2 hours after; never let them contact wet spray.
+- **Ventilate afterwards** — open the windows once spraying is done.
+- **Sterilise gear** — rinse the sprayer straight after use; wipe pruning tools with alcohol between plants to stop cross-contamination.
+- **Storage** — cool and dry, out of reach of children and pets, mind the shelf life.
+
+-----
 
 ## Key Retailers
 
