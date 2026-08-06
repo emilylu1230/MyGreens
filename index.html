@@ -562,6 +562,12 @@ const UI = {
     },
 };
 
+// Collection-wide September actions (shown under every plant's September plan)
+const SEPT_ALL = {
+    zh: '全体行动（气温稳定18°C以上时）：所有植物换呼吸盆 · 恢复正常浇水频率 · 开始春季肥料与农药轮换。',
+    en: 'Whole collection (once temps hold above 18°C): repot everything into breathable pots · resume normal watering intervals · start spring fertiliser and rotating pesticides.',
+};
+
 const STATUS = {
     stable:  { dot: 'dot-stable',  ms: 'ms-stable',  label: { zh: '状态良好', en: 'Stable' },
                desc: { zh: '一切正常，按常规护理即可。', en: 'All good — continue routine care.' } },
@@ -919,7 +925,7 @@ const plants = [
     {
         id: 9, nickname: 'Lili', latin: 'Spathiphyllum',
         fullName: { zh: '白掌 · Peace Lily', en: 'Peace Lily · 白掌' },
-        sept: { zh: '移到稍亮的散射光位置促开花。恢复每月平衡液肥（6月换盆已过安全期）。', en: 'Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (safe now after the June repot).' },
+        sept: { zh: '检查8月换土后的恢复情况，如根系仍有问题再换一次土。移到稍亮的散射光位置促开花。恢复每月平衡液肥（换土满6–8周后）。', en: 'Check how it recovered from the August repot; repot again if the roots still look bad. Move to slightly brighter indirect light to trigger flowering. Resume balanced monthly feed (6–8 weeks after the repot).' },
         light: 1, water: 4, humidity: 3, waterDays: 8, hold: true, img: 'images/lili.jpg', bgClass: 'bg-lili', textClass: 'text-lili',
         status: 'danger', locationNo: 5,
         short: {
@@ -962,7 +968,7 @@ const plants = [
     {
         id: 10, nickname: '刺刺', latin: 'Cactus',
         fullName: { zh: '仙人掌', en: 'Cactus · 仙人掌' },
-        sept: { zh: '夜温回暖后恢复少量浇水（每2–4周，土全干再浇）。其他一切照旧，不用施肥。', en: 'Resume sparse watering once nights warm (every 2–4 weeks, only when bone dry). Nothing else needed; no fertiliser.' },
+        sept: { zh: '夜温回暖后恢复少量浇水（每2–4周，土全干再浇）。顶芽修剪促分枝。不用施肥。', en: 'Resume sparse watering once nights warm (every 2–4 weeks, only when bone dry). Tip-prune the growing point to encourage branching. No fertiliser.' },
         light: 5, water: 1, humidity: 1, waterDays: null, img: 'images/cici.jpg', bgClass: 'bg-cici', textClass: 'text-cici',
         status: 'stable', locationNo: 8,
         short: {
@@ -1106,7 +1112,7 @@ const plants = [
     {
         id: 14, nickname: '星星', latin: "Monstera deliciosa 'Thai Constellation'",
         fullName: { zh: '泰国星空龟背竹', en: 'Thai Constellation · 泰国星斑龟背竹' },
-        sept: { zh: '恢复缓释肥。生长快可换盆。引导气根上苔藓柱。保持稳定散射光，避免斑叶灼伤。', en: 'Resume slow-release feeding. Repot if fast-growing. Guide aerial roots onto the moss pole. Keep stable indirect light to avoid scorching the variegation.' },
+        sept: { zh: '如叶斑病期间根系受损则换土。恢复缓释肥。引导气根上苔藓柱。保持稳定散射光，避免斑叶灼伤。', en: 'Repot if the roots were damaged during the leaf-spot episode. Resume slow-release feeding. Guide aerial roots onto the moss pole. Keep stable indirect light to avoid scorching the variegation.' },
         light: 3, water: 2, humidity: 3, waterDays: 12, hold: true, img: 'images/xingxing.jpg', bgClass: 'bg-xingxing', textClass: 'text-xingxing',
         status: 'warning', locationNo: 3,
         short: {
@@ -1739,6 +1745,7 @@ window.openModal = function(plantId) {
 
         <div class="section-title ${plant.textClass}">${ui.septPlan}</div>
         <div class="section-content">${t(plant.sept)}</div>
+        <div class="section-content" style="opacity:0.75">${t(SEPT_ALL)}</div>
         ${alertHtml}
 
         <div class="section-title ${plant.textClass}">${ui.tips}</div>

@@ -67,8 +67,16 @@ Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
 | Now (Aug) | **All watering stopped.** Heater 15–16°C, fan continuous, windows open on fine days. |
 | 6 Aug | Lili emergency repot + disinfect |
 | 8 Aug (Thu) | Recheck Lili, 棠棠, 贝贝, 星星, 鸟鸟 |
-| Fri 8–Sat 9 Aug | Forecast warms to 18°C / 15°C with rain — keep ventilating |
 | Sept (18°C+) | Full spring reset (below) |
+
+### Weather — Newton, week of 6 Aug
+
+| Date | Temp | Rain | Note |
+|---|---|---|---|
+| Today–Thu | 4–16°C | Overcast | Keep the heater running |
+| **Fri 8** | **8–18°C** | **65%** | ✅ Warming starts |
+| **Sat 9** | **11–15°C** | **80%** | ✅ Warm enough |
+| Sun onward | 7–15°C | High | Steady rain — keep ventilating |
 
 ### September spring actions (once temps hold above 18°C)
 
@@ -81,6 +89,7 @@ Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
 - 蛋花 → outdoors, full sun, permanently
 - 鸟鸟 → back to the master BR balcony
 - Bay Laurel cuttings (Sept 15)
+- Rotate pesticides alongside the spring feed
 
 -----
 
@@ -93,3 +102,13 @@ Hydrogen peroxide, potassium permanganate, metalaxyl (精甲), rooting powder (�
 - Bunnings (primary)
 - Cost Less Plants — 11 Seaview Road, Yatala Vale SA 5126
 - Adelaide Central Market — Prettejohn's Nursery stall
+
+-----
+
+## Record
+
+- **Updated:** 6 August 2026, 12:30
+- **Recorded by:** Emily
+- **Location:** Adelaide, Newton
+- **Ambient:** ~15–16°C (heater on)
+- **Collection-wide:** watering stopped, airflow improved
