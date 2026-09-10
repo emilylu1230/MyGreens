@@ -1,55 +1,70 @@
 # Emily's Plant Collection
 
-> Adelaide, Australia | Updated 6 August 2026
-> Winter rule: No fertilizing, repotting, or major pruning until Sept (soil temp >18°C) — except emergency root treatment
-> Trip away: ~July 18 – Aug 2 (returned; several plants cold-damaged and waterlogged)
+> Adelaide, Australia | Updated 10 September 2026
+> Spring reset underway: soil temps holding near/above 18°C, watering and feeding resuming across most of the collection.
 
 -----
 
-## Current state (6 Aug 2026)
-
-**Cause:** Heavy watering before departure + two weeks at 14–15°C indoors + winter waterlogging.
-
-**Environment now:** heater 15–16°C (continuous), fan for airflow (continuous), **watering stopped across the collection**, windows open on fine days.
+## Current state (10 Sept 2026)
 
 | Status | Plants |
 |---|---|
 | 🔴 At risk | Lili |
-| 🟠 Needs care | 棠棠, 贝贝, 星星, 斑斑, 蛋花 |
-| 🟢 Stable | 皮皮, 刚刚, 小羽, Prayer, 青青, 刺刺, 蜘蛛, 铂金, 琴琴, 鸟鸟 |
-
-Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
+| 🟠 Needs care | 贝贝, 棠棠 ×2, 星星, 小羽, 蛋花, 龟龟, 萝萝 |
+| 🟢 Stable | 皮皮, 刚刚, 青青, 小万, 雀雀, 猫猫, 豹豹, 铂金, 琴琴, 心心, 刺刺, 蜘蛛, 斑斑, 鸟鸟 |
 
 -----
 
-## Indoor Plants (13)
+## Indoor Plants (18)
 
 | Nickname | Species | Chinese | Location | Status | Notes |
 |---|---|---|---|---|---|
-| Lili | Spathiphyllum | 白掌 | Living rm window | 🔴 At risk | White mould at root crown. Repot + disinfect 6 Aug: tip out → rinse roots → cut rot → metalaxyl (精甲) 5 min → free-draining Bunnings mix → water through once, then stop. New leaves still green. |
-| 棠棠 | Begonia maculata | 鳟鱼秋海棠 | BR shaded window | 🟠 Needs care | ×2 pots. All damaged leaves trimmed, multiple new shoots, roots vigorous. No water, fan on. |
-| 贝贝 | Monstera deliciosa | 龟背竹 | BR window | 🟠 Needs care | Down to 2 leaves + 1 emerging. Leaf spot. No water, airflow up, moss pole in progress. |
-| 星星 | Monstera deliciosa 'Thai Constellation' | 泰国星空龟背竹 | BR shaded window | 🟠 Needs care | Leaf spot partly trimmed, healthy leaves kept, new leaf unfurling. No water, **no misting**. |
-| 斑斑 | Haworthiopsis attenuata | 条纹十二卷 | BR window | 🟠 Needs care | Sun-stressed purple, recovering in indirect light. Shallow pot + cactus mix in Sept. |
-| 蛋花 | Plumeria | 鸡蛋花 | BR window | 🟠 Needs care | Dormant, soil dry, roots healthy, new shoots in the soil. No water until Sept, then outdoors full sun. |
-| 刚刚 | Ficus elastica 'Burgundy' | 黑金刚橡皮树 | BR window | 🟢 Stable | Topped June 2026 (>1m → 90cm). Came through the trip fine. Keep dry-ish, do not move. Top cutting propagating in soil. |
-| 皮皮 | Ficus elastica (variegated) | 斑叶橡皮树 | BR window | 🟢 Stable | ~20cm young plant. Brightest indirect spot to hold variegation. |
+| Lili | Spathiphyllum | 白掌 | Living rm window | 🔴 At risk | Stem rot has recurred (crown/stem rot). Cut back to healthy tissue, disinfected with metalaxyl·hymexazol (精甲·噻霉灵), repotted, cut left to air-dry. Down to 1 leaf. Old potting mix discarded as contaminated. |
+| 贝贝 | Monstera deliciosa | 龟背竹 | BR window | 🟠 Needs care | All leaf-spot leaves cut off — down to 1 healthy leaf. Repotted into a 19cm black plastic pot (original mix + perlite, boiling-water sterilised). Roots thick and healthy; under observation. |
+| 棠棠 | Begonia maculata | 鳟鱼秋海棠 | BR shaded window | 🟠 Needs care | ×2 pots, both settling in / recovering. One had active stem rot cut out; the other has a new shoot unfurling. Repotting on hold. Bright indirect, water when top layer dry. |
+| 星星 | Monstera deliciosa 'Thai Constellation' | 泰国星空龟背竹 | BR window | 🟠 Needs care | Repotted early into Osmocote Indoor mix. Bleached/necrotic leaves removed, leaf-spot patches treated. Stable indirect light by the floor window, kept out of direct sun. Water when top 2–3cm dry. |
+| 龟龟 | Monstera deliciosa (plain green) | 龟背竹 | BR window | 🟠 Needs care | Bought from IKEA 5 Sept 2026. Biggest leaf already shows a split. Watered thoroughly, settling in — no repot yet. |
+| 皮皮 | Ficus elastica (variegated) | 斑叶橡皮树 | BR window | 🟢 Stable | Sunburn resolved (no new black spots since moving off the window; old spots not spreading). New buds at all 4 base points. Repotted with perlite mixed in, white cache pot, watered recently. No pests since the last spray. |
+| 刚刚 | Ficus elastica 'Burgundy' | 黑金刚橡皮树 | BR window | 🟢 Stable | Stable, no treatment needed. |
 | 琴琴 | Ficus lyrata | 琴叶榕 | BR window | 🟢 Stable | Fixed position — moving it drops leaves. |
-| 铂金 | Philodendron Birkin | 比尔金喜林芋 | BR window | 🟢 Stable | Stripes fade in low light. |
-| 小羽 | Goeppertia insignis | 箭羽竹芋 | BR shaded window | 🟢 Stable | ≥60% humidity, filtered/rainwater only (Adelaide fluoride burns tips). |
-| Prayer | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Fishbone markings, nightly prayer movement. Hardier than most calatheas. |
-| 鸟鸟 | Strelitzia nicolai | 大鹤望兰 · 天堂鸟 | BR window | 🟢 Stable | **Moved in from the balcony 6 Aug** — 14–15°C balcony cold was damaging it. Back outside in Sept. |
+| 铂金 | Philodendron Birkin | 比尔金喜林芋 | BR window | 🟢 Stable | Best condition, no treatment needed. Water thoroughly when top 2–3cm dry, avoid waterlogging. ⚠️ Toxic to cats and dogs. |
+| 青青 | Aglaonema | 万年青 | BR shaded window | 🟢 Stable | Species corrected from Dieffenbachia to Aglaonema. White mould on the soil surface resolved with better airflow — overall healthy. Previously divided off the seedling 小万. |
+| 小万 | Aglaonema (division) | 万年青（分株苗） | BR shaded window | 🟢 Stable | Divided seedling from 青青, recorded 5 Sept 2026. Leaves healthy but growing slowly while its roots rebuild — normal for a fresh division. |
+| 小羽 | Goeppertia insignis | 箭羽竹芋 | BR shaded window | 🟠 Needs care | Chronic dry edges and few new leaves, caused by low humidity + inconsistent watering in a small pot. Now using a 3D-printed soap-dish stand to raise the pebble tray as a water reservoir. Needs ≥60% humidity, filtered/rainwater only. |
+| 雀雀 (was "Prayer") | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Growing very well, several new leaves unfurling. Fishbone markings, nightly prayer movement. |
+| 猫猫 | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii (same species as 雀雀). Vigorous new leaves unfurling. |
+| 豹豹 | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Same correction as 猫猫 (Ctenanthe, not Calathea). New leaves emerging more slowly — individual variation, not a health issue. Moved into the ceramic drainage-hole pot previously used by 铂金 for its high humidity needs. |
+| 心心 (was 小红) | Syngonium podophyllum 'Red Heart' | 合果芋 · 红心 | Master bedroom | 🟢 Stable | Bright indirect light, water once topsoil is dry. ⚠️ Contains calcium oxalate, toxic to cats and dogs — kept strictly isolated. |
+| 萝萝 | Epipremnum aureum (variegated) | 带锦绿萝 | BR shaded window | 🟠 Needs care | Bought from IKEA 5 Sept 2026. Original mix is peat-heavy — water-retentive, low airflow; plan to mix in perlite (~3:1 or 4:1 original mix : perlite) after a 1–2 week settling period. New shoot tips scorched by prior direct sun, now moved to pure indirect light. ⚠️ Contains calcium oxalate, toxic to cats and dogs — kept strictly isolated. |
+| 蛋花 | Plumeria | 鸡蛋花 | BR window | 🟠 Needs care | Still in winter dormancy — a single new leaf slowly unfurling (normal pace). Watering kept minimal. Moves outdoors permanently once nights hold warm. |
 
-## Outdoor Plants (2)
+## Outdoor Plants (3)
 
 | Nickname | Species | Chinese | Location | Notes |
 |---|---|---|---|---|
-| 刺刺 | Cactus | 仙人掌 | Yard, under eaves | Zero water in winter. Already in its permanent spot. |
-| 蜘蛛 | Agapanthus | 非洲百合 | Yard | Drought-tolerant. Blooms Nov–Jan. |
+| 鸟鸟 | Strelitzia nicolai | 大天堂鸟 | Balcony | Back outside on the master BR balcony as temps warmed. Possible snail damage on leaves — watching for fresh bite marks. Full sun/part shade, keep lightly moist, rain-tolerant. |
+| 刺刺 | Blue Columnar Cactus | 蓝柱仙人掌 | Yard, under eaves | Full sun, minimal water. Plan to tip-prune once temps hold ≥18°C to encourage branching. |
+| 斑斑 | Haworthiopsis attenuata | 条纹十二卷 | BR window | Bright indirect light, minimal water. Repot into a shallow pot + succulent mix in spring. |
+| 蜘蛛 | Agapanthus (species TBC once it flowers) | 非洲百合 | Yard | Drought-tolerant, full sun/part shade. Blooms Nov–Jan. |
 
-## Other
+-----
 
-- **Bay Laurel tree** (~2m, in yard) — cuttings planned Sept 15
+## Naming & identification updates (10 Sept 2026)
+
+- **New plants added:** 龟龟 (Monstera deliciosa, plain green), 小万 (Aglaonema division from 青青), 萝萝 (Variegated Epipremnum), 心心 (Syngonium 'Red Heart', renamed from 小红), 猫猫 & 豹豹 (Ctenanthe burle-marxii).
+- **Nickname change:** "Prayer" → 雀雀.
+- **Species correction:** 猫猫 & 豹豹 were previously misidentified as Calathea Leopardina — corrected to Ctenanthe burle-marxii (same species as 雀雀).
+- **Species correction:** 青青 was previously listed as Dieffenbachia 'Sterling' — corrected to Aglaonema.
+- **Toxic to pets ⚠️:** 铂金, 心心, 萝萝 — all now flagged and kept strictly isolated from cats and dogs.
+
+## Removed / no longer tracked
+
+- Bay Laurel tree — no longer part of active care tracking.
+- All propagation cuttings — not included in care records or reminders.
+
+## Do-not-buy list
+
+- Epipremnum aureum (plain, unvariegated pothos / "绿萝") — contains calcium oxalate, toxic to cats and dogs, risk considered unmanageable for this household.
 
 -----
 
@@ -60,36 +75,18 @@ Next check for the recovering plants: **Thu 8 Aug**. 蛋花: September.
 
 -----
 
-## Seasonal Plan
+## Seasonal Plan — September actions (once temps hold above 18°C)
 
-| When | Action |
-|---|---|
-| Now (Aug) | **All watering stopped.** Heater 15–16°C, fan continuous, windows open on fine days. |
-| 6 Aug | Lili emergency repot + disinfect |
-| 8 Aug (Thu) | Recheck Lili, 棠棠, 贝贝, 星星, 鸟鸟 |
-| Sept (18°C+) | Full spring reset (below) |
-
-### Weather — Newton, week of 6 Aug
-
-| Date | Temp | Rain | Note |
-|---|---|---|---|
-| Today–Thu | 4–16°C | Overcast | Keep the heater running |
-| **Fri 8** | **8–18°C** | **65%** | ✅ Warming starts |
-| **Sat 9** | **11–15°C** | **80%** | ✅ Warm enough |
-| Sun onward | 7–15°C | High | Steady rain — keep ventilating |
-
-### September spring actions (once temps hold above 18°C)
-
-- Move all plants into breathable pots
-- Repot 贝贝 / 星星 / Lili if still needed
-- Resume normal watering frequency
-- Start spring fertiliser + rotate pesticides
-- 刺刺: tip prune to encourage branching
-- 斑斑: shallow pot + succulent mix
-- 蛋花 → outdoors, full sun, permanently
-- 鸟鸟 → back to the master BR balcony
-- Bay Laurel cuttings (Sept 15)
+- Resume normal watering and feeding across the collection
 - Rotate pesticides alongside the spring feed
+- 贝贝 / 星星: continue observation after repotting; feed once new growth resumes
+- Lili: monitor closely for another stem-rot recurrence; no fertiliser for 6–8 weeks after repotting
+- 龟龟 / 萝萝: settle in for 1–2 weeks before any repotting or soil changes
+- 小羽: keep the raised pebble tray topped up; watch for improvement in leaf-edge dieback
+- 刺刺: tip-prune to encourage branching
+- 斑斑: shallow pot + succulent mix
+- 蛋花 → outdoors, full sun, permanently, once new tip growth confirms it is out of dormancy
+- Bay Laurel cuttings — no longer tracked
 
 -----
 
@@ -119,7 +116,7 @@ Also in the app's 🧪 药肥 / Products tab. All 12 products brought from China
 |---|---|---|---|---|---|---|
 | 唑醚·代森联 (奥植丰) | Pyraclostrobin + metiram | Leaf spot (preventative) | Dilute, spray every 10 days | 星星, 贝贝 | 1 bottle | 🟡 Hold till Sept |
 | 多菌灵 (国光) | Carbendazim | General fungicide | Dilute, spray or root drench | — | 1 bottle | 🟡 Hold till Sept |
-| **精甲·噻霉灵 (练苗 Hansen)** | Metalaxyl-M · hymexazol | Root rot | **Soak roots 5 min while repotting** | Lili (6 Aug) | 1 bottle | 🟢 **In use now** |
+| **精甲·噻霉灵 (练苗 Hansen)** | Metalaxyl-M · hymexazol | Root rot | **Soak roots 5 min while repotting** | Lili (6 Aug, and again 10 Sept) | 1 bottle | 🟢 **In use now** |
 
 Rotate 唑醚·代森联 with 多菌灵 to avoid resistance. 精甲·噻霉灵 is a root dip only — never a foliar spray.
 
@@ -133,8 +130,6 @@ Rotate 唑醚·代森联 with 多菌灵 to avoid resistance. 精甲·噻霉灵 i
 | BUD POWER | Organic nutrients | All-round nutrition | Per label | — | 1 box |
 | 含氨基酸水溶肥料 (谷淼绿) | Amino acids | Improves nutrient uptake | Drench | — | 1 box |
 | 植物缓释营养棒 | Slow-release | Feeds gradually | Push into soil, per label | — | Several |
-
-All fertilisers are on hold until September — the plants are dormant.
 
 ### September rotation (18°C+)
 
@@ -165,8 +160,7 @@ All fertilisers are on hold until September — the plants are dormant.
 
 ## Record
 
-- **Updated:** 6 August 2026, 12:30
+- **Updated:** 10 September 2026
 - **Recorded by:** Emily
 - **Location:** Adelaide, Newton
-- **Ambient:** ~15–16°C (heater on)
-- **Collection-wide:** watering stopped, airflow improved
+- **Collection-wide:** spring reset underway — watering, feeding and pesticide rotation resuming as temps hold above 18°C
