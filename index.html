@@ -324,6 +324,16 @@
             background: rgba(0,0,0,0.45); color: white; text-align: center;
         }
         .photo-empty { font-size: 0.8rem; color: #9ca3af; padding: 0.4rem 0 0.2rem; }
+        .photo-thumb .photo-local {
+            position: absolute; top: 4px; left: 4px; padding: 1px 5px; border-radius: 6px;
+            background: rgba(180, 83, 9, 0.88); color: #fff; font-size: 0.6rem; font-weight: 700;
+        }
+        .cloud-on { align-self: center; font-size: 0.72rem; font-weight: 600; color: #15803d; }
+        .photo-link {
+            align-self: center; background: none; border: none; padding: 0 0.2rem;
+            font-size: 0.72rem; color: #9ca3af; text-decoration: underline; cursor: pointer;
+        }
+        .photo-link:hover { color: #6b7280; }
 
         /* lightbox */
         .lightbox {
@@ -540,6 +550,8 @@
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
     <span class="divider-v"></span>
+    <button class="btn" id="btnWaterToggle" onclick="toggleWatering()">💧</button>
+    <span class="divider-v"></span>
     <span class="season-tag" id="seasonTag"></span>
 </div>
 
@@ -594,8 +606,19 @@ const UI = {
         noPhotos: '还没有照片——拍一张记录它的成长吧',
         deletePhoto: '删除', closePhoto: '关闭',
         confirmDelete: '删除这张照片？',
-        photoNote: '照片只保存在这台设备上',
+        photoNote: '照片保存在 GitHub 仓库，所有设备通用',
+        photoNoteLocal: '未连接 GitHub——照片只存在这台设备上',
+        cloudConnect: '☁️ 连接 GitHub', cloudOn: '☁️ 已连接', cloudOff: '断开',
+        cloudPrompt: '粘贴 GitHub 令牌（fine-grained token，需对本仓库有 Contents 读写权限）：',
+        cloudSaved: '已连接，之后拍的照片会自动上传',
+        cloudBadToken: '令牌无效或权限不足，请检查后重试',
+        cloudDisconnect: '断开连接？照片仍保留在仓库中。',
+        uploading: '上传中…', uploadFail: '上传失败，已暂存到本机',
+        localBadge: '本机', syncUp: n => `⬆️ 同步 ${n} 张到线上`, syncing: '同步中…',
+        syncDone: '同步完成', deleteRemote: '删除这张线上照片？',
         todayView: '📋 今日',
+        waterTrackLabel: '记录',
+        waterTrackOn: '浇水记录：开（点击关闭）', waterTrackOff: '浇水记录：关（点击开启）',
         wateringTitle: '💧 浇水记录',
         recommended: '建议频率', recEvery: n => `每 ${n} 天`,
         lastWatered: '上次浇水', nextDue: '下次浇水',
@@ -633,8 +656,19 @@ const UI = {
         noPhotos: 'No photos yet — take one to track its growth',
         deletePhoto: 'Delete', closePhoto: 'Close',
         confirmDelete: 'Delete this photo?',
-        photoNote: 'Photos are stored on this device only',
+        photoNote: 'Photos are saved to the GitHub repo — visible on all your devices',
+        photoNoteLocal: 'Not connected to GitHub — photos stay on this device only',
+        cloudConnect: '☁️ Connect GitHub', cloudOn: '☁️ Connected', cloudOff: 'Disconnect',
+        cloudPrompt: 'Paste a GitHub token (fine-grained, with Contents read/write on this repo):',
+        cloudSaved: 'Connected — new photos will upload automatically',
+        cloudBadToken: 'That token was rejected. Check its permissions and try again.',
+        cloudDisconnect: 'Disconnect? Photos already uploaded stay in the repo.',
+        uploading: 'Uploading…', uploadFail: 'Upload failed — saved on this device instead',
+        localBadge: 'local', syncUp: n => `⬆️ Upload ${n} pending`, syncing: 'Uploading…',
+        syncDone: 'All synced', deleteRemote: 'Delete this photo from the repo?',
         todayView: '📋 Today',
+        waterTrackLabel: 'Log',
+        waterTrackOn: 'Watering tracking: on (tap to hide)', waterTrackOff: 'Watering tracking: off (tap to show)',
         wateringTitle: '💧 Watering',
         recommended: 'Recommended', recEvery: n => `every ${n} days`,
         lastWatered: 'Last watered', nextDue: 'Next due',
@@ -1707,6 +1741,36 @@ const plants = [
 let lang = localStorage.getItem('plantLang') || 'zh';
 let sortBy = 'light';
 let view = 'grid';
+// Watering tracking (the log, due dates and Today tab) is off by default and
+// opted into via the toggle. The watering *care guidance* on each plant always
+// stays visible regardless.
+let waterOn = (() => {
+    try { return localStorage.getItem('plantWaterOn') === '1'; } catch (e) { return false; }
+})();
+
+function applyWaterVisibility() {
+    const btn = document.getElementById('btnWaterToggle');
+    const today = document.getElementById('btnToday');
+    const sort = document.getElementById('btnWater');
+    if (btn) {
+        btn.textContent = `${waterOn ? '💧' : '🚱'} ${UI[lang].waterTrackLabel}`;
+        btn.classList.toggle('water', waterOn);
+        btn.classList.toggle('active', waterOn);
+        btn.title = waterOn ? UI[lang].waterTrackOn : UI[lang].waterTrackOff;
+    }
+    if (today) today.style.display = waterOn ? '' : 'none';
+    if (sort) sort.style.display = waterOn ? '' : 'none';
+}
+
+window.toggleWatering = function() {
+    waterOn = !waterOn;
+    try { localStorage.setItem('plantWaterOn', waterOn ? '1' : '0'); } catch (e) {}
+    if (!waterOn && sortBy === 'water') sortBy = 'light';
+    applyWaterVisibility();
+    if (!waterOn && view === 'today') { setView('grid'); return; }
+    syncControls();
+    if (view === 'loc') renderLocations(); else if (view === 'grid') renderGrid();
+};
 
 function t(obj) { return typeof obj === 'string' ? obj : obj[lang]; }
 
@@ -1828,6 +1892,138 @@ async function dbDeletePhoto(id) {
     });
 }
 
+// ─────────────────────────────────────────────
+// Online photos (GitHub repo — photos/{slug}/{timestamp}.jpg)
+// Reading is public and needs no token; uploading/deleting needs one.
+// The token is kept in localStorage on this device and never committed.
+// ─────────────────────────────────────────────
+const GH = { owner: 'emilylu1230', repo: 'MyGreens', branch: 'main', dir: 'photos' };
+const GH_TOKEN_KEY = 'mygreensGhToken';
+
+function ghToken() {
+    try { return localStorage.getItem(GH_TOKEN_KEY) || ''; } catch (e) { return ''; }
+}
+function ghConnected() { return !!ghToken(); }
+
+function ghHeaders(withAuth) {
+    const h = { 'Accept': 'application/vnd.github+json' };
+    if (withAuth) h['Authorization'] = `Bearer ${ghToken()}`;
+    return h;
+}
+
+// The plant's stable folder name, reused from its image filename — nicknames
+// change in this collection, image slugs have not.
+function plantSlug(plant) {
+    return (plant.img || '').replace(/^images\//, '').replace(/\.[a-z]+$/i, '') || `plant-${plant.id}`;
+}
+
+function rawUrl(path) {
+    return `https://raw.githubusercontent.com/${GH.owner}/${GH.repo}/${GH.branch}/${path}`;
+}
+
+// Filenames are ISO timestamps, so the date comes back out of the name.
+function dateFromName(name) {
+    const m = name.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2})-(\d{2})-(\d{2})/);
+    return m ? `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}:${m[6]}Z` : new Date(0).toISOString();
+}
+
+// One recursive tree call returns every photo for every plant. The result is
+// cached locally so an offline load — or a spent API rate limit, which is only
+// 60/hour unauthenticated — still shows the photos instead of an empty grid.
+const GH_CACHE_KEY = 'mygreensPhotoManifest';
+let ghManifest = null;
+
+function ghReadCache() {
+    try { return JSON.parse(localStorage.getItem(GH_CACHE_KEY)) || null; } catch (e) { return null; }
+}
+function ghWriteCache(m) {
+    try { localStorage.setItem(GH_CACHE_KEY, JSON.stringify(m)); } catch (e) {}
+}
+
+async function ghLoadManifest(force) {
+    if (ghManifest && !force) return ghManifest;
+    if (!ghManifest) ghManifest = ghReadCache();
+    try {
+        const res = await fetch(
+            `https://api.github.com/repos/${GH.owner}/${GH.repo}/git/trees/${GH.branch}?recursive=1`,
+            { headers: ghHeaders(ghConnected()) });
+        if (!res.ok) throw new Error(`tree ${res.status}`);
+        const data = await res.json();
+        const byPlant = {};
+        (data.tree || []).forEach(node => {
+            if (node.type !== 'blob') return;
+            const m = node.path.match(/^photos\/([^/]+)\/(.+\.jpe?g)$/i);
+            if (!m) return;
+            (byPlant[m[1]] = byPlant[m[1]] || []).push({
+                kind: 'remote', slug: m[1], name: m[2], path: node.path,
+                sha: node.sha, url: rawUrl(node.path), date: dateFromName(m[2]),
+            });
+        });
+        Object.values(byPlant).forEach(list => list.sort((a, b) => b.date.localeCompare(a.date)));
+        ghManifest = byPlant;
+        ghWriteCache(byPlant);
+    } catch (e) {
+        ghManifest = ghManifest || {};
+    }
+    return ghManifest;
+}
+
+function blobToBase64(blob) {
+    return new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(String(r.result).split(',')[1]);
+        r.onerror = reject;
+        r.readAsDataURL(blob);
+    });
+}
+
+async function ghUpload(slug, blob) {
+    const name = new Date().toISOString().replace(/[:.]/g, '-').replace(/Z$/, '') + '.jpg';
+    const path = `${GH.dir}/${slug}/${name}`;
+    const res = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${path}`, {
+        method: 'PUT',
+        headers: { ...ghHeaders(true), 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: `Add growth photo for ${slug}`,
+            content: await blobToBase64(blob),
+            branch: GH.branch,
+        }),
+    });
+    if (!res.ok) throw new Error(`upload ${res.status}`);
+    const data = await res.json();
+    const item = {
+        kind: 'remote', slug, name, path, sha: data.content && data.content.sha,
+        url: rawUrl(path), date: dateFromName(name),
+    };
+    ghManifest = ghManifest || {};
+    (ghManifest[slug] = ghManifest[slug] || []).unshift(item);
+    ghWriteCache(ghManifest);
+    return item;
+}
+
+async function ghDelete(item) {
+    const res = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}/contents/${item.path}`, {
+        method: 'DELETE',
+        headers: { ...ghHeaders(true), 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `Remove growth photo ${item.name}`, sha: item.sha, branch: GH.branch }),
+    });
+    if (!res.ok) throw new Error(`delete ${res.status}`);
+    if (ghManifest && ghManifest[item.slug]) {
+        ghManifest[item.slug] = ghManifest[item.slug].filter(p => p.path !== item.path);
+        ghWriteCache(ghManifest);
+    }
+}
+
+async function ghCheckToken(token) {
+    try {
+        const res = await fetch(`https://api.github.com/repos/${GH.owner}/${GH.repo}`,
+            { headers: { 'Accept': 'application/vnd.github+json', 'Authorization': `Bearer ${token}` } });
+        if (!res.ok) return false;
+        const repo = await res.json();
+        return !!(repo.permissions && repo.permissions.push);
+    } catch (e) { return false; }
+}
+
 async function compressImage(file) {
     const img = await new Promise((resolve, reject) => {
         const i = new Image();
@@ -1847,26 +2043,62 @@ async function compressImage(file) {
 
 let photoCounts = {};
 let latestPhotoUrls = {};
-async function refreshPhotoCounts() {
+let localOnlyCounts = {};
+let cardBlobUrls = [];
+
+async function dbGetAllPhotos() {
     try {
         const db = await openDB();
-        const all = await new Promise((resolve, reject) => {
+        return await new Promise((resolve, reject) => {
             const req = db.transaction('photos').objectStore('photos').getAll();
             req.onsuccess = () => resolve(req.result);
             req.onerror = () => reject(req.error);
         });
-        photoCounts = {};
-        const latest = {};
-        all.forEach(p => {
-            photoCounts[p.plantId] = (photoCounts[p.plantId] || 0) + 1;
-            if (!latest[p.plantId] || p.date > latest[p.plantId].date) latest[p.plantId] = p;
-        });
-        Object.values(latestPhotoUrls).forEach(u => URL.revokeObjectURL(u));
-        latestPhotoUrls = {};
-        Object.entries(latest).forEach(([id, p]) => {
-            latestPhotoUrls[id] = URL.createObjectURL(p.blob);
-        });
-    } catch (e) { photoCounts = {}; latestPhotoUrls = {}; }
+    } catch (e) { return []; }
+}
+
+// Remote photos merged with anything still only on this device.
+async function photosFor(plant) {
+    const manifest = await ghLoadManifest();
+    const remote = (manifest[plantSlug(plant)] || []).slice();
+    const local = (await dbGetPhotos(plant.id))
+        .map(p => ({ kind: 'local', id: p.id, date: p.date, blob: p.blob }));
+    return remote.concat(local).sort((a, b) => b.date.localeCompare(a.date));
+}
+
+async function refreshPhotoCounts() {
+    const manifest = await ghLoadManifest();
+    const all = await dbGetAllPhotos();
+
+    cardBlobUrls.forEach(u => URL.revokeObjectURL(u));
+    cardBlobUrls = [];
+    photoCounts = {};
+    localOnlyCounts = {};
+    latestPhotoUrls = {};
+
+    const latestLocal = {};
+    all.forEach(p => {
+        localOnlyCounts[p.plantId] = (localOnlyCounts[p.plantId] || 0) + 1;
+        if (!latestLocal[p.plantId] || p.date > latestLocal[p.plantId].date) latestLocal[p.plantId] = p;
+    });
+
+    plants.forEach(plant => {
+        const remote = manifest[plantSlug(plant)] || [];
+        const localCount = localOnlyCounts[plant.id] || 0;
+        const total = remote.length + localCount;
+        if (!total) return;
+        photoCounts[plant.id] = total;
+
+        const lp = latestLocal[plant.id];
+        const rp = remote[0];
+        if (lp && (!rp || lp.date > rp.date)) {
+            const url = URL.createObjectURL(lp.blob);
+            cardBlobUrls.push(url);
+            latestPhotoUrls[plant.id] = url;
+        } else if (rp) {
+            latestPhotoUrls[plant.id] = rp.url;
+        }
+    });
 }
 
 let thumbUrls = [];
@@ -1880,25 +2112,99 @@ function fmtDate(iso) {
         { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
+// The list backing the currently open photo grid, so the lightbox can index it.
+let currentPhotos = [];
+
 async function renderPhotoGrid(plantId) {
     const grid = document.getElementById('photoGrid');
     if (!grid) return;
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant) return;
     revokeThumbs();
-    const photos = await dbGetPhotos(plantId);
+    const ui = UI[lang];
+    const photos = await photosFor(plant);
+    currentPhotos = photos;
+    renderPhotoTools(plant);
     if (!photos.length) {
-        grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1">${UI[lang].noPhotos}</div>`;
+        grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1">${ui.noPhotos}</div>`;
         return;
     }
-    grid.innerHTML = photos.map(p => {
-        const url = URL.createObjectURL(p.blob);
-        thumbUrls.push(url);
+    grid.innerHTML = photos.map((p, i) => {
+        let url;
+        if (p.kind === 'local') {
+            url = URL.createObjectURL(p.blob);
+            thumbUrls.push(url);
+        } else {
+            url = p.url;
+        }
+        const badge = p.kind === 'local' ? `<div class="photo-local">${ui.localBadge}</div>` : '';
         return `
-            <div class="photo-thumb" onclick="openLightbox(${p.id}, ${plantId})">
-                <img src="${url}" alt="">
+            <div class="photo-thumb" onclick="openLightbox(${i}, ${plantId})">
+                <img src="${url}" alt="" loading="lazy">
+                ${badge}
                 <div class="photo-date">${fmtDate(p.date)}</div>
             </div>`;
     }).join('');
 }
+
+// Connect / sync row under the camera buttons.
+function renderPhotoTools(plant) {
+    const box = document.getElementById('photoTools');
+    if (!box) return;
+    const ui = UI[lang];
+    const pending = localOnlyCounts[plant.id] || 0;
+    const note = document.getElementById('photoNote');
+    if (note) note.textContent = ghConnected() ? ui.photoNote : ui.photoNoteLocal;
+    if (!ghConnected()) {
+        box.innerHTML = `<button class="photo-btn" onclick="cloudConnect(${plant.id})">${ui.cloudConnect}</button>`;
+        return;
+    }
+    const sync = pending
+        ? `<button class="photo-btn" onclick="cloudSync(${plant.id})">${ui.syncUp(pending)}</button>`
+        : '';
+    box.innerHTML = `${sync}
+        <span class="cloud-on">${ui.cloudOn}</span>
+        <button class="photo-link" onclick="cloudDisconnect(${plant.id})">${ui.cloudOff}</button>`;
+}
+
+window.cloudConnect = async function(plantId) {
+    const ui = UI[lang];
+    const token = (prompt(ui.cloudPrompt) || '').trim();
+    if (!token) return;
+    if (!await ghCheckToken(token)) { alert(ui.cloudBadToken); return; }
+    try { localStorage.setItem(GH_TOKEN_KEY, token); } catch (e) {}
+    alert(ui.cloudSaved);
+    await ghLoadManifest(true);
+    await renderPhotoGrid(plantId);
+    await refreshPhotoCounts();
+    if (view === 'loc') renderLocations(); else renderGrid();
+};
+
+window.cloudDisconnect = async function(plantId) {
+    if (!confirm(UI[lang].cloudDisconnect)) return;
+    try { localStorage.removeItem(GH_TOKEN_KEY); } catch (e) {}
+    await renderPhotoGrid(plantId);
+};
+
+// Push anything captured while offline / unconnected.
+window.cloudSync = async function(plantId) {
+    const ui = UI[lang];
+    const plant = plants.find(p => p.id === plantId);
+    const box = document.getElementById('photoTools');
+    if (box) box.innerHTML = `<span class="cloud-on">${ui.syncing}</span>`;
+    const local = await dbGetPhotos(plantId);
+    let failed = 0;
+    for (const p of local) {
+        try {
+            await ghUpload(plantSlug(plant), p.blob);
+            await dbDeletePhoto(p.id);
+        } catch (e) { failed++; }
+    }
+    await refreshPhotoCounts();
+    await renderPhotoGrid(plantId);
+    if (view === 'loc') renderLocations(); else renderGrid();
+    if (failed) alert(ui.uploadFail);
+};
 
 window.capturePhoto = function(plantId, useCamera) {
     const input = document.createElement('input');
@@ -1908,33 +2214,55 @@ window.capturePhoto = function(plantId, useCamera) {
     input.onchange = async () => {
         const file = input.files && input.files[0];
         if (!file) return;
+        const ui = UI[lang];
+        const plant = plants.find(p => p.id === plantId);
         const blob = await compressImage(file);
-        await dbAddPhoto(plantId, blob);
-        await renderPhotoGrid(plantId);
+        const box = document.getElementById('photoTools');
+
+        if (ghConnected()) {
+            if (box) box.innerHTML = `<span class="cloud-on">${ui.uploading}</span>`;
+            try {
+                await ghUpload(plantSlug(plant), blob);
+            } catch (e) {
+                await dbAddPhoto(plantId, blob);
+                alert(ui.uploadFail);
+            }
+        } else {
+            await dbAddPhoto(plantId, blob);
+        }
         await refreshPhotoCounts();
+        await renderPhotoGrid(plantId);
         if (view === 'loc') renderLocations(); else renderGrid();
     };
     input.click();
 };
 
 let lbUrl = null;
-window.openLightbox = async function(photoId, plantId) {
-    const photos = await dbGetPhotos(plantId);
-    const photo = photos.find(p => p.id === photoId);
+window.openLightbox = async function(index, plantId) {
+    const ui = UI[lang];
+    const photo = currentPhotos[index];
     if (!photo) return;
-    if (lbUrl) URL.revokeObjectURL(lbUrl);
-    lbUrl = URL.createObjectURL(photo.blob);
-    document.getElementById('lbImg').src = lbUrl;
-    document.getElementById('lbMeta').textContent = fmtDate(photo.date);
-    document.getElementById('lbCloseBtn').textContent = UI[lang].closePhoto;
+    if (lbUrl) { URL.revokeObjectURL(lbUrl); lbUrl = null; }
+    if (photo.kind === 'local') {
+        lbUrl = URL.createObjectURL(photo.blob);
+        document.getElementById('lbImg').src = lbUrl;
+    } else {
+        document.getElementById('lbImg').src = photo.url;
+    }
+    document.getElementById('lbMeta').textContent =
+        fmtDate(photo.date) + (photo.kind === 'local' ? ` · ${ui.localBadge}` : '');
+    document.getElementById('lbCloseBtn').textContent = ui.closePhoto;
     const delBtn = document.getElementById('lbDelBtn');
-    delBtn.textContent = UI[lang].deletePhoto;
+    delBtn.textContent = ui.deletePhoto;
     delBtn.onclick = async () => {
-        if (!confirm(UI[lang].confirmDelete)) return;
-        await dbDeletePhoto(photoId);
+        if (!confirm(photo.kind === 'local' ? ui.confirmDelete : ui.deleteRemote)) return;
+        try {
+            if (photo.kind === 'local') await dbDeletePhoto(photo.id);
+            else await ghDelete(photo);
+        } catch (e) { alert(ui.uploadFail); return; }
         closeLightbox();
-        await renderPhotoGrid(plantId);
         await refreshPhotoCounts();
+        await renderPhotoGrid(plantId);
         if (view === 'loc') renderLocations(); else renderGrid();
     };
     document.getElementById('lightbox').classList.add('show');
@@ -1950,6 +2278,7 @@ window.closeLightbox = function(event) {
 // Watering: card pill, dashboard, actions
 // ─────────────────────────────────────────────
 function cardWaterPill(plant) {
+    if (!waterOn) return '';
     const ws = waterStatus(plant);
     if (ws.state === 'hold') return '';
     const done = loggedTodayFor(plant.id);
@@ -2283,8 +2612,8 @@ window.openModal = function(plantId) {
         <div class="section-title ${plant.textClass}">${ui.waterNeeds}</div>
         <div class="section-content">${t(plant.waterDetail)}</div>
 
-        <div class="section-title ${plant.textClass}">${ui.wateringTitle}</div>
-        <div id="waterBlock">${waterBlockHtml(plant)}</div>
+        ${waterOn ? `<div class="section-title ${plant.textClass}">${ui.wateringTitle}</div>
+        <div id="waterBlock">${waterBlockHtml(plant)}</div>` : ''}
 
         <div class="section-title ${plant.textClass}">${ui.seasonNow}</div>
         <div class="section-content">${t(plant.seasonNote)}</div>
@@ -2302,8 +2631,9 @@ window.openModal = function(plantId) {
             <button class="photo-btn" onclick="capturePhoto(${plant.id}, true)">${ui.takePhoto}</button>
             <button class="photo-btn" onclick="capturePhoto(${plant.id}, false)">${ui.fromAlbum}</button>
         </div>
+        <div class="photo-actions" id="photoTools"></div>
         <div class="photo-grid" id="photoGrid"></div>
-        <div class="photo-empty" style="font-size:0.7rem">${ui.photoNote}</div>
+        <div class="photo-empty" style="font-size:0.7rem" id="photoNote"></div>
     `;
 
     renderPhotoGrid(plant.id);
@@ -2385,6 +2715,8 @@ function syncControls() {
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
     bWater.classList.toggle('active', sortBy === 'water' && view === 'grid');
     bWater.classList.toggle('water', sortBy === 'water' && view === 'grid');
+
+    applyWaterVisibility();
 }
 
 // Controls bar is fixed and can wrap to two rows on narrow screens —
@@ -2403,6 +2735,7 @@ window.addEventListener('resize', syncControlsHeight);
 syncControlsHeight();
 
 // init
+applyWaterVisibility();
 syncControls();
 renderGrid();
 refreshPhotoCounts().then(() => {
