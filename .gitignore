@@ -3,4 +3,4 @@
 MyGreens 植物档案 *.md
 
 # iOS/AI export drops — source artwork, not part of the site
-[0-9A-F][0-9A-F]*-*.PNG
+/[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]-*.PNG
