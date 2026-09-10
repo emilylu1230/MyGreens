@@ -328,6 +328,31 @@
             position: absolute; top: 4px; left: 4px; padding: 1px 5px; border-radius: 6px;
             background: rgba(180, 83, 9, 0.88); color: #fff; font-size: 0.6rem; font-weight: 700;
         }
+        .loc-move { display: flex; align-items: center; gap: 0.45rem; margin-top: 0.6rem; }
+        .loc-move-label { font-size: 0.72rem; font-weight: 600; color: #6b7280; }
+        .loc-select {
+            flex: 1; font: inherit; font-size: 0.78rem; padding: 0.3rem 0.4rem;
+            border: 1px solid #d1d5db; border-radius: 8px; background: #fff; color: #1f2937;
+        }
+        .loc-moved-note { margin-top: 0.4rem; font-size: 0.7rem; color: #b45309; }
+        .loc-reset-bar {
+            display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;
+            flex-wrap: wrap; margin: 0 0 0.9rem; padding: 0.5rem 0.7rem;
+            background: #f9fafb; border: 1px solid #eef0f2; border-radius: 10px;
+        }
+        .loc-reset-text { font-size: 0.75rem; color: #6b7280; }
+        .card-moved {
+            padding: 0.1rem 0.35rem; border-radius: 6px; font-size: 0.62rem; font-weight: 700;
+            background: rgba(180, 83, 9, 0.9); color: #fff;
+        }
+        .app-settings {
+            margin: 1.4rem auto 0.6rem; text-align: center;
+        }
+        .app-settings button {
+            background: none; border: none; cursor: pointer; padding: 0.3rem 0.5rem;
+            font: inherit; font-size: 0.72rem; color: #9ca3af; text-decoration: underline;
+        }
+        .app-settings button:hover { color: #6b7280; }
         .cloud-on { align-self: center; font-size: 0.72rem; font-weight: 600; color: #15803d; }
         .photo-link {
             align-self: center; background: none; border: none; padding: 0 0.2rem;
@@ -550,8 +575,6 @@
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
     <span class="divider-v"></span>
-    <button class="btn" id="btnWaterToggle" onclick="toggleWatering()">💧</button>
-    <span class="divider-v"></span>
     <span class="season-tag" id="seasonTag"></span>
 </div>
 
@@ -560,6 +583,9 @@
     <div id="locationView"></div>
     <div id="dashboard"></div>
     <div id="chemView"></div>
+    <div class="app-settings">
+        <button id="btnWaterToggle" onclick="toggleWatering()"></button>
+    </div>
 </main>
 
 <div id="modal" class="modal" onclick="closeModal(event)">
@@ -617,8 +643,13 @@ const UI = {
         localBadge: '本机', syncUp: n => `⬆️ 同步 ${n} 张到线上`, syncing: '同步中…',
         syncDone: '同步完成', deleteRemote: '删除这张线上照片？',
         todayView: '📋 今日',
-        waterTrackLabel: '记录',
-        waterTrackOn: '浇水记录：开（点击关闭）', waterTrackOff: '浇水记录：关（点击开启）',
+        moveTo: '摆放位置', recommendedSuffix: '（推荐）',
+        movedFrom: name => `已从推荐位置「${name}」移出`,
+        locReset: '↩ 恢复推荐位置',
+        locResetConfirm: '把所有植物恢复到推荐位置？',
+        movedCount: n => `${n} 株不在推荐位置`,
+        allRecommended: '全部都在推荐位置 ✓',
+        waterTrackHide: '隐藏浇水记录功能', waterTrackShow: '显示浇水记录功能',
         wateringTitle: '💧 浇水记录',
         recommended: '建议频率', recEvery: n => `每 ${n} 天`,
         lastWatered: '上次浇水', nextDue: '下次浇水',
@@ -667,8 +698,13 @@ const UI = {
         localBadge: 'local', syncUp: n => `⬆️ Upload ${n} pending`, syncing: 'Uploading…',
         syncDone: 'All synced', deleteRemote: 'Delete this photo from the repo?',
         todayView: '📋 Today',
-        waterTrackLabel: 'Log',
-        waterTrackOn: 'Watering tracking: on (tap to hide)', waterTrackOff: 'Watering tracking: off (tap to show)',
+        moveTo: 'Placed in', recommendedSuffix: '(recommended)',
+        movedFrom: name => `Moved out of its recommended spot — ${name}`,
+        locReset: '↩ Reset to recommended',
+        locResetConfirm: 'Put every plant back in its recommended spot?',
+        movedCount: n => `${n} plant${n === 1 ? '' : 's'} away from the recommended spot`,
+        allRecommended: 'Everything is in its recommended spot ✓',
+        waterTrackHide: 'Hide watering tracking', waterTrackShow: 'Show watering tracking',
         wateringTitle: '💧 Watering',
         recommended: 'Recommended', recEvery: n => `every ${n} days`,
         lastWatered: 'Last watered', nextDue: 'Next due',
@@ -1748,16 +1784,49 @@ let waterOn = (() => {
     try { return localStorage.getItem('plantWaterOn') === '1'; } catch (e) { return false; }
 })();
 
+// Where a plant actually sits right now. Each plant's `locationNo` is the
+// recommended spot; moving one stores an override on this device only, so
+// "reset" just clears the overrides and the recommendation shows through again.
+const LOC_KEY = 'plantLocOverrides';
+let locOverrides = (() => {
+    try { return JSON.parse(localStorage.getItem(LOC_KEY)) || {}; } catch (e) { return {}; }
+})();
+
+function saveLocOverrides() {
+    try { localStorage.setItem(LOC_KEY, JSON.stringify(locOverrides)); } catch (e) {}
+}
+function locOf(plant) {
+    const o = locOverrides[plant.id];
+    return (o && LOCATIONS[o]) ? o : plant.locationNo;
+}
+function isMoved(plant) { return locOf(plant) !== plant.locationNo; }
+function movedCount() { return plants.filter(isMoved).length; }
+
+window.setPlantLocation = function(plantId, locNo) {
+    const plant = plants.find(p => p.id === plantId);
+    if (!plant) return;
+    locNo = Number(locNo);
+    if (locNo === plant.locationNo) delete locOverrides[plant.id];
+    else locOverrides[plant.id] = locNo;
+    saveLocOverrides();
+    openModal(plantId);
+    if (view === 'loc') renderLocations(); else if (view === 'grid') renderGrid();
+};
+
+window.resetLocations = function() {
+    if (!movedCount()) return;
+    if (!confirm(UI[lang].locResetConfirm)) return;
+    locOverrides = {};
+    saveLocOverrides();
+    renderLocations();
+};
+
 function applyWaterVisibility() {
     const btn = document.getElementById('btnWaterToggle');
     const today = document.getElementById('btnToday');
     const sort = document.getElementById('btnWater');
-    if (btn) {
-        btn.textContent = `${waterOn ? '💧' : '🚱'} ${UI[lang].waterTrackLabel}`;
-        btn.classList.toggle('water', waterOn);
-        btn.classList.toggle('active', waterOn);
-        btn.title = waterOn ? UI[lang].waterTrackOn : UI[lang].waterTrackOff;
-    }
+    // Label states the action, so it can't be mistaken for a "log water" button.
+    if (btn) btn.textContent = waterOn ? UI[lang].waterTrackHide : UI[lang].waterTrackShow;
     if (today) today.style.display = waterOn ? '' : 'none';
     if (sort) sort.style.display = waterOn ? '' : 'none';
 }
@@ -2395,7 +2464,7 @@ function renderGrid() {
     let html = '';
     sorted.forEach((plant, index) => {
         const st = STATUS[plant.status];
-        const loc = LOCATIONS[plant.locationNo];
+        const loc = LOCATIONS[locOf(plant)];
 
         const photoSrc = latestPhotoUrls[plant.id] || plant.img;
         html += `
@@ -2427,12 +2496,19 @@ function renderGrid() {
 const LOC_ICONS = { 1: '🌤️', 2: '🪟', 3: '🪞', 5: '🛋️', 8: '🌳' };
 
 function renderLocations() {
+    const ui = UI[lang];
     const order = [1, 2, 3, 5, 8];
-    let html = '';
+    const moved = movedCount();
+    let html = moved
+        ? `<div class="loc-reset-bar">
+               <span class="loc-reset-text">${ui.movedCount(moved)}</span>
+               <button class="photo-btn" onclick="resetLocations()">${ui.locReset}</button>
+           </div>`
+        : `<div class="loc-reset-bar"><span class="loc-reset-text">${ui.allRecommended}</span></div>`;
 
     order.forEach(locNo => {
         const loc = LOCATIONS[locNo];
-        const inLoc = plants.filter(p => p.locationNo === locNo);
+        const inLoc = plants.filter(p => locOf(p) === locNo);
         if (!inLoc.length) return;
 
         let cards = '';
@@ -2450,7 +2526,7 @@ function renderLocations() {
                     </div>
                     <div class="emoji-section">
                         <div class="card-pills">
-                            <div class="location-pill">${t(st.label)}</div>${cardWaterPill(plant)}${plant.toxic ? '<div class="card-tox">🐾✗</div>' : ''}${photoCounts[plant.id] ? `
+                            <div class="location-pill">${t(st.label)}</div>${isMoved(plant) ? `<div class="card-moved" title="${t(LOCATIONS[plant.locationNo].name)}">↔</div>` : ''}${cardWaterPill(plant)}${plant.toxic ? '<div class="card-tox">🐾✗</div>' : ''}${photoCounts[plant.id] ? `
                             <div class="location-pill">📷 ${photoCounts[plant.id]}</div>` : ''}
                         </div>
                         <div class="emoji-rating">${'☀️'.repeat(plant.light)}</div>
@@ -2564,7 +2640,8 @@ window.openModal = function(plantId) {
 
     const ui = UI[lang];
     const st = STATUS[plant.status];
-    const loc = LOCATIONS[plant.locationNo];
+    const curLoc = locOf(plant);
+    const loc = LOCATIONS[curLoc];
 
     document.getElementById('modalTitle').textContent = plant.nickname;
     document.getElementById('modalSubtitle').textContent = plant.latin + ' · ' + t(plant.fullName);
@@ -2585,8 +2662,15 @@ window.openModal = function(plantId) {
         </div>
 
         <div class="location-card">
-            <div class="loc-header">${ui.locationLabel} ${plant.locationNo === 8 ? '' : plant.locationNo + ' — '}${t(loc.name)}</div>
+            <div class="loc-header">${ui.locationLabel} ${curLoc === 8 ? '' : curLoc + ' — '}${t(loc.name)}</div>
             <div class="loc-detail">${t(plant.locationDetail)}</div>
+            <div class="loc-move">
+                <label class="loc-move-label" for="locPick">${ui.moveTo}</label>
+                <select id="locPick" class="loc-select" onchange="setPlantLocation(${plant.id}, this.value)">
+                    ${[1, 2, 3, 5, 8].map(n => `<option value="${n}"${n === curLoc ? ' selected' : ''}>${LOC_ICONS[n] || '📍'} ${t(LOCATIONS[n].shortName)}${n === plant.locationNo ? ` ${ui.recommendedSuffix}` : ''}</option>`).join('')}
+                </select>
+            </div>
+            ${isMoved(plant) ? `<div class="loc-moved-note">${ui.movedFrom(t(LOCATIONS[plant.locationNo].name))}</div>` : ''}
         </div>
         ${plant.toxic ? `<div class="tox-card">${ui.toxicWarn}</div>` : ''}
 
