@@ -12,7 +12,6 @@
     <button class="btn active view" id="btnGrid" onclick="setView('grid')">🪴</button>
     <button class="btn" id="btnLoc" onclick="setView('loc')">📍</button>
     <button class="btn" id="btnToday" onclick="setView('today')">📋</button>
-    <button class="btn" id="btnChem" onclick="setView('chem')">🧪</button>
     <span class="divider-v"></span>
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
@@ -26,6 +25,10 @@
     <div id="dashboard"></div>
     <div id="chemView"></div>
     <div class="app-settings">
+        <button id="btnChemFooter" onclick="setView('chem')"></button>
+        <span class="app-settings-dot">·</span>
+        <button id="btnLangFooter" onclick="toggleLang()"></button>
+        <span class="app-settings-dot">·</span>
         <button id="btnWaterToggle" onclick="toggleWatering()"></button>
     </div>
 </main>
@@ -236,17 +239,17 @@ window.resetLocations = function() {
 function applyWaterVisibility() {
     const btn = document.getElementById('btnWaterToggle');
     const today = document.getElementById('btnToday');
-    const sort = document.getElementById('btnWater');
     // Label states the action, so it can't be mistaken for a "log water" button.
     if (btn) btn.textContent = waterOn ? UI[lang].waterTrackHide : UI[lang].waterTrackShow;
+    // Only the Today tab (due dates, logging) depends on tracking. The 💧 sort
+    // uses each plant's thirst rating — a fixed care fact, not the log — so it
+    // stays available either way.
     if (today) today.style.display = waterOn ? '' : 'none';
-    if (sort) sort.style.display = waterOn ? '' : 'none';
 }
 
 window.toggleWatering = function() {
     waterOn = !waterOn;
     try { localStorage.setItem('plantWaterOn', waterOn ? '1' : '0'); } catch (e) {}
-    if (!waterOn && sortBy === 'water') sortBy = 'light';
     applyWaterVisibility();
     if (!waterOn && view === 'today') { setView('grid'); return; }
     syncControls();
@@ -1185,14 +1188,12 @@ function syncControls() {
     const bGrid = document.getElementById('btnGrid');
     const bLoc = document.getElementById('btnLoc');
     const bToday = document.getElementById('btnToday');
-    const bChem = document.getElementById('btnChem');
     const bLight = document.getElementById('btnLight');
     const bWater = document.getElementById('btnWater');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
     bToday.textContent = ui.todayView;
-    bChem.textContent = ui.chemView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
     document.getElementById('seasonTag').textContent = ui.season;
@@ -1203,13 +1204,19 @@ function syncControls() {
     bLoc.classList.toggle('view', view === 'loc');
     bToday.classList.toggle('active', view === 'today');
     bToday.classList.toggle('view', view === 'today');
-    bChem.classList.toggle('active', view === 'chem');
-    bChem.classList.toggle('view', view === 'chem');
 
     bLight.classList.toggle('active', sortBy === 'light' && view === 'grid');
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
     bWater.classList.toggle('active', sortBy === 'water' && view === 'grid');
     bWater.classList.toggle('water', sortBy === 'water' && view === 'grid');
+
+    const bChemFooter = document.getElementById('btnChemFooter');
+    if (bChemFooter) {
+        bChemFooter.textContent = ui.chemView;
+        bChemFooter.classList.toggle('active-link', view === 'chem');
+    }
+    const bLangFooter = document.getElementById('btnLangFooter');
+    if (bLangFooter) bLangFooter.textContent = `🌐 ${ui.langBtn}`;
 
     applyWaterVisibility();
 }

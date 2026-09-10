@@ -347,6 +347,8 @@ main { padding-top: 58px; padding-bottom: 1rem; }
     font: inherit; font-size: 0.72rem; color: #9ca3af; text-decoration: underline;
 }
 .app-settings button:hover { color: #6b7280; }
+.app-settings button.active-link { color: #16a34a; font-weight: 600; }
+.app-settings-dot { color: #d1d5db; font-size: 0.72rem; }
 .cloud-on { align-self: center; font-size: 0.72rem; font-weight: 600; color: #15803d; }
 .photo-link {
     align-self: center; background: none; border: none; padding: 0 0.2rem;
