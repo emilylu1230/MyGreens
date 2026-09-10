@@ -11,11 +11,11 @@
 |---|---|
 | 🔴 At risk | Lili |
 | 🟠 Needs care | 贝贝, 棠棠 ×2, 星星, 小羽, 蛋花, 龟龟, 萝萝 |
-| 🟢 Stable | 皮皮, 刚刚, 青青, 小万, 雀雀, 猫猫, 豹豹, 铂金, 琴琴, 心心, 刺刺, 蜘蛛, 斑斑, 鸟鸟 |
+| 🟢 Stable | 皮皮, 刚刚, 青青, 小万, 猫猫, 豹豹, 铂金, 琴琴, 心心, 刺刺, 蜘蛛, 斑斑, 鸟鸟 |
 
 -----
 
-## Indoor Plants (18)
+## Indoor Plants (17)
 
 | Nickname | Species | Chinese | Location | Status | Notes |
 |---|---|---|---|---|---|
@@ -31,8 +31,7 @@
 | 青青 | Aglaonema | 万年青 | BR shaded window | 🟢 Stable | Species corrected from Dieffenbachia to Aglaonema. White mould on the soil surface resolved with better airflow — overall healthy. Previously divided off the seedling 小万. |
 | 小万 | Aglaonema (division) | 万年青（分株苗） | BR shaded window | 🟢 Stable | Divided seedling from 青青, recorded 5 Sept 2026. Leaves healthy but growing slowly while its roots rebuild — normal for a fresh division. |
 | 小羽 | Goeppertia insignis | 箭羽竹芋 | BR shaded window | 🟠 Needs care | Chronic dry edges and few new leaves, caused by low humidity + inconsistent watering in a small pot. Now using a 3D-printed soap-dish stand to raise the pebble tray as a water reservoir. Needs ≥60% humidity, filtered/rainwater only. |
-| 雀雀 (was "Prayer") | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Growing very well, several new leaves unfurling. Fishbone markings, nightly prayer movement. |
-| 猫猫 | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii (same species as 雀雀). Vigorous new leaves unfurling. |
+| 猫猫 | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | One of the two divisions of the original plant (formerly 雀雀). Previously misidentified as Calathea Leopardina, now corrected. Vigorous new leaves unfurling. |
 | 豹豹 | Ctenanthe burle-marxii | 银羽竹芋 | BR shaded window | 🟢 Stable | Same correction as 猫猫 (Ctenanthe, not Calathea). New leaves emerging more slowly — individual variation, not a health issue. Moved into the ceramic drainage-hole pot previously used by 铂金 for its high humidity needs. |
 | 心心 (was 小红) | Syngonium podophyllum 'Red Heart' | 合果芋 · 红心 | Master bedroom | 🟢 Stable | Bright indirect light, water once topsoil is dry. ⚠️ Contains calcium oxalate, toxic to cats and dogs — kept strictly isolated. |
 | 萝萝 | Epipremnum aureum (variegated) | 带锦绿萝 | BR shaded window | 🟠 Needs care | Bought from IKEA 5 Sept 2026. Original mix is peat-heavy — water-retentive, low airflow; plan to mix in perlite (~3:1 or 4:1 original mix : perlite) after a 1–2 week settling period. New shoot tips scorched by prior direct sun, now moved to pure indirect light. ⚠️ Contains calcium oxalate, toxic to cats and dogs — kept strictly isolated. |
@@ -52,8 +51,8 @@
 ## Naming & identification updates (10 Sept 2026)
 
 - **New plants added:** 龟龟 (Monstera deliciosa, plain green), 小万 (Aglaonema division from 青青), 萝萝 (Variegated Epipremnum), 心心 (Syngonium 'Red Heart', renamed from 小红), 猫猫 & 豹豹 (Ctenanthe burle-marxii).
-- **Nickname change:** "Prayer" → 雀雀.
-- **Species correction:** 猫猫 & 豹豹 were previously misidentified as Calathea Leopardina — corrected to Ctenanthe burle-marxii (same species as 雀雀).
+- **Removed:** 雀雀 (formerly "Prayer") is no longer listed on its own — it was divided into two pots, which are tracked as 猫猫 and 豹豹.
+- **Species correction:** 猫猫 & 豹豹 were previously misidentified as Calathea Leopardina — corrected to Ctenanthe burle-marxii.
 - **Species correction:** 青青 was previously listed as Dieffenbachia 'Sterling' — corrected to Aglaonema.
 - **Toxic to pets ⚠️:** 铂金, 心心, 萝萝 — all now flagged and kept strictly isolated from cats and dogs.
 
@@ -124,7 +123,7 @@ Rotate 唑醚·代森联 with 多菌灵 to avoid resistance. 精甲·噻霉灵 i
 
 | Product | Active | Use | How | For | Stock |
 |---|---|---|---|---|---|
-| 花多多10号 | NPK 30-10-10 + TE | Foliage nutrition | Drench or foliar-feed | 雀雀, 小羽, 皮皮 etc | 1 tub |
+| 花多多10号 | NPK 30-10-10 + TE | Foliage nutrition | Drench or foliar-feed | 猫猫, 豹豹, 小羽, 皮皮 etc | 1 tub |
 | 花多多02号 | NPK 10-30-20 + 2MgO | Encourages flowering | Drench | 蛋花, 鸟鸟 | 1 tub |
 | 磷酸二氢钾 (国光甲) | KH₂PO₄ ≥98% | P-K booster, stress resistance | Dilute 500–1000×, spray or drench | — | 1 bag |
 | BUD POWER | Organic nutrients | All-round nutrition | Per label | — | 1 box |

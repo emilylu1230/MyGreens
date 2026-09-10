@@ -525,8 +525,6 @@
         .text-tangtan  { color: #be185d; }
         .bg-baobao     { background: linear-gradient(135deg, #a7f3d0, #99f6e4); }
         .text-baobao   { color: #047857; }
-        .bg-quequea    { background: linear-gradient(135deg, #a5f3fc, #67e8f9); }
-        .text-quequea  { color: #0369a1; }
         .bg-qingqing   { background: linear-gradient(135deg, #d4fc79, #86efac); }
         .text-qingqing { color: #365314; }
         .bg-beibei     { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
@@ -836,7 +834,7 @@ const CHEMICALS = [
         active: { zh: 'NPK 30-10-10 + TE', en: 'NPK 30-10-10 + TE' },
         target: { zh: '观叶植物营养', en: 'Foliage plant nutrition' },
         usage: { zh: '稀释后浇根或喷叶', en: 'Dilute, then drench or foliar-feed' },
-        plants: { zh: '雀雀、小羽、皮皮等', en: '雀雀, 小羽, 皮皮 and similar' },
+        plants: { zh: '猫猫、豹豹、小羽、皮皮等', en: '猫猫, 豹豹, 小羽, 皮皮 and similar' },
         stock: { zh: '1罐（国内携带）', en: '1 tub (brought from China)' },
         note: null,
     },
@@ -1101,8 +1099,8 @@ const plants = [
             en: 'Chronic dry edges and few new leaves, caused by low humidity + inconsistent watering in a small pot. Now using a 3D-printed soap-dish stand to raise the tray as a water reservoir. Needs ≥60% humidity.',
         },
         locationDetail: {
-            zh: '主卧窗边遮帘处，与雀雀、棠棠、青青、猫猫、豹豹放在一起。植物聚集+托盘加水（3D打印皂碟架高）提升局部湿度。帘子过滤的散射光很适合。',
-            en: 'Master BR curtain-filtered window, grouped with 雀雀, 棠棠, 青青, 猫猫 & 豹豹. Group humidity + a pebble tray (raised on a 3D-printed soap-dish stand) compensates for no bathroom steam. Filtered light suits it.',
+            zh: '主卧窗边遮帘处，与棠棠、青青、猫猫、豹豹放在一起。植物聚集+托盘加水（3D打印皂碟架高）提升局部湿度。帘子过滤的散射光很适合。',
+            en: 'Master BR curtain-filtered window, grouped with 棠棠, 青青, 猫猫 & 豹豹. Group humidity + a pebble tray (raised on a 3D-printed soap-dish stand) compensates for no bathroom steam. Filtered light suits it.',
         },
         description: {
             zh: '长披针形叶，豹纹斑纹，叶背紫红色。叶背紫红=健康；褪色=湿度或光照不足。有睡眠运动。目前慢性干边+新叶稀少，原因是湿度不足与小盆浇水不稳定。',
@@ -1125,44 +1123,8 @@ const plants = [
             en: 'Filtered or rainwater only! Adelaide tap water fluoride causes brown crispy edges. Watching for improvement from chronic dry edges and few new leaves, now that the tray is raised on a soap-dish stand for more humidity.',
         },
         tips: {
-            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 叶背紫红变淡=湿度或光线不足\n• 与雀雀、猫猫、豹豹放在一起提升局部湿度\n• 不要向叶面喷水——会引发真菌斑\n• 小盆浇水不稳定会导致干边，托盘加水更稳定',
-            en: '• Leaves folding up at night (prayer movement) = healthy\n• Fading purple undersides = humidity or light too low\n• Group with 雀雀, 猫猫 & 豹豹 to raise local humidity\n• Don\'t mist — it causes fungal spots\n• Inconsistent watering in a small pot causes dry edges — a pebble tray is more consistent',
-        },
-    },
-    {
-        id: 6, nickname: '雀雀', latin: 'Ctenanthe burle-marxii',
-        fullName: { zh: '银羽竹芋 · 鱼骨祈祷植物', en: 'Fishbone Prayer Plant / Never Never Plant · 银羽竹芋' },
-        sept: { zh: '恢复每月半浓度液肥。保持湿度，天气转暖后可移到阳台遮阴处。检查是否需要换盆。', en: 'Resume half-strength monthly feed. Keep humidity up; can move to shaded alfresco as weather warms. Check if it needs repotting.' },
-        light: 3, water: 4, humidity: 4, waterDays: 5, img: 'images/queque.jpg', bgClass: 'bg-quequea', textClass: 'text-quequea',
-        status: 'stable', locationNo: 3,
-        short: {
-            zh: '长势极好，多根新叶展开中。鱼骨纹叶片，夜间祈祷运动。喜高湿度。',
-            en: 'Growing very well, several new leaves unfurling. Fishbone-patterned leaves with nightly prayer movement. Loves high humidity.',
-        },
-        locationDetail: {
-            zh: '主卧窗边遮帘处，与小羽、棠棠、青青、猫猫、豹豹聚在一起提升局部湿度。托盘加水保持≥60%湿度。',
-            en: 'Master BR curtain-filtered window, grouped with 小羽, 棠棠, 青青, 猫猫 & 豹豹 for local humidity. Pebble tray to maintain ≥60%.',
-        },
-        description: {
-            zh: '银羽竹芋，叶片有独特鱼骨状深绿斑纹，叶背紫色。夜间叶片竖起（祈祷运动），比大多数竹芋更皮实好养。目前长势极好，多根新叶展开中。',
-            en: 'Fishbone prayer plant with distinctive herringbone dark-green markings and purple undersides. Leaves fold upward at night (prayer movement). Hardier than most calatheas. Currently growing very well, with several new leaves unfurling.',
-        },
-        lightDetail: {
-            zh: '散射光或耐阴，避免直射阳光——叶片会褪色。帘子过滤的窗边光线即可。',
-            en: 'Indirect light or shade-tolerant. Avoid direct sun — leaves fade. Curtain-filtered window light is ideal.',
-        },
-        waterDetail: {
-            zh: '保持湿润，冬季适当减少浇水。不能完全干透。最好用过滤水或雨水，避免叶尖焦枯。',
-            en: 'Keep moist, reduce in winter. Never let it dry out completely. Filtered or rainwater preferred to avoid crispy tips.',
-        },
-        seasonNote: {
-            zh: '冬季：减少浇水但保持湿度。远离暖气出风口。保持18°C以上。',
-            en: 'Winter: water less but maintain humidity. Keep away from heater vents. Stay above 18°C.',
-        },
-        alert: null,
-        tips: {
-            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 比大多数竹芋更皮实，适合新手\n• 高湿度环境更好——托盘加水+植物聚集\n• 不要向叶面喷水——容易真菌斑\n• 叶背紫色褪淡 = 光线或湿度不足',
-            en: '• Leaves folding at night (prayer movement) = healthy\n• Hardier than most calatheas — good for beginners\n• Thrives in high humidity — pebble tray + plant grouping\n• Don\'t mist — causes fungal spots\n• Fading purple undersides = low light or humidity',
+            zh: '• 叶片晚上收拢（祈祷运动）= 健康信号\n• 叶背紫红变淡=湿度或光线不足\n• 与猫猫、豹豹放在一起提升局部湿度\n• 不要向叶面喷水——会引发真菌斑\n• 小盆浇水不稳定会导致干边，托盘加水更稳定',
+            en: '• Leaves folding up at night (prayer movement) = healthy\n• Fading purple undersides = humidity or light too low\n• Group with 猫猫 & 豹豹 to raise local humidity\n• Don\'t mist — it causes fungal spots\n• Inconsistent watering in a small pot causes dry edges — a pebble tray is more consistent',
         },
     },
     {
@@ -1704,16 +1666,16 @@ const plants = [
         light: 3, water: 4, humidity: 4, waterDays: 5, img: 'images/maomao.jpg', bgClass: 'bg-maomao', textClass: 'text-maomao',
         status: 'stable', locationNo: 3,
         short: {
-            zh: '银羽竹芋，与雀雀、豹豹同品种，此前误判为豹纹卡拉狄亚，已更正。新叶展开旺盛。',
-            en: 'Ctenanthe burle-marxii, same species as 雀雀 and 豹豹 — previously misidentified as Calathea Leopardina, now corrected. Vigorous new leaves unfurling.',
+            zh: '银羽竹芋，与豹豹同为原「雀雀」分株而来。此前误判为豹纹卡拉狄亚，已更正。新叶展开旺盛。',
+            en: 'Ctenanthe burle-marxii — this and 豹豹 are the two divisions of the original plant (formerly 雀雀). Previously misidentified as Calathea Leopardina, now corrected. Vigorous new leaves unfurling.',
         },
         locationDetail: {
-            zh: '主卧窗边遮帘处，与小羽、雀雀、豹豹、棠棠、青青聚在一起提升局部湿度。',
-            en: 'Master BR curtain-filtered window, grouped with 小羽, 雀雀, 豹豹, 棠棠 & 青青 for local humidity.',
+            zh: '主卧窗边遮帘处，与小羽、豹豹、棠棠、青青聚在一起提升局部湿度。',
+            en: 'Master BR curtain-filtered window, grouped with 小羽, 豹豹, 棠棠 & 青青 for local humidity.',
         },
         description: {
-            zh: '银羽竹芋，鱼骨祈祷植物。此前误判为 Calathea Leopardina，已更正为 Ctenanthe burle-marxii（与雀雀同品种）。新叶展开旺盛，长势良好。',
-            en: 'Fishbone prayer plant. Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii (same species as 雀雀). Vigorous new leaves currently unfurling.',
+            zh: '银羽竹芋，鱼骨祈祷植物。原为一盆「雀雀」，已分株成猫猫、豹豹两盆，故不再单列雀雀。此前误判为 Calathea Leopardina，已更正为 Ctenanthe burle-marxii。新叶展开旺盛，长势良好。',
+            en: 'Fishbone prayer plant. This was a single plant (雀雀) that was divided into two pots — 猫猫 and 豹豹 — so 雀雀 is no longer listed separately. Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii. Vigorous new leaves currently unfurling.',
         },
         lightDetail: {
             zh: '散射光耐阴，避免直射阳光。',
@@ -1729,8 +1691,8 @@ const plants = [
         },
         alert: null,
         tips: {
-            zh: '• 物种已更正为 Ctenanthe burle-marxii，非 Calathea\n• 与雀雀同品种，养护方式相同\n• 叶片晚上收拢（祈祷运动）= 健康信号\n• 不要向叶面喷水——会引发真菌斑',
-            en: '• Species corrected to Ctenanthe burle-marxii, not Calathea\n• Same species as 雀雀 — same care\n• Leaves folding at night (prayer movement) = healthy\n• Don\'t mist — causes fungal spots',
+            zh: '• 物种已更正为 Ctenanthe burle-marxii，非 Calathea\n• 与豹豹同株分出，养护方式相同\n• 叶片晚上收拢（祈祷运动）= 健康信号\n• 不要向叶面喷水——会引发真菌斑',
+            en: '• Species corrected to Ctenanthe burle-marxii, not Calathea\n• Divided from the same plant as 豹豹 — same care\n• Leaves folding at night (prayer movement) = healthy\n• Don\'t mist — causes fungal spots',
         },
     },
     {
@@ -1740,16 +1702,16 @@ const plants = [
         light: 3, water: 4, humidity: 4, waterDays: 5, img: 'images/baobao2.jpg', bgClass: 'bg-baobao2', textClass: 'text-baobao2',
         status: 'stable', locationNo: 3,
         short: {
-            zh: '银羽竹芋，与猫猫、雀雀同品种。新叶萌发较慢（个体差异），已移入陶瓷溢水孔盆（适合高湿需求）。',
-            en: 'Ctenanthe burle-marxii, same species as 猫猫 and 雀雀. New leaves emerging more slowly (individual variation); moved into the ceramic drainage-hole pot (suits its high humidity needs).',
+            zh: '银羽竹芋，与猫猫同为原「雀雀」分株而来。新叶萌发较慢（个体差异），已移入陶瓷溢水孔盆（适合高湿需求）。',
+            en: 'Ctenanthe burle-marxii — this and 猫猫 are the two divisions of the original plant (formerly 雀雀). New leaves emerging more slowly (individual variation); moved into the ceramic drainage-hole pot (suits its high humidity needs).',
         },
         locationDetail: {
-            zh: '主卧窗边遮帘处，与小羽、雀雀、猫猫、棠棠、青青聚在一起提升局部湿度。已移入原铂金使用的陶瓷溢水孔盆。',
-            en: 'Master BR curtain-filtered window, grouped with 小羽, 雀雀, 猫猫, 棠棠 & 青青 for local humidity. Moved into the ceramic drainage-hole pot previously used by 铂金.',
+            zh: '主卧窗边遮帘处，与小羽、猫猫、棠棠、青青聚在一起提升局部湿度。已移入原铂金使用的陶瓷溢水孔盆。',
+            en: 'Master BR curtain-filtered window, grouped with 小羽, 猫猫, 棠棠 & 青青 for local humidity. Moved into the ceramic drainage-hole pot previously used by 铂金.',
         },
         description: {
-            zh: '银羽竹芋，鱼骨祈祷植物。此前误判为 Calathea Leopardina，已更正为 Ctenanthe burle-marxii（与猫猫、雀雀同品种）。新叶萌发较慢，属个体差异，非病态。',
-            en: 'Fishbone prayer plant. Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii (same species as 猫猫 and 雀雀). New leaves are emerging more slowly — individual variation, not a health issue.',
+            zh: '银羽竹芋，鱼骨祈祷植物。与猫猫同为原「雀雀」分株而来。此前误判为 Calathea Leopardina，已更正为 Ctenanthe burle-marxii。新叶萌发较慢，属个体差异，非病态。',
+            en: 'Fishbone prayer plant. This and 猫猫 are the two divisions of the original plant (formerly 雀雀). Previously misidentified as Calathea Leopardina, now corrected to Ctenanthe burle-marxii. New leaves are emerging more slowly — individual variation, not a health issue.',
         },
         lightDetail: {
             zh: '散射光耐阴，避免直射阳光。',
