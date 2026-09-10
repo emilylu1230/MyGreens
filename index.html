@@ -77,6 +77,7 @@ const UI = {
         attention: '⚠️ 注意', locationLabel: '📍 位置',
         photos: '📷 成长记录', takePhoto: '📷 拍照', fromAlbum: '🖼 相册',
         noPhotos: '还没有照片——拍一张记录它的成长吧',
+        growthSummary: (days, count) => `📈 记录了 ${days} 天 · 共 ${count} 张照片`,
         deletePhoto: '删除', closePhoto: '关闭',
         confirmDelete: '删除这张照片？',
         photoNote: '照片保存在 GitHub 仓库，所有设备通用',
@@ -132,6 +133,7 @@ const UI = {
         attention: '⚠️ Attention', locationLabel: '📍 Location',
         photos: '📷 Growth Log', takePhoto: '📷 Camera', fromAlbum: '🖼 Library',
         noPhotos: 'No photos yet — take one to track its growth',
+        growthSummary: (days, count) => `📈 Tracking for ${days} day${days === 1 ? '' : 's'} · ${count} photos`,
         deletePhoto: 'Delete', closePhoto: 'Close',
         confirmDelete: 'Delete this photo?',
         photoNote: 'Photos are saved to the GitHub repo — visible on all your devices',
@@ -596,6 +598,16 @@ function fmtDate(iso) {
         { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
+// Day count relative to a plant's first (oldest) growth photo, so the log
+// reads as a timeline ("Day 0" ... "Day 32") rather than a bare date.
+function dayNumber(iso, oldestIso) {
+    const ms = new Date(iso).setHours(0, 0, 0, 0) - new Date(oldestIso).setHours(0, 0, 0, 0);
+    return Math.round(ms / 86400000);
+}
+function dayLabel(n) {
+    return lang === 'zh' ? `第 ${n} 天` : `Day ${n}`;
+}
+
 // The list backing the currently open photo grid, so the lightbox can index it.
 let currentPhotos = [];
 
@@ -613,6 +625,14 @@ async function renderPhotoGrid(plantId) {
         grid.innerHTML = `<div class="photo-empty" style="grid-column:1/-1">${ui.noPhotos}</div>`;
         return;
     }
+    // photos is newest-first; the oldest is last.
+    const oldest = photos[photos.length - 1].date;
+    const summary = document.getElementById('photoSummary');
+    if (summary) {
+        summary.textContent = photos.length > 1
+            ? ui.growthSummary(dayNumber(photos[0].date, oldest), photos.length)
+            : '';
+    }
     grid.innerHTML = photos.map((p, i) => {
         let url;
         if (p.kind === 'local') {
@@ -626,7 +646,7 @@ async function renderPhotoGrid(plantId) {
             <div class="photo-thumb" onclick="openLightbox(${i}, ${plantId})">
                 <img src="${url}" alt="" loading="lazy">
                 ${badge}
-                <div class="photo-date">${fmtDate(p.date)}</div>
+                <div class="photo-date"><b>${dayLabel(dayNumber(p.date, oldest))}</b><span class="photo-date-day">${fmtDate(p.date)}</span></div>
             </div>`;
     }).join('');
 }
@@ -733,8 +753,10 @@ window.openLightbox = async function(index, plantId) {
     } else {
         document.getElementById('lbImg').src = photo.url;
     }
+    const oldest = currentPhotos[currentPhotos.length - 1].date;
     document.getElementById('lbMeta').textContent =
-        fmtDate(photo.date) + (photo.kind === 'local' ? ` · ${ui.localBadge}` : '');
+        `${dayLabel(dayNumber(photo.date, oldest))} · ${fmtDate(photo.date)}` +
+        (photo.kind === 'local' ? ` · ${ui.localBadge}` : '');
     document.getElementById('lbCloseBtn').textContent = ui.closePhoto;
     const delBtn = document.getElementById('lbDelBtn');
     delBtn.textContent = ui.deletePhoto;
@@ -1130,6 +1152,7 @@ window.openModal = function(plantId) {
             <button class="photo-btn" onclick="capturePhoto(${plant.id}, false)">${ui.fromAlbum}</button>
         </div>
         <div class="photo-actions" id="photoTools"></div>
+        <div class="photo-summary" id="photoSummary"></div>
         <div class="photo-grid" id="photoGrid"></div>
         <div class="photo-empty" style="font-size:0.7rem" id="photoNote"></div>
     `;
