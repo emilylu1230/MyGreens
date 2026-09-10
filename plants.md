@@ -100,22 +100,22 @@ Hydrogen peroxide, potassium permanganate, rooting powder (生根粉), perlite, 
 
 Also in the app's 🧪 药肥 / Products tab. All 12 products brought from China; none contain neonicotinoids, so all are relatively pet-safe around cats and dogs.
 
-> **Winter rule (Jun–Aug): no pesticides at all.** At 14°C fungal metabolism is slow — sprays work poorly and stress the plant instead. Only exception: 精甲·噻霉灵 as a root dip at repotting. Normal spraying resumes in September once temps hold above 18°C.
+> **Spraying has resumed (September, 18°C+).** Through winter (Jun–Aug) everything was on hold — at 14°C fungal metabolism is slow, so sprays work poorly and stress the plant instead. Now that temps hold above 18°C the rotation schedule below is back in play. 精甲·噻霉灵 stays a root dip at repotting only, never a foliar spray.
 
 ### 🐛 Insecticides
 
 | Product | Active | Targets | How | For | Stock | Status |
 |---|---|---|---|---|---|---|
-| 多杀霉素 (迹无踪) | Spinosad (biological) | Thrips — most effective | Dilute, spray every 5–7 days, 3–4 rounds | 棠棠, 小羽 | 1 bottle | 🟡 Hold till Sept |
-| 高氯·吡丙醚 (丰收匠) | Pyrethroid class | Thrips — rotation backup | Dilute, spray at egg stage (10–15 days) | 棠棠, 小羽 | 2 sachets | 🟡 Hold till Sept · ⚠️ pets: use care |
+| 多杀霉素 (迹无踪) | Spinosad (biological) | Thrips — most effective | Dilute, spray every 5–7 days, 3–4 rounds | 棠棠, 小羽 | 1 bottle | 🌱 Cleared for spring |
+| 高氯·吡丙醚 (丰收匠) | Pyrethroid class | Thrips — rotation backup | Dilute, spray at egg stage (10–15 days) | 棠棠, 小羽 | 2 sachets | 🌱 Cleared for spring · ⚠️ pets: use care |
 | 联苯·乙螨唑 (奥植丰) | Bifenazate · etoxazole | Spider mites — most effective | Dilute, spray every 7–10 days | Only on an outbreak | 1 bottle | 🔵 Standby |
 
 ### 🦠 Fungicides
 
 | Product | Active | Targets | How | For | Stock | Status |
 |---|---|---|---|---|---|---|
-| 唑醚·代森联 (奥植丰) | Pyraclostrobin + metiram | Leaf spot (preventative) | Dilute, spray every 10 days | 星星, 贝贝 | 1 bottle | 🟡 Hold till Sept |
-| 多菌灵 (国光) | Carbendazim | General fungicide | Dilute, spray or root drench | — | 1 bottle | 🟡 Hold till Sept |
+| 唑醚·代森联 (奥植丰) | Pyraclostrobin + metiram | Leaf spot (preventative) | Dilute, spray every 10 days | 星星, 贝贝 | 1 bottle | 🌱 Cleared for spring |
+| 多菌灵 (国光) | Carbendazim | General fungicide | Dilute, spray or root drench | — | 1 bottle | 🌱 Cleared for spring |
 | **精甲·噻霉灵 (练苗 Hansen)** | Metalaxyl-M · hymexazol | Root rot | **Soak roots 5 min while repotting** | Lili (6 Aug, and again 10 Sept) | 1 bottle | 🟢 **In use now** |
 
 Rotate 唑醚·代森联 with 多菌灵 to avoid resistance. 精甲·噻霉灵 is a root dip only — never a foliar spray.
