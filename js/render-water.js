@@ -3,8 +3,13 @@
 // ─────────────────────────────────────────────
 // Watering: card pill, dashboard, actions
 // ─────────────────────────────────────────────
+// Quick 💧 log buttons on the cards. Off keeps the Garden view clean —
+// watering lives in the Today view and in each plant's panel. Flip to true
+// to put the one-tap log button back on every card.
+const CARD_WATER_PILLS = false;
+
 function cardWaterPill(plant) {
-    if (!waterOn) return '';
+    if (!CARD_WATER_PILLS) return '';
     const ws = waterStatus(plant);
     if (ws.state === 'hold') return '';
     const done = loggedTodayFor(plant.id);

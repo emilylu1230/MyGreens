@@ -20,7 +20,6 @@
 <div class="controls">
     <button class="btn active view" id="btnGrid" onclick="setView('grid')">🪴</button>
     <button class="btn" id="btnLoc" onclick="setView('loc')">📍</button>
-    <button class="btn" id="btnToday" onclick="setView('today')">📋</button>
     <span class="divider-v"></span>
     <button class="btn active light" id="btnLight" onclick="setSortBy('light')">☀️</button>
     <button class="btn" id="btnWater" onclick="setSortBy('water')">💧</button>
@@ -34,11 +33,13 @@
     <div id="dashboard"></div>
     <div id="chemView"></div>
     <div class="app-settings">
+        <button id="btnTodayFooter" onclick="setView('today')"></button>
+        <span class="app-settings-dot">·</span>
         <button id="btnChemFooter" onclick="setView('chem')"></button>
         <span class="app-settings-dot">·</span>
-        <button id="btnLangFooter" onclick="toggleLang()"></button>
+        <a id="lnkLessons" href="lessons/index.html"></a>
         <span class="app-settings-dot">·</span>
-        <button id="btnWaterToggle" onclick="toggleWatering()"></button>
+        <button id="btnLangFooter" onclick="toggleLang()"></button>
     </div>
 </main>
 
@@ -50,7 +51,6 @@
                 <div class="modal-subtitle" id="modalSubtitle"></div>
             </div>
             <div class="modal-header-actions">
-                <button class="btn lang" id="modalLangBtn" onclick="toggleLang()">EN</button>
                 <button class="close-btn" onclick="closeModal()">×</button>
             </div>
         </div>

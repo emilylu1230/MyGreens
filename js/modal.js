@@ -9,7 +9,6 @@ window.openModal = function(plantId) {
     const plant = plants.find(p => p.id === plantId);
     if (!plant) return;
     currentModalPlantId = plantId;
-    document.getElementById('modalLangBtn').textContent = UI[lang].langBtn;
 
     const ui = UI[lang];
     const st = STATUS[plant.status];
@@ -69,8 +68,8 @@ window.openModal = function(plantId) {
         <div class="section-title ${plant.textClass}">${ui.waterNeeds}</div>
         <div class="section-content">${t(plant.waterDetail)}</div>
 
-        ${waterOn ? `<div class="section-title ${plant.textClass}">${ui.wateringTitle}</div>
-        <div id="waterBlock">${waterBlockHtml(plant)}</div>` : ''}
+        <div class="section-title ${plant.textClass}">${ui.wateringTitle}</div>
+        <div id="waterBlock">${waterBlockHtml(plant)}</div>
 
         <div class="section-title ${plant.textClass}">${ui.seasonNow}</div>
         <div class="section-content">${t(plant.seasonNote)}</div>

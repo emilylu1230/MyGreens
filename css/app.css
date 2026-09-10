@@ -346,6 +346,11 @@ main { padding-top: 58px; padding-bottom: 1rem; }
 .app-settings {
     margin: 1.4rem auto 0.6rem; text-align: center;
 }
+.app-settings a {
+    color: #9ca3af; font-size: 0.72rem; text-decoration: underline;
+    padding: 0.3rem 0.5rem; display: inline-block;
+}
+.app-settings a:hover { color: #6b7280; }
 .app-settings button {
     background: none; border: none; cursor: pointer; padding: 0.3rem 0.5rem;
     font: inherit; font-size: 0.72rem; color: #9ca3af; text-decoration: underline;

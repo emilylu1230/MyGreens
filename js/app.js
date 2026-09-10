@@ -43,13 +43,11 @@ function syncControls() {
     const ui = UI[lang];
     const bGrid = document.getElementById('btnGrid');
     const bLoc = document.getElementById('btnLoc');
-    const bToday = document.getElementById('btnToday');
     const bLight = document.getElementById('btnLight');
     const bWater = document.getElementById('btnWater');
 
     bGrid.textContent = ui.gridView;
     bLoc.textContent = ui.locView;
-    bToday.textContent = ui.todayView;
     bLight.textContent = ui.sortLight;
     bWater.textContent = ui.sortWater;
     document.getElementById('seasonTag').textContent = ui.season;
@@ -58,8 +56,6 @@ function syncControls() {
     bGrid.classList.toggle('view', view === 'grid');
     bLoc.classList.toggle('active', view === 'loc');
     bLoc.classList.toggle('view', view === 'loc');
-    bToday.classList.toggle('active', view === 'today');
-    bToday.classList.toggle('view', view === 'today');
 
     bLight.classList.toggle('active', sortBy === 'light' && view === 'grid');
     bLight.classList.toggle('light', sortBy === 'light' && view === 'grid');
@@ -71,10 +67,16 @@ function syncControls() {
         bChemFooter.textContent = ui.chemView;
         bChemFooter.classList.toggle('active-link', view === 'chem');
     }
+    const bTodayFooter = document.getElementById('btnTodayFooter');
+    if (bTodayFooter) {
+        bTodayFooter.textContent = ui.todayView;
+        bTodayFooter.classList.toggle('active-link', view === 'today');
+    }
+    const lnkLessons = document.getElementById('lnkLessons');
+    if (lnkLessons) lnkLessons.textContent = ui.lessonsLink;
     const bLangFooter = document.getElementById('btnLangFooter');
     if (bLangFooter) bLangFooter.textContent = `🌐 ${ui.langBtn}`;
 
-    applyWaterVisibility();
 }
 
 // Controls bar is fixed and can wrap to two rows on narrow screens —
@@ -93,7 +95,6 @@ window.addEventListener('resize', syncControlsHeight);
 syncControlsHeight();
 
 // init
-applyWaterVisibility();
 syncControls();
 renderGrid();
 refreshPhotoCounts().then(() => {
