@@ -1,0 +1,23 @@
+{
+  "name": "秘密花园 · Emily's Secret Garden",
+  "short_name": "秘密花园",
+  "description": "Plant care records, watering and growth photos.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4faf5",
+  "theme_color": "#23711d",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
