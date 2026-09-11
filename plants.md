@@ -66,9 +66,62 @@
 
 -----
 
+## Light Reference (measured, 5 Sept 2026)
+
+Lux readings taken with a phone light meter, to guide where each plant actually sits rather than guessing from "bright" / "low light" labels.
+
+| Spot | Lux | Category |
+|---|---|---|
+| Alfresco, shaded by trees | ~30,000 | Full sun / strong light |
+| Alfresco, under the eaves | ~5,000–6,000 | Bright indirect (the "standard" range) |
+| Master BR window, midday, curtain drawn | ~8,000 | Bright indirect (upper end) |
+| Green cabinet, top shelf | ~6,300 | Bright indirect |
+| Green cabinet, bottom shelf | <2,000 | Low light — only for the most shade-tolerant |
+
+**By light band:**
+
+| Band | Lux | Plants |
+|---|---|---|
+| Low light, shade-tolerant | 500–2,000 | Most Ctenanthe (猫猫, 豹豹, 小羽), 心心, 青青, Lili |
+| Bright indirect (standard) | 2,000–10,000 | Monstera group (贝贝, 星星, 龟龟), 皮皮, 刚刚, 琴琴, 萝萝, 铂金 |
+| Strong indirect / a little direct | 10,000–20,000 | 琴琴 (tolerates some direct), 刚刚 (direct brings out the burgundy colour) |
+| Full sun / high-light tolerant | 20,000+ | 鸟鸟, 刺刺, succulents |
+
+**Current position plan:**
+
+- **Green cabinet, top shelf (~6,300 lux):** 猫猫, 铂金, 心心, 棠棠 ×2, 青青, 萝萝, 皮皮 — groups the sun-shy and recovering plants together for easy checking.
+- **Green cabinet, bottom shelf (<2,000 lux):** 青青 only (the most shade-tolerant) — not a long-term spot for anything else, light is too low.
+- **Master BR window, curtain drawn (~8,000 lux):** Monstera group, 刚刚, 铂金.
+- **Alfresco under the eaves (~5,000–6,000 lux):** Monstera group (贝贝/星星/龟龟), 皮皮, 刚刚, 铂金.
+- **Alfresco, shaded strong light (~30,000 lux):** succulents, 鸟鸟, 刺刺 — **not** suitable for Ctenanthe, 萝萝, 星星, or anything else variegated or recovering from leaf spot.
+
+⚠️ Succulents need strong light (10,000+ lux) to stay compact and hold their colour — low light makes them leggy. Keep them in the brightest spot (alfresco or a bright window), not the cabinet.
+
+## Watering Method by Plant
+
+- **Bottom-tray / raised-reservoir humidity method** (tray or grate + water, not touching the drainage holes): 猫猫, 豹豹, 小羽 — the Ctenanthe group needs consistently high humidity.
+- **Dry-out method** (never sits in water): 皮皮, 刚刚, 琴琴, 贝贝, 星星, 龟龟 (Ficus + Monstera group — staying damp suppresses their recovery), and succulents (zero tolerance for standing water).
+
+### Soil-check depth reference
+
+| Plant | Check depth |
+|---|---|
+| 贝贝 / 星星 / 龟龟 (Monstera group), 刚刚 | top 2–3cm |
+| 琴琴 | top 3–4cm |
+| 皮皮 | top ~2–3cm |
+
+Rain and cold slow drying — always check the soil rather than watering on a fixed schedule; a dry spell in poor weather takes longer than the usual interval.
+
+### Pruning & shaping principles
+
+- Removing a **healthy** leaf reduces total photosynthesis — only worth it when a leaf's upkeep cost now outweighs what it contributes (disease, heavy pest damage, or dying tissue).
+- Apical dominance isn't "freed up" by removing leaves — trimming only reduces load, it doesn't actively redirect growth to the top.
+- For a single-trunk "lollipop" shape (刚刚), cut basal suckers early and often so they don't compete with the main trunk.
+
 ## Propagation in Progress
 
-- **Ficus elastica cutting** (刚刚's top) — soil prop, 50/50 potting mix + perlite, rooting powder applied
+- **Ficus elastica cuttings** (刚刚, ×2 — the topped trunk section, plus one side branch) — cut ends air-dried; the topped section is soil-propping in 50/50 potting mix + perlite with rooting powder, the side branch is waiting to be planted once a stretch of ≥20°C weather arrives
+- **Ficus lyrata cutting** (琴琴, ×1 side branch) — cut end air-dried, waiting on the same ≥20°C weather
 - **Monstera cuttings** (贝贝) — two-chamber self-watering pot
 
 -----
@@ -80,10 +133,15 @@
 - 贝贝 / 星星: continue observation after repotting; feed once new growth resumes
 - Lili: monitor closely for another stem-rot recurrence; no fertiliser for 6–8 weeks after repotting
 - 龟龟 / 萝萝: settle in for 1–2 weeks before any repotting or soil changes
+- 萝萝: mix in perlite once settling-in is done (~3:1 or 4:1 original mix : perlite)
 - 小羽: keep the raised pebble tray topped up; watch for improvement in leaf-edge dieback
 - 刺刺: tip-prune to encourage branching
 - 斑斑: shallow pot + succulent mix
 - 蛋花 → outdoors, full sun, permanently, once new tip growth confirms it is out of dormancy
+- Repot into cheap mix + perlite once temps hold ≥18°C: 刚刚, 皮皮, 琴琴, 猫猫, 豹豹, 小羽, 青青
+- Move succulents to a stronger-light spot (alfresco or a bright window) for tighter growth and better colour
+- Top up snail bait (Multiguard) around 鸟鸟's balcony spot
+- Plant the waiting 刚刚/琴琴 cuttings once a run of ≥20°C days arrives
 - Bay Laurel cuttings — no longer tracked
 
 -----
