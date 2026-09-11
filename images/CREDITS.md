@@ -8,7 +8,6 @@ Default card images sourced from Unsplash (free to use):
 - images/tangtan.jpg: Begonia maculata — https://unsplash.com/photos/green-and-maroon-leaf-plant-9ai1TxXeJyQ
 - images/baobao.jpg: Goeppertia lancifolia — https://unsplash.com/photos/8nONCr6eTeg
 - images/cici.jpg: Blue columnar cactus — https://unsplash.com/photos/a-tall-cactus-reaches-toward-a-clear-blue-sky-S9J3GL9tp8A
-- images/zhizhu.jpg: Agapanthus — https://unsplash.com/photos/a-close-up-of-a-purple-agapanthus-flower-bud-cluster-6AiBz5rObNs
 - images/bojin.jpg: Philodendron Birkin — https://unsplash.com/photos/a-close-up-of-a-green-and-white-leaf-ptv_6wxxt5I
 
 Additional card images from Wikimedia Commons (attribution required):

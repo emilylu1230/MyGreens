@@ -29,9 +29,8 @@
 | 青青 Qingqing | Dieffenbachia Sterling (万年青) | 🟢 Stable | June 2026 division into 2 pots now recovered. Irritant sap — gloves. |
 | 鸟鸟 | Strelitzia nicolai (天堂鸟) | 🟢 Stable | Moved in from the balcony 6 Aug — 14–15°C was damaging it. Back outside in Sept. |
 
-### Outdoor (2)
+### Outdoor (1)
 - 刺刺 — Cactus (yard, under roof — protected from rain, already in correct permanent spot)
-- 蜘蛛 — Agapanthus / 非洲百合 (yard, drought-tolerant, blooms Nov–Jan)
 
 ### Other
 - Bay Laurel tree (~2m in yard)
@@ -77,7 +76,7 @@
 - 雀雀/小羽: keep filtered water only; humidity pressure eases as weather warms but watch early hot dry spells.
 
 ### App updates due in September
-- Statuses: 刚刚/雀雀/青青 recover→ok (when confirmed), 蛋花 temp→outside, 蜘蛛 watch→outside
+- Statuses: 刚刚/雀雀/青青 recover→ok (when confirmed), 蛋花 temp→outside
 - Season tag: winter → spring
 - Location changes: 蛋花 and possibly 贝贝 to outdoor locations
 

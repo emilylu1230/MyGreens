@@ -11,7 +11,7 @@
 |---|---|
 | 🔴 At risk | Lili |
 | 🟠 Needs care | 贝贝, 棠棠 ×2, 星星, 小羽, 蛋花, 龟龟, 萝萝 |
-| 🟢 Stable | 皮皮, 刚刚, 青青, 小万, 猫猫, 豹豹, 铂金, 琴琴, 心心, 刺刺, 蜘蛛, 斑斑, 鸟鸟 |
+| 🟢 Stable | 皮皮, 刚刚, 青青, 小万, 猫猫, 豹豹, 铂金, 琴琴, 心心, 刺刺, 斑斑, 鸟鸟 |
 
 -----
 
@@ -44,7 +44,6 @@
 | 鸟鸟 | Strelitzia nicolai | 大天堂鸟 | Balcony | Back outside on the master BR balcony as temps warmed. Possible snail damage on leaves — watching for fresh bite marks. Full sun/part shade, keep lightly moist, rain-tolerant. |
 | 刺刺 | Blue Columnar Cactus | 蓝柱仙人掌 | Yard, under eaves | Full sun, minimal water. Plan to tip-prune once temps hold ≥18°C to encourage branching. |
 | 斑斑 | Haworthiopsis attenuata | 条纹十二卷 | BR window | Bright indirect light, minimal water. Repot into a shallow pot + succulent mix in spring. |
-| 蜘蛛 | Agapanthus (species TBC once it flowers) | 非洲百合 | Yard | Drought-tolerant, full sun/part shade. Blooms Nov–Jan. |
 
 -----
 

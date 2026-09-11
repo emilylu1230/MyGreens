@@ -359,42 +359,6 @@ const plants = [
         },
     },
     {
-        id: 11, nickname: '蜘蛛', latin: 'Agapanthus',
-        fullName: { zh: '非洲百合（待开花确认）', en: 'Agapanthus (species TBC once it flowers) · 非洲百合' },
-        sept: { zh: '春季恢复正常浇水，开始每月施肥（高钾肥促花）。花期通常在11月–1月。', en: 'Resume normal watering in spring and start monthly feeding (high-potassium for flowers). Blooms typically Nov–Jan.' },
-        light: 5, water: 2, humidity: 1, waterDays: null, img: 'images/zhizhu.jpg', bgClass: 'bg-zhizhu', textClass: 'text-zhizhu',
-        status: 'stable', locationNo: 8,
-        short: {
-            zh: '耐旱强健，全日照或半阴。干透再浇。',
-            en: 'Tough and drought-tolerant. Full sun or part shade. Water when dry.',
-        },
-        locationDetail: {
-            zh: '室外永久位置。全日照最佳，半阴也可以。Adelaide气候非常适合。',
-            en: 'Permanent outdoor spot. Full sun is best, part shade is fine too. Thrives in Adelaide\'s climate.',
-        },
-        description: {
-            zh: '非洲百合，南非原产多年生植物。花期开出蓝紫色球形花序，非常壮观。极其耐旱，Adelaide气候理想。',
-            en: 'South African perennial known for its stunning spherical blue-purple flower clusters. Extremely drought-tolerant — thrives in Adelaide\'s climate.',
-        },
-        lightDetail: {
-            zh: '全日照最好，开花更多更旺。半阴也可以生存但花量减少。',
-            en: 'Full sun for best flowering. Tolerates part shade but produces fewer blooms.',
-        },
-        waterDetail: {
-            zh: '耐旱，干透再浇。冬季几乎不需要浇水。过多水分会导致根腐。',
-            en: 'Drought-tolerant — water only when fully dry. Almost no watering needed in winter. Overwatering causes root rot.',
-        },
-        seasonNote: {
-            zh: '冬季：几乎不需要照顾。减少浇水，不施肥。叶片可能部分枯黄，正常现象。',
-            en: 'Winter: almost zero care needed. Reduce water, no fertiliser. Some leaf yellowing is normal.',
-        },
-        alert: null,
-        tips: {
-            zh: '• 极其耐旱——宁干勿湿\n• 全日照开花最多\n• Adelaide气候非常适合，不怕热\n• 冬季叶片部分枯黄是正常的\n• 根系强壮，可在原位生长多年',
-            en: '• Very drought-tolerant — better dry than wet\n• Full sun = most flowers\n• Loves Adelaide climate, heat-tolerant\n• Some winter leaf yellowing is normal\n• Strong root system, happy in same spot for years',
-        },
-    },
-    {
         id: 12, nickname: '铂金', latin: 'Philodendron Birkin',
         fullName: { zh: '比尔金喜林芋', en: 'Philodendron Birkin · 比尔金喜林芋' },
         sept: { zh: '恢复每月缓释肥。检查光照——条纹消失说明光不够，靠近窗口。生长旺盛可考虑换盆。', en: 'Resume monthly slow-release feed. Check light — fading stripes mean not enough light, move closer to window. Repot if fast-growing.' },
